@@ -5,7 +5,7 @@ Recent technological developments in microscopy imaging techniques have transfor
 Here is an example
 
 <figure>
-   <img src="https://drive.google.com/open?id=0B-KnQP3_HDffcW9wSE5VMzUyVUk" style="max-width: 400px;"
+   <img src="https://drive.google.com/file/d/0B-KnQP3_HDffcW9wSE5VMzUyVUk/view?usp=sharing" style="max-width: 400px;"
       alt="Embryo" />
    <figcaption>Stained embryo DAPI, dpERK, Dl</figcaption>
 </figure>
