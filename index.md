@@ -5,4 +5,4 @@ Why are we how we are? What makes each of us different? These questions are fasc
 Recent technological developments in microscopy imaging techniques have transformed embryology into a data intensive science. We present here a multi-modal data-driven visualization of a developing embryo, obtained from heterogeneous data fusion of static images.
 
 
-More information can be found here <a href="{{ https://paulcinq.wordpress.com/ }}">{{ https://paulcinq.wordpress.com/ }}</a>
+More information can be found here <a href=" https://paulcinq.wordpress.com/ "> https://paulcinq.wordpress.com/ </a>
