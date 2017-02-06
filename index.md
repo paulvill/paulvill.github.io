@@ -13,4 +13,5 @@ Here is an example
 </figure>
 
 
-More information can be found here <a href=" https://paulcinq.wordpress.com/ "> https://paulcinq.wordpress.com/ </a>
+
+More information about the science can be found <a href=" https://paulcinq.wordpress.com/ "> there </a>
