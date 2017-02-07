@@ -10,7 +10,7 @@ Here is an example
    <figcaption>Stained embryo with DAPI, dpERK, Dl</figcaption>
 </figure>
 
-<div id="captioned-gallery">
+<!-- <div id="captioned-gallery">
 	<figure class="slider">
 		<figure>
 			<img src="24.png" alt>
@@ -26,6 +26,6 @@ Here is an example
 		</figure>
 	</figure>
 </div>
-
+-->
 
 More information about the science can be found <a href=" https://paulcinq.wordpress.com/ "> there </a>
