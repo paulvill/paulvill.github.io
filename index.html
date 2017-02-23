@@ -7,18 +7,44 @@
 			body {
     text-align:center;
     font-family:verdana;
-    background-color:rgb(200,200,200);
+    background-color:rgb(200, 200, 200);
 }
-			canvas { width: 100%; height: 100% }
+			
 		</style>
 	</head>
 	<body>
 		
-<h1>Embryo Digital Atlas Project</h1>
-<p title="Introduction">More info about the science can be found <a href = "http://shvartsmanlab.com/">here</a> or <a href = "http://paulcinq.wordpress.com">there</a>.</p>
+		<h1>
+			Embryo Digital Atlas Project
+		</h1>
 
-<p> This is an example of an embryo stained for nuclei, dpERK and Twist
-</p>
+		<p title="Introduction">
+			More info about the science can be found <a href = "http://shvartsmanlab.com/">here</a> or <a href = "http://paulcinq.wordpress.com">there</a>.
+		</p>
+
+		<p> 
+			This is an example of an embryo stained for nuclei, dpERK and Twist
+		</p>
+
+		<video id="video1" controls width="270" autoplay>
+		  	<source src="reconstructed_movie1.avi" type='video/avi'>
+		</video>
+		<p></p>
+		<canvas id="myCanvas" width="270" height="270" style="border:1px solid #d3d3d3;">
+		</canvas>
+
+
+		<script>
+		window.onload = function() {
+		    var c = document.getElementById("myCanvas");
+		    var ctx = c.getContext("2d");
+		    var img = new Image();
+		    img.src = "24.png"
+		    ctx.drawImage(img, 1, 1,270,270);
+		}
+		</script>
+		<p></p>	
+		
 		<script src="js/three.js"></script>
 		<script src="js/main.js"></script>
 	</body>
