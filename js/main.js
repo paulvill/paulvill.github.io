@@ -11,7 +11,7 @@
 			var geometry = new THREE.BoxGeometry( 5, 5, 5 );
 
   			var loader = new THREE.TextureLoader();
-  			  loader.load("24.png", function(texture){
+  			  loader.load("images/24.png", function(texture){
     			var material = new THREE.MeshLambertMaterial({map: texture});
     			cube= new THREE.Mesh(geometry, material);
     			scene.add(cube);
