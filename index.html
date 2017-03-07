@@ -15,6 +15,9 @@
 			    text-align:center;
 			    font-family:verdana;
 			    background-color: rgb(200, 200, 200); 
+			    /* Define the font and the color for the usage, which is an ordinary HTML overlay. */ 
+                  font-family: Monospace; 
+                 color: white; 
 			}
 			
 		</style>
@@ -25,11 +28,13 @@
 		<script src="js/Projector.js"></script>  
 	</head>
 	<body>
-		
-	<!-- 	<h1>
+
+<!-- 		
+	<h1>
 			Dynamic Gene Expression Atlas Project
 		</h1>
-
+		<p> </p>
+	
 		<p title="Introduction">
 			More info about the science can be found <a href = "http://shvartsmanlab.com/">here</a> or <a href = "http://paulcinq.wordpress.com">there</a>.
 		</p>
@@ -76,6 +81,10 @@
 		</script>
 		<p></p>	 -->
 
+ 	<div id="overlaytext" style="position: absolute; top: 10px; left: 10px">
+ 		Cursor left / right: Control y rotation speed<br/>
+ 		Cursor up / down: Control x rotation speed<br/>
+ 	</div> 
 	<div id="WebGLCanvas">
 	<script src="js/main.js"></script>
 

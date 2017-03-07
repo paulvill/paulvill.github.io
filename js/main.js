@@ -4,15 +4,29 @@ var scene;
 // Global camera object
 var camera;
 
+
 // The cube has to rotate around all three axes, so we need three rotation values. 
 
 // x, y and z rotation 
 var xRotation = 0.0; 
 var yRotation = 0.0; 
-var zRotation = 0.0; 
 
-// Global mesh object of the cube
-var cubeMesh; 
+
+// Rotation speed around x and y axis 
+var xSpeed = 0.0; 
+var ySpeed = 0.0;
+
+// Translation along the z axis 
+var zTranslation = 0.0;  
+
+// Texture and flag for current texture filter 
+var crateTexture; 
+var textureFilter = 0; 
+
+// Flag for toggling light
+var lightIsOn = true; 
+
+var boxMesh; 
 
 // Initialize the scene
 initializeScene();
@@ -35,13 +49,17 @@ function initializeScene(){
 	// viewed in browsers, which don't support WebGL. The limitations of the canvas renderer 
 	// in contrast to the WebGL renderer will be explained in the tutorials, when there is a 
 	// difference. 
+	webGLAvailable = false; 
 	if(Detector.webgl){ 
 	renderer = new THREE.WebGLRenderer({antialias:true}); 
+	 webGLAvailable = true; 
+	// document.getElementById("overlaytext").innerHTML += "WebGL Renderer";
 
 	// If its not supported, instantiate the canvas renderer to support all non WebGL 
 	// browsers 
 	} else { 
 	renderer = new THREE.CanvasRenderer(); 
+	//document.getElementById("overlaytext").innerHTML += "Canvas Renderer"; 
 	} 
 
 	// Set the background color
@@ -50,6 +68,7 @@ function initializeScene(){
 	// Get the size of the inner window (content area) to create a full size renderer 
 	canvasWidth = window.innerWidth/2; 
 	canvasHeight = window.innerHeight/2; 
+
 
 	// Set the renderers size to the content areas size
 	renderer.setSize(canvasWidth, canvasHeight); 
@@ -90,10 +109,10 @@ function initializeScene(){
 	var boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0); 
 
 	// Load an image as texture 
-	var neheTexture = new THREE.ImageUtils.loadTexture("images/24.png");
+	var embryoTexture = new THREE.ImageUtils.loadTexture("images/24.png");
 
 	var boxMaterial = new THREE.MeshBasicMaterial({ 
-                      map:neheTexture, 
+                     map:embryoTexture, 
                      side:THREE.DoubleSide 
                  });
 
@@ -102,20 +121,125 @@ function initializeScene(){
      boxMesh = new THREE.Mesh(boxGeometry, boxMaterial); 
      boxMesh.position.set(0.0, 0.0, 4.0); 
      scene.add(boxMesh); 
+
+  //    // Ambient light has no direction, it illuminates every object with the same 
+  //    // intensity. If only ambient light is used, no shading effects will occur. 
+  //    var ambientLight = new THREE.AmbientLight(0x101010, 1.0); 
+  //    scene.add(ambientLight); 
+
+	 // // Directional light has a source and shines in all directions, like the sun. 
+	 // // This behaviour creates shading effects. 
+	 // directionalLight = new THREE.DirectionalLight(0xffffff, 1.0); 
+	 // directionalLight.position.set(0.0, 0.0, 1.0); 
+	 // scene.add(directionalLight);
+
+     // Add a listener for 'keydown' events. By this listener, all key events will be 
+     // passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'. 
+     // It will report only the visible characters like 'a', but not the function keys 
+     // like 'cursor up'. 
+     document.addEventListener("keydown", onDocumentKeyDown, false); 
 }
+
+/** 
+ * This function is called, when a key is pushed down.
+ */ 
+
+ 
+ function onDocumentKeyDown(event){ 
+	// Get the key code of the pressed key 
+	var keyCode = event.which; 
+
+	// // 'F' - Toggle through the texture filters 
+	// if(keyCode == 70){ 
+	// 	// The CanvasRenderer doesn't support texture filters. 
+	// 	switch(textureFilter){ 
+	//         case 0: 
+	//              crateTexture.minFilter = THREE.NearestFilter; 
+	//              crateTexture.magFilter = THREE.NearestFilter; 
+	//              textureFilter = 1; 
+	//              break; 
+	//         case 1: 
+	//              crateTexture.minFilter = THREE.LinearFilter; 
+	//              crateTexture.magFilter = THREE.LinearFilter; 
+	//              textureFilter = 2; 
+	//              break; 
+	//         case 2: 
+	//              crateTexture.minFilter = THREE.LinearFilter; 
+	//              crateTexture.magFilter = THREE.LinearMipMapNearestFilter; 
+	//              textureFilter = 0; 
+	//              break; 
+	//      }; 
+	// 	crateTexture.needsUpdate = true; 
+  
+ //     // 'L' - Toggle light 
+ //     } else if(keyCode == 76){ 
+	// 	// If we would just remove the lights from the scene, or set the lights to 
+	// 	// invisible, we would get a black cube due to the MeshLambertMaterial (it needs 
+	// 	// light). So we just switch the material to toggle the light 
+	// 	if(lightIsOn){ 
+	// 	boxMesh.material = new THREE.MeshBasicMaterial({ 
+	// 		map:crateTexture, 
+	// 		side:THREE.DoubleSide 
+	// 	}); 
+	// 	lightIsOn = false; 
+
+	// 	 } else { 
+	// 		if(webGLAvailable){ 
+	// 			boxMesh.material = new THREE.MeshLambertMaterial({ 
+	// 				map:crateTexture, 
+	// 				side:THREE.DoubleSide 
+	// 				}); 
+	// 		} else { 
+	// 			boxMesh.material = new THREE.MeshBasicMaterial({ 
+	// 				map:crateTexture, 
+	// 				side:THREE.DoubleSide 
+	// 				}); 
+	// 		} 
+	// 		lightIsOn = true; 
+	// 	} 
+	// 	boxMesh.material.needsUpdate = true; 
+
+	// 	// Cursor up 
+	// } else 
+	if(keyCode == 38){ 
+		xSpeed -= 0.01; 
+
+		// Cursor down 
+	} else if(keyCode == 40){ 
+		xSpeed += 0.01; 
+
+		// Cursor left 
+	} else if(keyCode == 37){ 
+		ySpeed -= 0.01; 
+
+		// Cursor right 
+	} else if(keyCode == 39){ 
+		ySpeed += 0.01; 
+
+		// Page up 
+	} else if(keyCode == 33){ 
+		zTranslation -= 0.2; 
+
+		// Page down 
+	} else if(keyCode == 34){ 
+		zTranslation += 0.2; 
+	} 
+} 
 
 /** 
 * Animate the scene and call rendering. 
 */ 
 function animateScene(){ 
-	 // At first, we increase the y rotation of the triangle mesh and decrease the x 
-	 // rotation of the square mesh. 
+	//directionalLight.position = camera.position; 
+	 
 		
-		// Increase the x, y and z rotation of the cube 
-                 xRotation += 0.03; 
-                 yRotation += 0.02; 
-                 zRotation += 0.04; 
-                 boxMesh.rotation.set(xRotation, yRotation, zRotation); 
+	// Increase the x, y and z rotation of the cube 
+    xRotation += xSpeed; 
+    yRotation += ySpeed; 
+    boxMesh.rotation.set(xRotation, yRotation, 0.0);
+
+    // Apply the the translation along the z axis 
+    boxMesh.position.z = zTranslation;  
 
 	 // Define the function, which is called by the browser supported timer loop. If the 
 	 // browser tab is not visible, the animation is paused. So 'animateScene()' is called 
