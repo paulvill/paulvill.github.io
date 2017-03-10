@@ -21,12 +21,21 @@ var zTranslation = 0.0;
 
 // Texture and flag for current texture filter 
 var crateTexture; 
-var textureFilter = 0; 
+var texture = 0; 
 
 // Flag for toggling light
 var lightIsOn = true; 
 
 var boxMesh; 
+
+var embryoTexture;
+
+var boxMaterial;
+
+var boxGeometry;
+
+var images = { "path":["images/24.png", "images/25.png", "images/26.png"]}; 
+
 
 // Initialize the scene
 initializeScene();
@@ -106,12 +115,12 @@ function initializeScene(){
 	scene.add(camera); 
 
 	// Create the cube 
-	var boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0); 
+	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0); 
 
 	// Load an image as texture 
-	var embryoTexture = new THREE.ImageUtils.loadTexture("images/24.png");
+	embryoTexture = new THREE.ImageUtils.loadTexture(images.path[0]);
 
-	var boxMaterial = new THREE.MeshBasicMaterial({ 
+	boxMaterial = new THREE.MeshBasicMaterial({ 
                      map:embryoTexture, 
                      side:THREE.DoubleSide 
                  });
@@ -201,7 +210,27 @@ function initializeScene(){
 
 	// 	// Cursor up 
 	// } else 
-	if(keyCode == 38){ 
+	if(keyCode == 32){
+		switch(texture){
+			case 0: 
+				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[1] );
+	             texture = 1; 
+	             break; 
+	        case 1: 
+				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[2] );
+	             texture = 2; 
+	             break; 
+	        case 2: 
+				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[0] );
+	             texture = 0; 
+	             break; 
+
+		}
+
+		boxMesh.material.needsUpdate = true; 
+		//boxMaterial.needsUpdate = true;
+		 document.getElementById("overlaytext").innerHTML = texture; 
+	} else if(keyCode == 38){ 
 		xSpeed -= 0.01; 
 
 		// Cursor down 
@@ -240,6 +269,8 @@ function animateScene(){
 
     // Apply the the translation along the z axis 
     boxMesh.position.z = zTranslation;  
+
+   
 
 	 // Define the function, which is called by the browser supported timer loop. If the 
 	 // browser tab is not visible, the animation is paused. So 'animateScene()' is called 
