@@ -4,7 +4,6 @@ var scene;
 // Global camera object
 var camera;
 
-
 // The cube has to rotate around all three axes, so we need three rotation values. 
 
 // x, y and z rotation 
@@ -147,6 +146,19 @@ function initializeScene(){
      // It will report only the visible characters like 'a', but not the function keys 
      // like 'cursor up'. 
      document.addEventListener("keydown", onDocumentKeyDown, false); 
+
+  //   // Ambient light has no direction, it illuminates every object with the same 
+  //   // intensity. If only ambient light is used, no shading effects will occur. 
+  //   ambientLight = new THREE.AmbientLight(0x404040); 
+  //   scene.add(ambientLight); 
+  
+  //  	// Directional light has a source and shines in all directions, like the sun. 
+  //   // This behaviour creates shading effects. 
+
+	 // directionalLight = new THREE.PointLight(0xffffff); 
+  //    directionalLight.position.set(250,250,250);  
+  //    scene.add(directionalLight); 
+
 }
 
 /** 
