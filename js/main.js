@@ -16,11 +16,11 @@ var xSpeed = 0.0;
 var ySpeed = 0.0;
 
 // Translation along the z axis 
-var zTranslation = 0.0;  
+var zTranslation = 5;  
 
 // Texture and flag for current texture filter 
 var crateTexture; 
-var texture = 0; 
+var texture = 1; 
 
 // Flag for toggling light
 var lightIsOn = true; 
@@ -33,7 +33,8 @@ var boxMaterial;
 
 var boxGeometry;
 
-var images = { "path":["images/24.png", "images/25.png", "images/26.png"]}; 
+var channel = 0;
+var images = { "path":["images/coloredmovie_4datasets/","images/coloredmovie_4datasets/grayscale/nuclei","images/coloredmovie_4datasets/grayscale/dpERK","images/coloredmovie_4datasets/grayscale/twist","images/coloredmovie_4datasets/grayscale/dorsal","images/coloredmovie_4datasets/grayscale/ind","images/coloredmovie_4datasets/grayscale/rhomboid"]}; 
 
 
 // Initialize the scene
@@ -74,8 +75,8 @@ function initializeScene(){
 	renderer.setClearColor(0xc8c8c8);
 
 	// Get the size of the inner window (content area) to create a full size renderer 
-	canvasWidth = window.innerWidth/2; 
-	canvasHeight = window.innerHeight/2; 
+	canvasWidth = window.innerWidth-20; 
+	canvasHeight = window.innerHeight-20; 
 
 
 	// Set the renderers size to the content areas size
@@ -117,7 +118,7 @@ function initializeScene(){
 	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0); 
 
 	// Load an image as texture 
-	embryoTexture = new THREE.ImageUtils.loadTexture(images.path[0]);
+	embryoTexture = new THREE.ImageUtils.loadTexture(images.path[channel].concat(texture,".png"));
 
 	boxMaterial = new THREE.MeshBasicMaterial({ 
                      map:embryoTexture, 
@@ -169,79 +170,18 @@ function initializeScene(){
  function onDocumentKeyDown(event){ 
 	// Get the key code of the pressed key 
 	var keyCode = event.which; 
-
-	// // 'F' - Toggle through the texture filters 
-	// if(keyCode == 70){ 
-	// 	// The CanvasRenderer doesn't support texture filters. 
-	// 	switch(textureFilter){ 
-	//         case 0: 
-	//              crateTexture.minFilter = THREE.NearestFilter; 
-	//              crateTexture.magFilter = THREE.NearestFilter; 
-	//              textureFilter = 1; 
-	//              break; 
-	//         case 1: 
-	//              crateTexture.minFilter = THREE.LinearFilter; 
-	//              crateTexture.magFilter = THREE.LinearFilter; 
-	//              textureFilter = 2; 
-	//              break; 
-	//         case 2: 
-	//              crateTexture.minFilter = THREE.LinearFilter; 
-	//              crateTexture.magFilter = THREE.LinearMipMapNearestFilter; 
-	//              textureFilter = 0; 
-	//              break; 
-	//      }; 
-	// 	crateTexture.needsUpdate = true; 
-  
- //     // 'L' - Toggle light 
- //     } else if(keyCode == 76){ 
-	// 	// If we would just remove the lights from the scene, or set the lights to 
-	// 	// invisible, we would get a black cube due to the MeshLambertMaterial (it needs 
-	// 	// light). So we just switch the material to toggle the light 
-	// 	if(lightIsOn){ 
-	// 	boxMesh.material = new THREE.MeshBasicMaterial({ 
-	// 		map:crateTexture, 
-	// 		side:THREE.DoubleSide 
-	// 	}); 
-	// 	lightIsOn = false; 
-
-	// 	 } else { 
-	// 		if(webGLAvailable){ 
-	// 			boxMesh.material = new THREE.MeshLambertMaterial({ 
-	// 				map:crateTexture, 
-	// 				side:THREE.DoubleSide 
-	// 				}); 
-	// 		} else { 
-	// 			boxMesh.material = new THREE.MeshBasicMaterial({ 
-	// 				map:crateTexture, 
-	// 				side:THREE.DoubleSide 
-	// 				}); 
-	// 		} 
-	// 		lightIsOn = true; 
-	// 	} 
-	// 	boxMesh.material.needsUpdate = true; 
-
-	// 	// Cursor up 
-	// } else 
 	if(keyCode == 32){
-		switch(texture){
-			case 0: 
-				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[1] );
-	             texture = 1; 
-	             break; 
-	        case 1: 
-				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[2] );
-	             texture = 2; 
-	             break; 
-	        case 2: 
-				boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[0] );
-	             texture = 0; 
-	             break; 
-
+		if(channel < 6){
+			channel = channel+1;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
+		}else {
+			channel = 0;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
 		}
+		
 
 		boxMesh.material.needsUpdate = true; 
-		//boxMaterial.needsUpdate = true;
-		 document.getElementById("overlaytext").innerHTML = texture; 
+		 document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png"); 
 	} else if(keyCode == 38){ 
 		xSpeed -= 0.01; 
 
@@ -251,12 +191,29 @@ function initializeScene(){
 
 		// Cursor left 
 	} else if(keyCode == 37){ 
-		ySpeed -= 0.01; 
+		if(texture >1){
+			texture = texture-1;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
+		}else{
+			texture = 42;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
+			boxMesh.material.needsUpdate = true; 
+		}
+		//boxMaterial.needsUpdate = true;
+		 document.getElementById("overlaytext").innerHTML = texture; 
 
 		// Cursor right 
 	} else if(keyCode == 39){ 
-		ySpeed += 0.01; 
-
+		if(texture < 42){
+			texture = texture+1;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
+		}else{
+			texture = 1;
+			boxMesh.material.map = THREE.ImageUtils.loadTexture( images.path[channel].concat(texture,".png"));
+			boxMesh.material.needsUpdate = true; 
+		}
+		//boxMaterial.needsUpdate = true;
+		 document.getElementById("overlaytext").innerHTML = texture; 
 		// Page up 
 	} else if(keyCode == 33){ 
 		zTranslation -= 0.2; 
