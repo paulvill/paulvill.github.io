@@ -182,12 +182,21 @@ function initializeScene(){
 
 		boxMesh.material.needsUpdate = true; 
 		 document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png"); 
-	} else if(keyCode == 38){ 
+		 //up key w
+	} else if(keyCode == 87){ 
 		xSpeed -= 0.01; 
 
-		// Cursor down 
-	} else if(keyCode == 40){ 
+		//  down key s
+	} else if(keyCode == 83){ 
 		xSpeed += 0.01; 
+
+		// left  key a
+	} else if(keyCode == 65){ 
+		ySpeed -= 0.01; 
+
+		// right key d 
+	} else if(keyCode == 68){ 
+		ySpeed += 0.01; 
 
 		// Cursor left 
 	} else if(keyCode == 37){ 
@@ -200,7 +209,7 @@ function initializeScene(){
 			boxMesh.material.needsUpdate = true; 
 		}
 		//boxMaterial.needsUpdate = true;
-		 document.getElementById("overlaytext").innerHTML = texture; 
+		 document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png"); 
 
 		// Cursor right 
 	} else if(keyCode == 39){ 
@@ -213,13 +222,13 @@ function initializeScene(){
 			boxMesh.material.needsUpdate = true; 
 		}
 		//boxMaterial.needsUpdate = true;
-		 document.getElementById("overlaytext").innerHTML = texture; 
+		 document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png"); 
 		// Page up 
-	} else if(keyCode == 33){ 
+	} else if(keyCode == 38){ 
 		zTranslation -= 0.2; 
 
 		// Page down 
-	} else if(keyCode == 34){ 
+	} else if(keyCode == 40){ 
 		zTranslation += 0.2; 
 	} 
 } 
