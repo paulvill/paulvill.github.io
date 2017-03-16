@@ -183,7 +183,7 @@ function loadTexture(){
 	// Get the key code of the pressed key
 	var keyCode = event.which;
 	if(keyCode == 32){
-		if(channel < channelCount){
+		if(channel < channelCount-1){
 			channel = channel+1;
 		}else{
 			channel = 0;
