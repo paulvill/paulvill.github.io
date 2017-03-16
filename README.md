@@ -32,4 +32,4 @@ Want to contribute? Here is the [roadmap](ROADMAP.md) and here are the [contribu
 
 ## Acknowledgments
 
-Special thanks to the Shvartsman Lab, the Center for Data Arts, the Mozilla Science Lab, the MOZWOW 2017 cohort, Jérôme Le Lan.
+We warmly thank the Shvartsman Lab, the Center for Data Arts, the Mozilla Science Lab, the MOZWOW 2017 cohort, Jérôme Le Lan.
