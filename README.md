@@ -24,10 +24,12 @@ Illustrations by Nobel Prize winner [Ramón y Cajal](https://www.newscientist.co
 
 The beautiful [Wind Map](http://hint.fm/wind/) by Fernanda Viégas and Martin Wattenberg.
 
+And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-embryogenesis/)
+
 ## Contribute
 
 Want to contribute? Here is the [roadmap](ROADMAP.md) and here are the [contributor guidelines](CONTRIBUTING.md).
 
 ## Acknowledgments
 
-Special thanks to the Shvartsman Lab, the Center for Data Arts, the Mozilla Science Lab, the MOZWOW 2017 cohort, Jérome Le Lan.
+Special thanks to the Shvartsman Lab, the Center for Data Arts, the Mozilla Science Lab, the MOZWOW 2017 cohort, Jérôme Le Lan.
