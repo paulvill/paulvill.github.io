@@ -1,6 +1,6 @@
 # Embryo Digital Atlas
 
-Visualize complex experimental datasets of embryogenesis in an easy and beautiful way.
+A web based platform to visualize complex experimental datasets of embryogenesis in an easy and beautiful way.
 
 ## Using Embryo Digital Atlas
 
@@ -12,9 +12,11 @@ Generate beautiful visualizations
 
 ## Current Users
 
-Shvartsman lab at Princeton University
+[Shvartsman lab](http://shvartsmanlab.com/) at Princeton University
 
-Center for Data Arts at The New School
+[Benny Shilo lab](http://shilolabweb.weizmann.ac.il/) at the Weizmann Institute
+
+[Center for Data Arts](http://www.newschool.edu/center-for-data-arts/) at The New School
 
 ## Inspiration
 
