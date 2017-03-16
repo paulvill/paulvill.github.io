@@ -26,4 +26,8 @@ The beautiful [Wind Map](http://hint.fm/wind/) by Fernanda Viégas and Martin Wa
 
 ## Contribute
 
-Want to contribute? Here is the roadmap and here are the contributor guidelines.
+Want to contribute? Here is the [roadmap](ROADMAP.md) and here are the [contributor guidelines](CONTRIBUTING.md).
+
+## Acknowledgments
+
+Special thanks to the Shvartsman Lab, the Center for Data Arts, the Mozilla Science Lab, the MOZWOW 2017 cohort, Jérome Le Lan.
