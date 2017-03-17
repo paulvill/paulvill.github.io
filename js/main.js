@@ -177,37 +177,30 @@ function selectTexture(channel, image) {
 
 	// Get the key code of the pressed key
 	var keyCode = event.which;
-		// space bar
-	if (keyCode == 32) {
+	if (keyCode == enums.keyboard.SPACE) {	// SWITCH CHANNEL
 		if (this.currentChannel < channelCount - 1) {
 			++this.currentChannel;
 		} else {
 			this.currentChannel = 0;
 		}
 
-		// up key w
-	} else if(keyCode == 87) {
+	} else if(keyCode == enums.keyboard.KEY_W) {	// ROTATE UP
 		xSpeed -= 0.01;
-		// down key s
-	} else if(keyCode == 83) {
+	} else if(keyCode == enums.keyboard.KEY_S) {	// ROTATE DOWN
 		xSpeed += 0.01;
-		// left  key a
-	} else if(keyCode == 65) {
+	} else if(keyCode == enums.keyboard.KEY_A) {	// ROTATE LEFT
 		ySpeed -= 0.01;
-		// right key d
-	} else if(keyCode == 68) {
+	} else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
 		ySpeed += 0.01;
 
-		// Cursor left
-	} else if(keyCode == 37) {
+	} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
 		if (this.currentImage > 0) {
 			--this.currentImage;
 		} else {
 			this.currentImage = imageCount - 1;
 		}
 
-		// Cursor right
-	} else if(keyCode == 39) {
+	} else if(keyCode == enums.keyboard.RIGHT_ARROW) {	// PREVIOUS IMAGE
 		if (this.currentImage < imageCount - 1) {
 			++this.currentImage;
 		} else {
@@ -215,12 +208,19 @@ function selectTexture(channel, image) {
 		}
 
 		// Page up
-	} else if(keyCode == 38) {
-		zTranslation -= 0.2;
-		// Page down
-	} else if(keyCode == 40) {
+	} else if(keyCode == enums.keyboard.UP_ARROW) {	// ZOOM IN
 		zTranslation += 0.2;
+		// Page down
+	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
+		zTranslation -= 0.2;
 	}
+	else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
+		xRotation = 0.0;
+		yRotation = 0.0;
+		xSpeed = 0.0;
+		ySpeed = 0.0;
+		zTranslation = 5;
+ }
 	selectTexture(this.currentChannel, this.currentImage);
 }
 
