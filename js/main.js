@@ -37,6 +37,7 @@ manager.onLoad = function() {
 	scene.add(boxMesh);
 	texturesLoaded = true;
 	selectTexture(0, 0);
+	document.addEventListener("keydown", onDocumentKeyDown, false);
 };
 
 // Initialize the scene
@@ -145,7 +146,6 @@ function initializeScene() {
 	// passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
 	// It will report only the visible characters like 'a', but not the function keys
 	// like 'cursor up'.
-	document.addEventListener("keydown", onDocumentKeyDown, false);
 
 	// // Ambient light has no direction, it illuminates every object with the same
 	// // intensity. If only ambient light is used, no shading effects will occur.
