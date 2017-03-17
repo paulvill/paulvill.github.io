@@ -4,11 +4,11 @@ A web based platform to visualize complex experimental datasets of embryogenesis
 
 ## Using Embryo Digital Atlas
 
-Explore complex datasets
+-> Explore complex datasets
 
-Learn about a multiscale process
+-> Learn about a multiscale process
 
-Generate beautiful visualizations
+-> Generate beautiful visualizations
 
 ## Current Users
 
@@ -29,6 +29,8 @@ And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-em
 ## Contribute
 
 Want to contribute? Here is the [roadmap](ROADMAP.md) and here are the [contributor guidelines](CONTRIBUTING.md).
+
+Join the [chat](https://gitter.im/embryo-digital-atlas/Lobby)
 
 ## Acknowledgments
 
