@@ -15,10 +15,12 @@ var ySpeed = 0.0;
 var zTranslation = 5;
 // Texture and flag for current texture filter
 var texturesLoaded = false;
-var textureArray = [];
 
 const imageCount = 42;
 const channelCount = 7;
+
+var textureArray =  [];
+
 var channels = {
 	"path":[
 		"images/coloredmovie_4datasets/",
@@ -36,6 +38,7 @@ manager.onLoad = function() {
 	texturesLoaded = true;
 	selectTexture(0, 0);
 };
+
 
 // Initialize the scene
 initializeScene();
@@ -126,7 +129,8 @@ function initializeScene() {
 	for (ch = 0; ch < channelCount; ++ch) {
 		for (img = 0; img < imageCount; ++img) {
 			textureLoader.load(channels.path[ch].concat(img+1,".png"), function(t) {
-				textureArray.push(t);
+				console.log(ch*imageCount + img);
+				textureArray.push(t); // 
 			});
 		}
 	}
