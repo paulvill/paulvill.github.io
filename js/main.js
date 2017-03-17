@@ -1,9 +1,9 @@
+// Global polygon mesh
+var boxMesh;
 // Global scene object
 var scene;
-
 // Global camera object
 var camera;
-
 // The cube has to rotate around all three axes, so we need three rotation values.
 // x, y and z rotation
 var xRotation = 0.0;
@@ -13,32 +13,31 @@ var xSpeed = 0.0;
 var ySpeed = 0.0;
 // Translation along the z axis
 var zTranslation = 5;
-
 // Texture and flag for current texture filter
-var texture = 1;
-const textureCount = 42;
-var textureLoader;
-var textureLoading = true;
+var texturesLoaded = false;
+var textureArray = [];
 
-// Flag for toggling light
-var lightIsOn = true;
-
-var boxMesh;
-var boxMaterial;
-var boxGeometry;
-var embryoTexture;
-
-var channel = 0;
+const imageCount = 42;
 const channelCount = 7;
-var images = { "path":[
-									"images/coloredmovie_4datasets/",
-									"images/coloredmovie_4datasets/grayscale/nuclei",
-									"images/coloredmovie_4datasets/grayscale/dpERK",
-									"images/coloredmovie_4datasets/grayscale/twist",
-									"images/coloredmovie_4datasets/grayscale/dorsal",
-									"images/coloredmovie_4datasets/grayscale/ind",
-									"images/coloredmovie_4datasets/grayscale/rhomboid"
-								]};
+var channels = {
+	"path":[
+		"images/coloredmovie_4datasets/",
+		"images/coloredmovie_4datasets/grayscale/nuclei",
+		"images/coloredmovie_4datasets/grayscale/dpERK",
+		"images/coloredmovie_4datasets/grayscale/twist",
+		"images/coloredmovie_4datasets/grayscale/dorsal",
+		"images/coloredmovie_4datasets/grayscale/ind",
+		"images/coloredmovie_4datasets/grayscale/rhomboid",
+	]
+};
+
+var manager = new THREE.LoadingManager();
+manager.onLoad = function() {
+	boxMesh.position.set(0.0, 0.0, 4.0);
+	scene.add(boxMesh);
+	texturesLoaded = true;
+	selectTexture(0, 0);
+};
 
 // Initialize the scene
 initializeScene();
@@ -51,7 +50,7 @@ animateScene();
 /**
  * Initialize the scene
  */
-function initializeScene(){
+function initializeScene() {
 	// Check whether the browser supports WebGL. If so, instantiate the hardware accelerated
 	// WebGL renderer. For antialiasing, we have to enable it. The canvas renderer uses
 	// antialiasing by default.
@@ -60,11 +59,10 @@ function initializeScene(){
 	// in contrast to the WebGL renderer will be explained in the tutorials, when there is a
 	// difference.
 	webGLAvailable = false;
-	if(Detector.webgl){
+	if (Detector.webgl) {
 		renderer = new THREE.WebGLRenderer({antialias:true});
 		webGLAvailable = true;
 		// document.getElementById("overlaytext").innerHTML += "WebGL Renderer";
-
 		// If its not supported, instantiate the canvas renderer to support all non WebGL
 		// browsers
 	} else {
@@ -114,25 +112,23 @@ function initializeScene(){
 	camera.lookAt(scene.position);
 	scene.add(camera);
 
+	var boxMaterial = new THREE.MeshBasicMaterial({
+		 side:THREE.DoubleSide
+	});
 	// Create the cube
 	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0);
-
+	// Create a mesh and insert the geometry and the material. Translate the whole mesh
+	// by 1.5 on the x axis and by 4 on the z axis and add the mesh to the scene.
+	boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
 	// Load an image as texture
-	textureLoader = new THREE.TextureLoader();
-	textureLoader.load(images.path[channel].concat(texture,".png"), function(t){
-		embryoTexture = t;
-		boxMaterial = new THREE.MeshBasicMaterial({
-	                     map:embryoTexture,
-	                     side:THREE.DoubleSide
-	                 });
-
-		// Create a mesh and insert the geometry and the material. Translate the whole mesh
-		// by 1.5 on the x axis and by 4 on the z axis and add the mesh to the scene.
-		boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-		boxMesh.position.set(0.0, 0.0, 4.0);
-		scene.add(boxMesh);
-		textureLoading = 0;
-	});
+	var textureLoader = new THREE.TextureLoader(manager);
+	for (ch = 0; ch < channelCount; ++ch) {
+		for (img = 0; img < imageCount; ++img) {
+			textureLoader.load(channels.path[ch].concat(img+1,".png"), function(t) {
+				textureArray.push(t);
+			});
+		}
+	}
 
 	// // Ambient light has no direction, it illuminates every object with the same
 	// // intensity. If only ambient light is used, no shading effects will occur.
@@ -165,85 +161,75 @@ function initializeScene(){
 }
 
 /**
- * Load current texture and set synchronization flag
- * to avoid display image before load completes
+ * Select current texture to display in loaded texture arrays
  */
-function loadTexture(){
-	textureLoading = 1;
-	embryoTexture = textureLoader.load(images.path[channel].concat(texture,".png"), function(t){
-		embryoTexture = t;
-		textureLoading = 0;
-	});
+function selectTexture(channel, image) {
+	boxMesh.material.map = textureArray[channel * imageCount + image];
+	document.getElementById("overlaytext").innerHTML = channels.path[channel].concat(image+1,".png");
 }
 
 /**
  * This function is called, when a key is pushed down.
  */
- function onDocumentKeyDown(event){
+ function onDocumentKeyDown(event) {
+	this.currentImage = this.currentImage || 0;
+	this.currentChannel = this.currentChannel || 0;
+
 	// Get the key code of the pressed key
 	var keyCode = event.which;
-	if(keyCode == 32){
-		if(channel < channelCount-1){
-			channel = channel+1;
-		}else{
-			channel = 0;
+		// space bar
+	if (keyCode == 32) {
+		if (this.currentChannel < channelCount - 1) {
+			++this.currentChannel;
+		} else {
+			this.currentChannel = 0;
 		}
-		loadTexture();
-		boxMesh.material.needsUpdate = true;
-		document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png");
-		//up key w
-	} else if(keyCode == 87){
+
+		// up key w
+	} else if(keyCode == 87) {
 		xSpeed -= 0.01;
-
-		//  down key s
-	} else if(keyCode == 83){
+		// down key s
+	} else if(keyCode == 83) {
 		xSpeed += 0.01;
-
 		// left  key a
-	} else if(keyCode == 65){
+	} else if(keyCode == 65) {
 		ySpeed -= 0.01;
-
 		// right key d
-	} else if(keyCode == 68){
+	} else if(keyCode == 68) {
 		ySpeed += 0.01;
 
 		// Cursor left
-	} else if(keyCode == 37){
-		if(texture >1){
-			texture = texture-1;
-		}else{
-			texture = textureCount;
+	} else if(keyCode == 37) {
+		if (this.currentImage > 0) {
+			--this.currentImage;
+		} else {
+			this.currentImage = imageCount - 1;
 		}
-		loadTexture();
-		boxMaterial.needsUpdate = true;
-		document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png");
 
 		// Cursor right
-	} else if(keyCode == 39){
-		if(texture < textureCount){
-			texture = texture+1;
-		}else{
-			texture = 1;
+	} else if(keyCode == 39) {
+		if (this.currentImage < imageCount - 1) {
+			++this.currentImage;
+		} else {
+			this.currentImage = 0;
 		}
-		loadTexture();
-		boxMaterial.needsUpdate = true;
-		document.getElementById("overlaytext").innerHTML = images.path[channel].concat(texture,".png");
-		// Page up
-	} else if(keyCode == 38){
-		zTranslation -= 0.2;
 
+		// Page up
+	} else if(keyCode == 38) {
+		zTranslation -= 0.2;
 		// Page down
-	} else if(keyCode == 40){
+	} else if(keyCode == 40) {
 		zTranslation += 0.2;
 	}
+	selectTexture(this.currentChannel, this.currentImage);
 }
 
 /**
 * Animate the scene and call rendering.
 */
-function animateScene(){
+function animateScene() {
 	//directionalLight.position = camera.position;
-	if (!textureLoading) {
+	if (texturesLoaded) {
 		// Increase the x, y and z rotation of the cube
 	  xRotation += xSpeed;
 	  yRotation += ySpeed;
@@ -264,8 +250,7 @@ function animateScene(){
 /**
 * Render the scene. Map the 3D world to the 2D screen.
 */
-function renderScene(){
-	boxMesh.material.map = embryoTexture;
+function renderScene() {
 	renderer.render(scene, camera);
 }
 
