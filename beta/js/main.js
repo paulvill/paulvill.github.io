@@ -13,13 +13,9 @@ var xSpeed = 0.0;
 var ySpeed = 0.0;
 // Translation along the z axis
 var zTranslation = 5;
-// Texture and flag for current texture filter
-var texturesLoaded = false;
 
 const imageCount = 42;
 const channelCount = 7;
-
-var textureArray =  [];
 
 var channels = {
 	"path":[
@@ -33,12 +29,21 @@ var channels = {
 	]
 };
 
-var manager = new THREE.LoadingManager();
-manager.onLoad = function() {
-	texturesLoaded = true;
-	selectTexture(0, 0);
-};
-
+// Texture and flag for current texture filter
+var textureArray = {};
+var channelLoaded = [];
+var manager = [];
+for (ch = 0; ch < channelCount; ++ch) {
+	channelLoaded[ch] = false;
+	manager.push(new THREE.LoadingManager());
+	manager[ch].ch = ch;
+	manager[ch].onLoad = function() {
+		channelLoaded[this.ch] = true;
+		if (this.ch == 0) {
+			selectTexture(0, 0);
+		}
+	};
+}
 
 // Initialize the scene
 initializeScene();
@@ -123,15 +128,12 @@ function initializeScene() {
 	boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
 	boxMesh.position.set(0.0, 0.0, 4.0);
 	scene.add(boxMesh);
-	
+
 	// Load an image as texture
-	var textureLoader = new THREE.TextureLoader(manager);
 	for (ch = 0; ch < channelCount; ++ch) {
+		var textureLoader = new THREE.TextureLoader(manager[ch]);
 		for (img = 0; img < imageCount; ++img) {
-			textureLoader.load(channels.path[ch].concat(img+1,".png"), function(t) {
-				console.log(ch*imageCount + img);
-				textureArray.push(t); // 
-			});
+			textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat(img+1,".png"));
 		}
 	}
 
@@ -183,7 +185,7 @@ function selectTexture(channel, image) {
 	// Get the key code of the pressed key
 	var keyCode = event.which;
 	if (keyCode == enums.keyboard.SPACE) {	// SWITCH CHANNEL
-		if (this.currentChannel < channelCount - 1) {
+		if (this.currentChannel < channelCount - 1 && channelLoaded[this.currentChannel+1]) {
 			++this.currentChannel;
 		} else {
 			this.currentChannel = 0;
@@ -234,7 +236,7 @@ function selectTexture(channel, image) {
 */
 function animateScene() {
 	//directionalLight.position = camera.position;
-	if (texturesLoaded) {
+	if (channelLoaded[0]) {
 		// Increase the x, y and z rotation of the cube
 	  xRotation += xSpeed;
 	  yRotation += ySpeed;
