@@ -98,24 +98,24 @@
 	<script src="js/main.js"></script>
 
 	<!-- Slider for time step control -->
-		<div id="slider">
-		<input type="range" 
+	<div id="slider">
+	<input type="range" 
 		id="myRange" 
 		min="1"                    // default 0
     	max="42"                  // default 100
     	step="1"                   // default 1
 		value="90"
-		>
-		<br/>
-		<button onclick="myFunction()">Time step</button>
-		<p id="demo"></p>
-		</div>
+	>
+	<br/>
+	<button onclick="myFunction()">Time step</button>
+	<p id="demo"></p>
+	</div>
 
 	<script>
-	function myFunction() {
-    	var x = document.getElementById("myRange").value;
-    	document.getElementById("demo").innerHTML = x;
-	}
+		function myFunction() {
+	    	var x = document.getElementById("myRange").value;
+	    	document.getElementById("demo").innerHTML = x;
+		}
 	</script>
 
 	</body>
