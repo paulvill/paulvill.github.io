@@ -75,8 +75,8 @@ function initializeScene() {
 	renderer.setClearColor(0xc8c8c8);
 
 	// Get the size of the inner window (content area) to create a full size renderer
-	canvasWidth = window.innerWidth-20;
-	canvasHeight = window.innerHeight-20;
+	canvasWidth = window.innerWidth/1.5;
+	canvasHeight = window.innerHeight/1.5;
 
 	// Set the renderers size to the content areas size
 	renderer.setSize(canvasWidth, canvasHeight);

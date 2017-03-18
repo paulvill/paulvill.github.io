@@ -88,11 +88,35 @@
  		Key R: Reset view<br/>
  		Keys A/S/D/W: Control x and y rotation speed<br/>
  	</div>
- 	<div id="overlaytext" style="position: absolute; top: 90px; left: 10px">
 
+ 	<div id="overlaytext" style="position: absolute; top: 90px; left: 10px">
  	</div>
-	<div id="WebGLCanvas">
+
+	<div id="WebGLCanvas"></div>
+
+
 	<script src="js/main.js"></script>
+
+	<!-- Slider for time step control -->
+		<div id="slider">
+		<input type="range" 
+		id="myRange" 
+		min="1"                    // default 0
+    	max="42"                  // default 100
+    	step="1"                   // default 1
+		value="90"
+		>
+		<br/>
+		<button onclick="myFunction()">Time step</button>
+		<p id="demo"></p>
+		</div>
+
+	<script>
+	function myFunction() {
+    	var x = document.getElementById("myRange").value;
+    	document.getElementById("demo").innerHTML = x;
+	}
+	</script>
 
 	</body>
 </html>
