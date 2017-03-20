@@ -45,6 +45,8 @@ for (ch = 0; ch < channelCount; ++ch) {
 	};
 }
 
+var slider;
+
 // Initialize the scene
 initializeScene();
 
@@ -154,6 +156,9 @@ function initializeScene() {
 	// like 'cursor up'.
 	document.addEventListener("keydown", onDocumentKeyDown, false);
 
+	// slider = document.getElementById("myRange"),
+	document.addEventListener("input", onSlide, false);
+
 	// // Ambient light has no direction, it illuminates every object with the same
 	// // intensity. If only ambient light is used, no shading effects will occur.
 	// ambientLight = new THREE.AmbientLight(0x404040);
@@ -228,6 +233,14 @@ function selectTexture(channel, image) {
 		ySpeed = 0.0;
 		zTranslation = 5;
  }
+	selectTexture(this.currentChannel, this.currentImage);
+}
+
+function onSlide(event){
+	this.currentImage = this.currentImage || 0;
+	this.currentChannel = this.currentChannel || 0;
+	document.getElementById("demo").innerHTML = document.getElementById("myRange").value;
+	this.currentImage = parseInt(document.getElementById("myRange").value);
 	selectTexture(this.currentChannel, this.currentImage);
 }
 

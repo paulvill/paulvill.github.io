@@ -30,57 +30,6 @@
 	</head>
 	<body>
 
-<!--
-	<h1>
-			Dynamic Gene Expression Atlas Project
-		</h1>
-		<p> </p>
-
-		<p title="Introduction">
-			More info about the science can be found <a href = "http://shvartsmanlab.com/">here</a> or <a href = "http://paulcinq.wordpress.com">there</a>.
-		</p>
-
-		<p>
-			This is an example of an embryo stained for nuclei, dpERK and Twist
-		</p>
-
-		<video id="video1" controls width="270" autoplay>
-		  	<source src="movies/reconstructed_movie1.webm" type='video/webm'>
-		</video>
-		<p></p>
-		<canvas id="myCanvas" width="270" height="180" style="border:1px solid #d3d3d3;">
-		</canvas>
-
-		<p></p>
-
-
-				<script>
-			window.onload = function() {
-		    var c = document.getElementById("myCanvas");
-		    var ctx = c.getContext("2d");
-		    var img1 = new Image();
-		    img1.src = "images/24.png";
-		    ctx.drawImage(img1, 1, 1,90,90);
-		    var img2 = new Image();
-		    img2.src = "images/25.png";
-		    ctx.drawImage(img2, 90, 1,90,90);
-		    var img3 = new Image();
-		    img3.src = "images/26.png";
-		    ctx.drawImage(img3, 180, 1,90,90);
-
-
-		    var img4 = new Image();
-		    img4.src = "images/24_nuclei.png";
-		    ctx.drawImage(img4, 1, 90,90,90);
-		    var img5 = new Image();
-		    img5.src = "images/24_color1.png";
-		    ctx.drawImage(img5, 90, 90,90,90);
-		    var img6 = new Image();
-		    img6.src = "images/24_color2.png";
-		    ctx.drawImage(img6, 180, 90,90,90);
-		}
-		</script>
-		<p></p>	 -->
  	<div id="commands" style="position: absolute; top: 10px; left: 10px">
  		Cursor left / right: Change time step<br/>
  		Spacebar: Change channel<br/>
@@ -101,22 +50,21 @@
 	<div id="slider">
 	<input type="range" 
 		id="myRange" 
-		min="1"                    // default 0
-    	max="42"                  // default 100
-    	step="1"                   // default 1
-		value="90"
+		min="0"                    
+    	max="41"                  
+    	step="1"                  
+		value="1"
 	>
 	<br/>
-	<button onclick="myFunction()">Time step</button>
 	<p id="demo"></p>
 	</div>
 
-	<script>
+	<!--  <script>
 		function myFunction() {
 	    	var x = document.getElementById("myRange").value;
 	    	document.getElementById("demo").innerHTML = x;
 		}
-	</script>
+	</script> -->
 
 	</body>
 </html>
