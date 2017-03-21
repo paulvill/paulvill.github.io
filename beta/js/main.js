@@ -159,6 +159,8 @@ function initializeScene() {
 	// slider = document.getElementById("myRange"),
 	document.addEventListener("input", onSlide, false);
 
+	document.addEventListener('dblclick', onDblClick, false); 
+
 	// // Ambient light has no direction, it illuminates every object with the same
 	// // intensity. If only ambient light is used, no shading effects will occur.
 	// ambientLight = new THREE.AmbientLight(0x404040);
@@ -240,6 +242,17 @@ function onSlide(event){
 	this.currentImage = this.currentImage || 0;
 	this.currentChannel = this.currentChannel || 0;
 	this.currentImage = parseInt(document.getElementById("myRange").value);
+	selectTexture(this.currentChannel, this.currentImage);
+}
+
+function onDblClick(event) {
+	this.currentImage = this.currentImage || 0;
+	this.currentChannel = this.currentChannel || 0;
+	if (this.currentChannel < channelCount - 1 && channelLoaded[this.currentChannel+1]) {
+			++this.currentChannel;
+		} else {
+			this.currentChannel = 0;
+	}
 	selectTexture(this.currentChannel, this.currentImage);
 }
 
