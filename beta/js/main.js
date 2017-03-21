@@ -79,7 +79,7 @@ function initializeScene() {
 	}
 
 	// Set the background color
-	renderer.setClearColor(0xc8c8c8);
+	renderer.setClearColor(0x000000);//(0xc8c8c8);
 
 	// Get the size of the inner window (content area) to create a full size renderer
 	canvasWidth = window.innerWidth/1.5;
