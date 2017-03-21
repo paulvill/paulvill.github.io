@@ -239,7 +239,6 @@ function selectTexture(channel, image) {
 function onSlide(event){
 	this.currentImage = this.currentImage || 0;
 	this.currentChannel = this.currentChannel || 0;
-	document.getElementById("demo").innerHTML = document.getElementById("myRange").value;
 	this.currentImage = parseInt(document.getElementById("myRange").value);
 	selectTexture(this.currentChannel, this.currentImage);
 }
