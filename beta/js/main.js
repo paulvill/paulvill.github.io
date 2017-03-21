@@ -26,8 +26,18 @@ var channels = {
 		"images/coloredmovie_4datasets/grayscale/dorsal",
 		"images/coloredmovie_4datasets/grayscale/ind",
 		"images/coloredmovie_4datasets/grayscale/rhomboid",
+	],
+	"name":[
+		"all_",
+		"nuclei_",
+		"dpERK_",
+		"twist_",
+		"dorsal_",
+		"ind_",
+		"rhomboid_",
 	]
 };
+
 
 // Texture and flag for current texture filter
 var textureArray = {};
@@ -179,7 +189,7 @@ function initializeScene() {
  */
 function selectTexture(channel, image) {
 	boxMesh.material.map = textureArray[channel * imageCount + image];
-	document.getElementById("overlaytext").innerHTML = channels.path[channel].concat(image+1,".png");
+	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
 }
 
 /**
