@@ -28,7 +28,7 @@ And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-em
 
 ## Contribute
 
-Want to contribute? Here is the [roadmap](ROADMAP.md) and here are the [contributor guidelines](CONTRIBUTING.md).
+Want to contribute? Here is the [roadmap](https://github.com/paulvill/paulvill.github.io/issues/3) and here are the [contributor guidelines](CONTRIBUTING.md).
 
 Join the [chat](https://gitter.im/embryo-digital-atlas/Lobby)
 
