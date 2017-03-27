@@ -26,6 +26,15 @@ var channels = {
 		"images/coloredmovie_4datasets/grayscale/dorsal",
 		"images/coloredmovie_4datasets/grayscale/ind",
 		"images/coloredmovie_4datasets/grayscale/rhomboid",
+	],
+	"name":[
+		"all_",
+		"nuclei_",
+		"dpERK_",
+		"twist_",
+		"dorsal_",
+		"ind_",
+		"rhomboid_",
 	]
 };
 
@@ -44,6 +53,8 @@ for (ch = 0; ch < channelCount; ++ch) {
 		}
 	};
 }
+
+var slider;
 
 // Initialize the scene
 initializeScene();
@@ -77,7 +88,7 @@ function initializeScene() {
 	}
 
 	// Set the background color
-	renderer.setClearColor(0xc8c8c8);
+	renderer.setClearColor(0xc000000);
 
 	// Get the size of the inner window (content area) to create a full size renderer
 	canvasWidth = window.innerWidth/1.5;
@@ -154,6 +165,13 @@ function initializeScene() {
 	// like 'cursor up'.
 	document.addEventListener("keydown", onDocumentKeyDown, false);
 
+	// Add a listener for input with slider -> change time step
+	document.addEventListener("input", onSlide, false);
+
+	// Add a listener for double click -> change channel
+	document.addEventListener('dblclick', onDblClick, false); 
+
+
 	// // Ambient light has no direction, it illuminates every object with the same
 	// // intensity. If only ambient light is used, no shading effects will occur.
 	// ambientLight = new THREE.AmbientLight(0x404040);
@@ -172,7 +190,8 @@ function initializeScene() {
  */
 function selectTexture(channel, image) {
 	boxMesh.material.map = textureArray[channel * imageCount + image];
-	document.getElementById("overlaytext").innerHTML = channels.path[channel].concat(image+1,".png");
+	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
+	document.getElementById("myRange").value = image;
 }
 
 /**
@@ -228,6 +247,24 @@ function onDocumentKeyDown(event) {
 		ySpeed = 0.0;
 		zTranslation = 5;
  }
+	selectTexture(this.currentChannel, this.currentImage);
+}
+
+function onSlide(event){
+	this.currentImage = this.currentImage || 0;
+	this.currentChannel = this.currentChannel || 0;
+	this.currentImage = parseInt(document.getElementById("myRange").value);
+	selectTexture(this.currentChannel, this.currentImage);
+}
+
+function onDblClick(event) {
+	this.currentImage = this.currentImage || 0;
+	this.currentChannel = this.currentChannel || 0;
+	if (this.currentChannel < channelCount - 1 && channelLoaded[this.currentChannel+1]) {
+			++this.currentChannel;
+		} else {
+			this.currentChannel = 0;
+	}
 	selectTexture(this.currentChannel, this.currentImage);
 }
 
