@@ -133,6 +133,7 @@ function initializeScene() {
 	var boxMaterial = new THREE.MeshBasicMaterial({
 		 side:THREE.DoubleSide
 	});
+
 	// Create the cube
 	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0);
 	// Create a mesh and insert the geometry and the material. Translate the whole mesh
@@ -190,6 +191,7 @@ function initializeScene() {
 function selectTexture(channel, image) {
 	boxMesh.material.map = textureArray[channel * imageCount + image];
 	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
+	document.getElementById("myRange").value = image;
 }
 
 /**
@@ -265,6 +267,42 @@ function onDblClick(event) {
 	}
 	selectTexture(this.currentChannel, this.currentImage);
 }
+
+function showImages() {
+		  
+  		var preview = document.querySelector('#preview');
+  		var files   = document.querySelector('input[type=file]').files;
+
+  	function changeTexture(file) {
+
+		    // Make sure `file.name` matches our extensions criteria
+		    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+		      var reader = new FileReader();
+
+		      reader.addEventListener("load", function () {
+		        var image = new Image();
+		        image.height = 100;
+		        image.title = file.name;
+		        image.src = this.result;
+		        preview.appendChild( image );
+		      }, false);
+
+		      reader.readAsDataURL(file);
+		      var textureLoader = new THREE.TextureLoader(manager[0]);
+		      this.textureArray[0] = textureLoader.load(file.name);
+			  document.getElementById("preview").innerHTML = reader.webkitRelativePath ;
+		    }
+
+		  }
+
+		  if (files) {
+		    [].forEach.call(files, changeTexture);
+
+		  }
+
+		  	selectTexture(this.currentChannel, this.currentImage);
+
+	}
 
 /**
 * Animate the scene and call rendering.
