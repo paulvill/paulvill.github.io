@@ -28,13 +28,13 @@ var channels = {
 		"images/coloredmovie_4datasets/grayscale/rhomboid",
 	],
 	"name":[
-		"all_",
-		"nuclei_",
-		"dpERK_",
-		"twist_",
-		"dorsal_",
-		"ind_",
-		"rhomboid_",
+		"all ",
+		"nuclei ",
+		"dpERK ",
+		"twist ",
+		"dorsal ",
+		"ind ",
+		"rhomboid ",
 	]
 };
 
@@ -190,7 +190,7 @@ function initializeScene() {
  */
 function selectTexture(channel, image) {
 	boxMesh.material.map = textureArray[channel * imageCount + image];
-	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
+	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1);
 	document.getElementById("myRange").value = image;
 }
 
