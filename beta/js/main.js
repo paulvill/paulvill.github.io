@@ -147,6 +147,7 @@ function initializeScene() {
 		var textureLoader = new THREE.TextureLoader(manager[ch]);
 		for (img = 0; img < imageCount; ++img) {
 			textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat(img+1,".png"));
+			document.getElementById("overlaytext").innerHTML = (ch * imageCount + img)/(imageCount*channelCount);
 		}
 	}
 
