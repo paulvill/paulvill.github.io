@@ -24,6 +24,8 @@ Illustrations by Nobel Prize winner [Ramón y Cajal](https://www.newscientist.co
 
 The beautiful [Wind Map](http://hint.fm/wind/) by Fernanda Viégas and Martin Wattenberg.
 
+The Allen Cell Institute's [Cell Explorer](http://www.allencell.org/)
+
 And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-embryogenesis/)
 
 ## Contribute
