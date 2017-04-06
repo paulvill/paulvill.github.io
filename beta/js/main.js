@@ -272,25 +272,26 @@ function showImages() {
 		  
   		var preview = document.querySelector('#preview');
   		var files   = document.querySelector('input[type=file]').files;
-
+  		var count = 0;
   	function changeTexture(file) {
 
 		    // Make sure `file.name` matches our extensions criteria
 		    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
 		      var reader = new FileReader();
 
-		      reader.addEventListener("load", function () {
-		        var image = new Image();
-		        image.height = 100;
-		        image.title = file.name;
-		        image.src = this.result;
-		        preview.appendChild( image );
-		      }, false);
+		      reader.onload = function(evt){
+		      	console.log(evt);
+		      	var image = document.createElement( 'img' );
+				image.src = evt.target.result;
+		      	textureArray[count] = THREE.ImageUtils.loadTexture(evt.target.result);
+				count += 1;
+		      }
+
 
 		      reader.readAsDataURL(file);
-		      var textureLoader = new THREE.TextureLoader(manager[0]);
-		      this.textureArray[0] = textureLoader.load(file.name);
-			  document.getElementById("preview").innerHTML = reader.webkitRelativePath ;
+
+		      // document.getElementById("preview").innerHTML = file.tmp_name;
+
 		    }
 
 		  }
