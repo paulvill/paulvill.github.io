@@ -1,14 +1,18 @@
-# Embryo Digital Atlas
+<p align="left">
+  <img src="Logos/logo.png" width="350"/>
+</p>
+
+# The Embryo Digital Atlas
 
 A web based platform to visualize complex experimental datasets of embryogenesis in an easy and beautiful way.
 
 ## Using Embryo Digital Atlas
 
--> Explore complex datasets
+Explore complex datasets
 
--> Learn about a multiscale process
+Learn about a multiscale process
 
--> Generate beautiful visualizations
+Generate beautiful visualizations
 
 ## Current Users
 
