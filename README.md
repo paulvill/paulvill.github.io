@@ -8,7 +8,7 @@ The Embryo Digital Atlas is a web based platform for curious citizens, students 
 
 ## Using The Embryo Digital Atlas
 
-We foresee the following use of our platform:
+We foresee the following uses of our platform:
 
 - Exploring complex datasets by varying time steps, changing modalities and colors, changing datasets, model organisms (fly, zebrafish, human embryos)
 
