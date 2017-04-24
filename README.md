@@ -6,13 +6,15 @@
 
 The Embryo Digital Atlas is a web based platform for curious citizens, students and scientists, to visualize complex experimental datasets of embryogenesis in an easy and beautiful way.
 
-## Using Embryo Digital Atlas
+## Using The Embryo Digital Atlas
 
-Explore complex datasets
+We foresee the following use of our platform:
 
-Learn about a multiscale process
+- Exploring complex datasets by varying time steps, changing modalities and colors, changing datasets, model organisms (fly, zebrafish, human embryos)
 
-Generate beautiful visualizations
+- Sharing knowledge about datasets and teaching each other by tagging images.
+
+- Generating beautiful visualizations and exporting for publications or presentations.
 
 ## Current Users
 
