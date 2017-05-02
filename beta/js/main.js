@@ -1,5 +1,7 @@
 // Global polygon mesh
 var boxMesh;
+
+// var squareMesh;
 // Global scene object
 var scene;
 // Global camera object
@@ -150,16 +152,35 @@ function initializeScene() {
 		}
 	}
 
-	// // Ambient light has no direction, it illuminates every object with the same
-	// // intensity. If only ambient light is used, no shading effects will occur.
-	// var ambientLight = new THREE.AmbientLight(0x101010, 1.0);
-	// scene.add(ambientLight);
+	// // Create a first square
+	// var squareGeometry = new THREE.Geometry(); 
+	// squareGeometry.vertices.push(new THREE.Vector3( 0.0,  1.0, -1.0)); //squareGeometry.vertices.push(new THREE.Vector3(-1.0,  1.0, 0.0)); 
+	// squareGeometry.vertices.push(new THREE.Vector3( 0.0,  1.0, 1.0)); 
+	// squareGeometry.vertices.push(new THREE.Vector3( 0.0, -1.0, 1.0)); 
+	// squareGeometry.vertices.push(new THREE.Vector3( 0.0, -1.0, -1.0)); 
+	// squareGeometry.faces.push(new THREE.Face3(0, 1, 2)); 
+	// squareGeometry.faces.push(new THREE.Face3(0, 2, 3)); 
 
-	// // Directional light has a source and shines in all directions, like the sun.
-	// // This behaviour creates shading effects.
-	// directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
-	// directionalLight.position.set(0.0, 0.0, 1.0);
-	// scene.add(directionalLight);
+	// // var texture = new THREE.ImageUtils.loadTexture("images/coloredmovie_4datasets/32.png");
+	// var textureLoader1 = new THREE.TextureLoader;  
+	// var texture = textureLoader1.load("images/coloredmovie_4datasets/32.png")
+	// var squareMaterial = new THREE.MeshBasicMaterial({ 
+ // 		// color:0xc8c8c8, //map:texture,
+ // 		side:THREE.DoubleSide 
+	//  }); 
+
+	// // Create a mesh and insert the geometry and the material.
+	// squareMesh = new THREE.Mesh(squareGeometry, squareMaterial); 
+	// squareMesh.position.set(2.0, 0.0, 6.0);
+	// scene.add(squareMesh); 
+
+	var loader = new THREE.TextureLoader();
+	loader.load('images/coloredmovie_4datasets/32.png', function ( texture ) {
+	  var geometry = new THREE.SphereGeometry(2, 32, 32);
+	  var material = new THREE.MeshBasicMaterial({map: texture, overdraw: 0.5});
+	  var mesh = new THREE.Mesh(geometry, material);
+	  scene.add(mesh);
+	});	
 
 	// Add a listener for 'keydown' events. By this listener, all key events will be
 	// passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -172,17 +193,6 @@ function initializeScene() {
 
 	document.addEventListener('dblclick', onDblClick, false); 
 
-	// // Ambient light has no direction, it illuminates every object with the same
-	// // intensity. If only ambient light is used, no shading effects will occur.
-	// ambientLight = new THREE.AmbientLight(0x404040);
-	// scene.add(ambientLight);
-
-	// // Directional light has a source and shines in all directions, like the sun.
-	// // This behaviour creates shading effects.
-
-	// directionalLight = new THREE.PointLight(0xffffff);
-	// directionalLight.position.set(250,250,250);
-	// scene.add(directionalLight);
 }
 
 /**
