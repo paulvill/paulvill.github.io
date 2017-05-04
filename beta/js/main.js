@@ -176,7 +176,7 @@ function initializeScene() {
 
 	var loader = new THREE.TextureLoader();
 	loader.load('images/coloredmovie_4datasets/32.png', function ( texture ) {
-	  var geometry = new THREE.SphereGeometry(2, 32, 32);
+	  var geometry = new THREE.CylinderGeometry(2, 2, 1, 8 );
 	  var material = new THREE.MeshBasicMaterial({map: texture, overdraw: 0.5});
 	  var mesh = new THREE.Mesh(geometry, material);
 	  scene.add(mesh);
