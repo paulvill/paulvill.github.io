@@ -1,7 +1,8 @@
 // Global polygon mesh
 var boxMesh;
 
-var plane;
+var planeVert;
+var planeHoriz;
 
 // var squareMesh;
 // Global scene object
@@ -189,17 +190,32 @@ function initializeScene() {
 	// var plane = new THREE.Mesh( geometry, material );
 	// scene.add( plane );	
 
-	var planeMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
+	var planeVertMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
         side:THREE.DoubleSide
     });
 
     // plane
-    plane = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeMaterial);
-    plane.material.map = textureArray[0];
+    planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
+    planeVert.material.map = textureArray[0];
 
-    plane.overdraw = true;
+    planeVert.overdraw = true;
     
-    scene.add(plane);
+    scene.add(planeVert);
+
+
+
+    var planeHorizMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
+        side:THREE.DoubleSide
+    });
+
+    // plane
+    planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeHorizMaterial);
+    planeHoriz.material.map = textureArray[0];
+
+    // planeHoriz.rotationX(Math.PI / 2 );
+    planeHoriz.overdraw = true;
+    
+    scene.add(planeHoriz);
 
 
 
@@ -221,7 +237,8 @@ function initializeScene() {
  */
 function selectTexture(channel, image) {
 	// boxMesh.material.map = textureArray[channel * imageCount + image];
-	plane.material.map = textureArray[channel * imageCount + image];
+	planeVert.material.map = textureArray[channel * imageCount + image];
+	planeHoriz.material.map = textureArray[channel * imageCount + image];
 	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
 	document.getElementById("myRange").value = image;
 }
@@ -347,10 +364,12 @@ function animateScene() {
 	  xRotation += xSpeed;
 	  yRotation += ySpeed;
 	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
-	  plane.rotation.set(xRotation, yRotation, 0.0);
+	  planeVert.rotation.set(xRotation, yRotation, 0.0);
+	  planeHoriz.rotation.set(xRotation, 0, 0.0);
 	  // Apply the the translation along the z axis
 	  // boxMesh.position.z = zTranslation;
-	  plane.position.z = zTranslation;
+	  planeVert.position.z = zTranslation;
+	  planeHoriz.position.z = zTranslation;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();
 	}
