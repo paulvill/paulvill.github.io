@@ -17,7 +17,7 @@ var yRotation = 0.0;
 var xSpeed = 0.0;
 var ySpeed = 0.0;
 // Translation along the z axis
-var zTranslation = 5;
+var zTranslation = 0;
 
 const imageCount = 42;
 const channelCount = 7;
@@ -294,7 +294,7 @@ function selectTexture(channel, image) {
 		yRotation = 0.0;
 		xSpeed = 0.0;
 		ySpeed = 0.0;
-		zTranslation = 5;
+		zTranslation = 0;
  }
 	selectTexture(this.currentChannel, this.currentImage);
 }
