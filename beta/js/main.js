@@ -1,6 +1,8 @@
 // Global polygon mesh
 var boxMesh;
 
+var plane;
+
 // var squareMesh;
 // Global scene object
 var scene;
@@ -132,17 +134,17 @@ function initializeScene() {
 	camera.lookAt(scene.position);
 	scene.add(camera);
 
-	var boxMaterial = new THREE.MeshBasicMaterial({
-		 side:THREE.DoubleSide
-	});
+	// var boxMaterial = new THREE.MeshBasicMaterial({
+	// 	 side:THREE.DoubleSide
+	// });
 
-	// Create the cube
-	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0);
-	// Create a mesh and insert the geometry and the material. Translate the whole mesh
-	// by 1.5 on the x axis and by 4 on the z axis and add the mesh to the scene.
-	boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-	boxMesh.position.set(0.0, 0.0, 4.0);
-	scene.add(boxMesh);
+	// // Create the cube
+	// boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0);
+	// // Create a mesh and insert the geometry and the material. Translate the whole mesh
+	// // by 1.5 on the x axis and by 4 on the z axis and add the mesh to the scene.
+	// boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+	// boxMesh.position.set(0.0, 0.0, 4.0);
+	// scene.add(boxMesh);
 
 	// Load an image as texture
 	for (ch = 0; ch < channelCount; ++ch) {
@@ -174,13 +176,32 @@ function initializeScene() {
 	// squareMesh.position.set(2.0, 0.0, 6.0);
 	// scene.add(squareMesh); 
 
-	var loader = new THREE.TextureLoader();
-	loader.load('images/coloredmovie_4datasets/32.png', function ( texture ) {
-	  var geometry = new THREE.CylinderGeometry(2, 2, 1, 8 );
-	  var material = new THREE.MeshBasicMaterial({map: texture, overdraw: 0.5});
-	  var mesh = new THREE.Mesh(geometry, material);
-	  scene.add(mesh);
-	});	
+	// var loader = new THREE.TextureLoader();
+	// loader.load('images/coloredmovie_4datasets/32.png', function ( texture ) {
+	//   var geometry = new THREE.CylinderGeometry(2, 2, 1, 8 );
+	//   var material = new THREE.MeshBasicMaterial({map: texture, overdraw: 0.5});
+	//   var mesh = new THREE.Mesh(geometry, material);
+	//   scene.add(mesh);
+	// });	
+
+	// var geometry = new THREE.PlaneGeometry( 5, 20, 32 );
+	// var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+	// var plane = new THREE.Mesh( geometry, material );
+	// scene.add( plane );	
+
+	var planeMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
+        side:THREE.DoubleSide
+    });
+
+    // plane
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeMaterial);
+    plane.material.map = textureArray[0];
+
+    plane.overdraw = true;
+    
+    scene.add(plane);
+
+
 
 	// Add a listener for 'keydown' events. By this listener, all key events will be
 	// passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -199,7 +220,8 @@ function initializeScene() {
  * Select current texture to display in loaded texture arrays
  */
 function selectTexture(channel, image) {
-	boxMesh.material.map = textureArray[channel * imageCount + image];
+	// boxMesh.material.map = textureArray[channel * imageCount + image];
+	plane.material.map = textureArray[channel * imageCount + image];
 	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
 	document.getElementById("myRange").value = image;
 }
@@ -324,10 +346,11 @@ function animateScene() {
 		// Increase the x, y and z rotation of the cube
 	  xRotation += xSpeed;
 	  yRotation += ySpeed;
-	  boxMesh.rotation.set(xRotation, yRotation, 0.0);
-
+	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
+	  plane.rotation.set(xRotation, yRotation, 0.0);
 	  // Apply the the translation along the z axis
-	  boxMesh.position.z = zTranslation;
+	  // boxMesh.position.z = zTranslation;
+	  plane.position.z = zTranslation;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();
 	}
