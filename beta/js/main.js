@@ -16,7 +16,10 @@ var initialRotation = -Math.PI / 2 ;
 // Rotation speed around x and y axis
 var xSpeed = 0.0;
 var ySpeed = 0.0;
-// Translation along the z axis
+
+// Translations
+var xTranslation = 0;
+var yTranslation = 0;
 var zTranslation = 0;
 
 const imageCount = 42;
@@ -220,6 +223,18 @@ function selectTexture(channel, image) {
 		// ySpeed += 0.01;
 		yRotation += 0.1;
 
+	} else if(keyCode == enums.keyboard.KEY_P) {	
+		// ySpeed -= 0.01;
+		yTranslation += 0.1;
+	}  else if(keyCode == enums.keyboard.KEY_L) {	
+		// ySpeed -= 0.01;
+		yTranslation -= 0.1;
+	} else if(keyCode == enums.keyboard.KEY_O) {	
+		// ySpeed -= 0.01;
+		xTranslation += 0.1;
+	}  else if(keyCode == enums.keyboard.KEY_K) {	
+		// ySpeed -= 0.01;
+		xTranslation -= 0.1;
 	} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
 		if (this.currentImage > 0) {
 			--this.currentImage;
@@ -246,6 +261,8 @@ function selectTexture(channel, image) {
 		yRotation = 0.0;
 		xSpeed = 0.0;
 		ySpeed = 0.0;
+		xTranslation = 0;
+		yTranslation = 0;
 		zTranslation = 0;
  }
 	selectTexture(this.currentChannel, this.currentImage);
@@ -321,7 +338,9 @@ function animateScene() {
 	  // Apply the the translation along the z axis
 	  // boxMesh.position.z = zTranslation;
 	  planeVert.position.z = zTranslation;
+	  planeVert.position.x = xTranslation;
 	  planeHoriz.position.z = zTranslation;
+	  planeHoriz.position.y = yTranslation;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();
 	}
