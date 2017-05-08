@@ -1,5 +1,8 @@
 // Global polygon mesh
-var boxMesh;
+// var boxMesh;
+var planeVert;
+var planeHoriz;
+
 // Global scene object
 var scene;
 // Global camera object
@@ -8,11 +11,13 @@ var camera;
 // x, y and z rotation
 var xRotation = 0.0;
 var yRotation = 0.0;
+
+var initialRotation = -Math.PI / 2 ;
 // Rotation speed around x and y axis
 var xSpeed = 0.0;
 var ySpeed = 0.0;
 // Translation along the z axis
-var zTranslation = 5;
+var zTranslation = 0;
 
 const imageCount = 42;
 const channelCount = 7;
@@ -80,12 +85,8 @@ function initializeScene() {
 	if (Detector.webgl) {
 		renderer = new THREE.WebGLRenderer({antialias:true});
 		webGLAvailable = true;
-		// document.getElementById("overlaytext").innerHTML += "WebGL Renderer";
-		// If its not supported, instantiate the canvas renderer to support all non WebGL
-		// browsers
 	} else {
 		renderer = new THREE.CanvasRenderer();
-		//document.getElementById("overlaytext").innerHTML += "Canvas Renderer";
 	}
 
 	// Set the background color
@@ -102,8 +103,7 @@ function initializeScene() {
 	// object to it
 	document.getElementById("WebGLCanvas").appendChild(renderer.domElement);
 
-	// Create the scene, in which all objects are stored (e. g. camera, lights,
-	// geometries, ...)
+	// Create the scene, in which all objects are stored 
 	scene = new THREE.Scene();
 
 	// Now that we have a scene, we want to look into it. Therefore we need a camera.
@@ -130,17 +130,6 @@ function initializeScene() {
 	camera.lookAt(scene.position);
 	scene.add(camera);
 
-	var boxMaterial = new THREE.MeshBasicMaterial({
-		 side:THREE.DoubleSide
-	});
-
-	// Create the cube
-	boxGeometry = new THREE.BoxGeometry(2.0, 2.0, 2.0);
-	// Create a mesh and insert the geometry and the material. Translate the whole mesh
-	// by 1.5 on the x axis and by 4 on the z axis and add the mesh to the scene.
-	boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-	boxMesh.position.set(0.0, 0.0, 4.0);
-	scene.add(boxMesh);
 
 	// Load an image as texture
 	for (ch = 0; ch < channelCount; ++ch) {
@@ -150,16 +139,33 @@ function initializeScene() {
 		}
 	}
 
-	// // Ambient light has no direction, it illuminates every object with the same
-	// // intensity. If only ambient light is used, no shading effects will occur.
-	// var ambientLight = new THREE.AmbientLight(0x101010, 1.0);
-	// scene.add(ambientLight);
+	
+	var planeVertMaterial = new THREE.MeshBasicMaterial({ 
+        side:THREE.DoubleSide
+    });
 
-	// // Directional light has a source and shines in all directions, like the sun.
-	// // This behaviour creates shading effects.
-	// directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
-	// directionalLight.position.set(0.0, 0.0, 1.0);
-	// scene.add(directionalLight);
+    // plane
+    planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
+    planeVert.material.map = textureArray[0];
+
+    planeVert.overdraw = true;
+    
+    scene.add(planeVert);
+
+
+
+    var planeHorizMaterial = new THREE.MeshBasicMaterial({ 
+        side:THREE.DoubleSide
+    });
+
+    // plane
+    planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeHorizMaterial);
+    planeHoriz.material.map = textureArray[0];
+    // planeHoriz.rotationX(Math.PI / 2 );
+    planeHoriz.overdraw = true;
+    
+    scene.add(planeHoriz);
+
 
 	// Add a listener for 'keydown' events. By this listener, all key events will be
 	// passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -172,24 +178,15 @@ function initializeScene() {
 
 	document.addEventListener('dblclick', onDblClick, false); 
 
-	// // Ambient light has no direction, it illuminates every object with the same
-	// // intensity. If only ambient light is used, no shading effects will occur.
-	// ambientLight = new THREE.AmbientLight(0x404040);
-	// scene.add(ambientLight);
-
-	// // Directional light has a source and shines in all directions, like the sun.
-	// // This behaviour creates shading effects.
-
-	// directionalLight = new THREE.PointLight(0xffffff);
-	// directionalLight.position.set(250,250,250);
-	// scene.add(directionalLight);
 }
 
 /**
  * Select current texture to display in loaded texture arrays
  */
 function selectTexture(channel, image) {
-	boxMesh.material.map = textureArray[channel * imageCount + image];
+	// boxMesh.material.map = textureArray[channel * imageCount + image];
+	planeVert.material.map = textureArray[channel * imageCount + image];
+	planeHoriz.material.map = textureArray[channel * imageCount + image];
 	document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
 	document.getElementById("myRange").value = image;
 }
@@ -211,13 +208,17 @@ function selectTexture(channel, image) {
 		}
 
 	} else if(keyCode == enums.keyboard.KEY_W) {	// ROTATE UP
-		xSpeed -= 0.01;
+		// xSpeed -= 0.01;
+		xRotation -= 0.1;
 	} else if(keyCode == enums.keyboard.KEY_S) {	// ROTATE DOWN
-		xSpeed += 0.01;
+		// xSpeed += 0.01;
+		xRotation += 0.1;
 	} else if(keyCode == enums.keyboard.KEY_A) {	// ROTATE LEFT
-		ySpeed -= 0.01;
+		// ySpeed -= 0.01;
+		yRotation -= 0.1;
 	} else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
-		ySpeed += 0.01;
+		// ySpeed += 0.01;
+		yRotation += 0.1;
 
 	} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
 		if (this.currentImage > 0) {
@@ -245,7 +246,7 @@ function selectTexture(channel, image) {
 		yRotation = 0.0;
 		xSpeed = 0.0;
 		ySpeed = 0.0;
-		zTranslation = 5;
+		zTranslation = 0;
  }
 	selectTexture(this.currentChannel, this.currentImage);
 }
@@ -312,12 +313,15 @@ function animateScene() {
 	//directionalLight.position = camera.position;
 	if (channelLoaded[0]) {
 		// Increase the x, y and z rotation of the cube
-	  xRotation += xSpeed;
-	  yRotation += ySpeed;
-	  boxMesh.rotation.set(xRotation, yRotation, 0.0);
-
+	  // xRotation += xSpeed;
+	  // yRotation += ySpeed;
+	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
+	  planeVert.rotation.set(xRotation, yRotation, 0.0);
+	  planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation);
 	  // Apply the the translation along the z axis
-	  boxMesh.position.z = zTranslation;
+	  // boxMesh.position.z = zTranslation;
+	  planeVert.position.z = zTranslation;
+	  planeHoriz.position.z = zTranslation;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();
 	}
@@ -335,41 +339,4 @@ function renderScene() {
 	renderer.render(scene, camera);
 }
 
-//   Old Script
-// var scene = new THREE.Scene();
-// var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-// var renderer = new THREE.WebGLRenderer();
 
-// renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
-// renderer.setClearColor(0xc8c8c8);
-// document.getElementById("WebGLCanvas").appendChild( renderer.domElement );
-
-// // (width, height, depth)
-// var geometry = new THREE.BoxGeometry( 5, 5, 5 );
-
-// 		var loader = new THREE.TextureLoader();
-// 		  loader.load("images/24.png", function(texture){
-//  			var material = new THREE.MeshLambertMaterial({map: texture});
-//  			cube= new THREE.Mesh(geometry, material);
-//  			scene.add(cube);
-// 		});
-
-// //var material = new THREE.MeshLambertMaterial( { color: 0xf6546a } );
-// //var cube = new THREE.Mesh( geometry, material );
-// //scene.add( cube );
-
-// // (color, intensity)
-// var light = new THREE.PointLight(0xffffff, 1.2);
-// // (x, y, z)
-// light.position.set(0, 0, 6);
-// scene.add(light);
-
-// camera.position.z = 10;
-
-// var render = function render() {
-// 	requestAnimationFrame( render );
-// 	cube.rotation.x += 0.01;
-// 	cube.rotation.y += 0.01;
-// 	renderer.render( scene, camera );
-// }
-// render();
