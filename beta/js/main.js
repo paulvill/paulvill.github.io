@@ -142,10 +142,16 @@ function initializeScene() {
 		}
 	}
 
-	
 	var planeVertMaterial = new THREE.MeshBasicMaterial({ 
-        side:THREE.DoubleSide
+        // map:neheTexture,
+        side:THREE.DoubleSide,
+        transparent:true
     });
+	planeVertMaterial.blending = THREE.AdditiveBlending;
+	// planeVertMaterial.blending = THREE.CustomBlending;
+	// planeVertMaterial.blendEquation = THREE.AddEquation; //default
+	// planeVertMaterial.blendSrc = THREE.SrcAlpha; //default
+	// planeVertMaterial.blendDst = THREE.OneFactor; //default
 
     // plane
     planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
@@ -158,9 +164,11 @@ function initializeScene() {
 
 
     var planeHorizMaterial = new THREE.MeshBasicMaterial({ 
-        side:THREE.DoubleSide
+        side:THREE.DoubleSide,
+		transparent:true
     });
 
+	planeHorizMaterial.blending = THREE.AdditiveBlending;
     // plane
     planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeHorizMaterial);
     planeHoriz.material.map = textureArray[0];
@@ -337,10 +345,16 @@ function animateScene() {
 	  planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation);
 	  // Apply the the translation along the z axis
 	  // boxMesh.position.z = zTranslation;
-	  planeVert.position.z = zTranslation;
-	  planeVert.position.x = xTranslation;
-	  planeHoriz.position.z = zTranslation;
-	  planeHoriz.position.y = yTranslation;
+	  var a = new THREE.Vector3(0, 1, 0);
+	  // planeVert.translateY(yTranslation);
+	  // planeVert.translateOnAxis(a, yTranslation);
+	  // yTranslation = 0;
+	  planeVert.translateZ(xTranslation);
+	  xTranslation = 0;
+	  // planeHoriz.position.z = zTranslation;
+	  // planeHoriz.position.y = yTranslation;
+	  planeHoriz.translateZ(yTranslation);
+	  yTranslation = 0;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();
 	}
