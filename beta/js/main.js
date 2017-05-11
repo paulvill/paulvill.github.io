@@ -22,6 +22,8 @@ var xTranslation = 0;
 var yTranslation = 0;
 var zTranslation = 0;
 
+var group = new THREE.Group();
+
 const imageCount = 42;
 const channelCount = 7;
 
@@ -145,7 +147,8 @@ function initializeScene() {
 	var planeVertMaterial = new THREE.MeshBasicMaterial({ 
         // map:neheTexture,
         side:THREE.DoubleSide,
-        transparent:true
+        transparent:true,
+        depthWrite:false
     });
 	planeVertMaterial.blending = THREE.AdditiveBlending;
 	// planeVertMaterial.blending = THREE.CustomBlending;
@@ -165,7 +168,8 @@ function initializeScene() {
 
     var planeHorizMaterial = new THREE.MeshBasicMaterial({ 
         side:THREE.DoubleSide,
-		transparent:true
+		transparent:true,
+        depthWrite:false
     });
 
 	planeHorizMaterial.blending = THREE.AdditiveBlending;
@@ -272,6 +276,12 @@ function selectTexture(channel, image) {
 		xTranslation = 0;
 		yTranslation = 0;
 		zTranslation = 0;
+		planeHoriz.position.x = 0;
+		planeHoriz.position.y = 0;
+		planeHoriz.position.z = 0;
+		planeVert.position.x = 0;
+		planeVert.position.y = 0;
+		planeVert.position.z = 0;
  }
 	selectTexture(this.currentChannel, this.currentImage);
 }
@@ -341,11 +351,11 @@ function animateScene() {
 	  // xRotation += xSpeed;
 	  // yRotation += ySpeed;
 	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
-	  planeVert.rotation.set(xRotation, yRotation, 0.0);
-	  planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation);
+	  planeVert.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
+	  planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation, 'XYZ' );
 	  // Apply the the translation along the z axis
 	  // boxMesh.position.z = zTranslation;
-	  var a = new THREE.Vector3(0, 1, 0);
+
 	  // planeVert.translateY(yTranslation);
 	  // planeVert.translateOnAxis(a, yTranslation);
 	  // yTranslation = 0;
