@@ -352,16 +352,24 @@ function animateScene() {
 	  // yRotation += ySpeed;
 	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
 	  planeVert.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
+	  // planeVert.rotateX(xRotation);
+	  // planeVert.rotateY(yRotation);
+
+	  // planeHoriz.rotateX(xRotation+initialRotation);
+	  // planeHoriz.rotateZ(yRotation);
+	  // initialRotation = 0;
+	  // xRotation = 0;
+	  // yRotation = 0;
 	  planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation, 'XYZ' );
 	  // Apply the the translation along the z axis
 	  // boxMesh.position.z = zTranslation;
-
+	  planeVert.position.z = zTranslation;
 	  // planeVert.translateY(yTranslation);
 	  // planeVert.translateOnAxis(a, yTranslation);
 	  // yTranslation = 0;
 	  planeVert.translateZ(xTranslation);
 	  xTranslation = 0;
-	  // planeHoriz.position.z = zTranslation;
+	  planeHoriz.position.z = zTranslation;
 	  // planeHoriz.position.y = yTranslation;
 	  planeHoriz.translateZ(yTranslation);
 	  yTranslation = 0;
