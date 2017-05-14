@@ -238,6 +238,14 @@ var plane6Material = new THREE.MeshBasicMaterial({
 	depthWrite:false
 });
 
+plane6Material.blending = THREE.AdditiveBlending;
+// plane
+plane6 = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),plane6Material);
+plane6.material.map = textureArray[0];
+// plane5.rotationX(Math.PI / 2 );
+plane6.overdraw = true;
+
+scene.add(plane6);
 
 // Add a listener for 'keydown' events. By this listener, all key events will be
 // passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -262,6 +270,7 @@ plane2.material.map = textureArray[(channel+1) * imageCount + image];
 plane3.material.map = textureArray[(channel+2) * imageCount + image];
 plane4.material.map = textureArray[(channel+3) * imageCount + image];
 plane5.material.map = textureArray[(channel+4) * imageCount + image];
+plane6.material.map = textureArray[(channel+5) * imageCount + image];
 
 // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
@@ -423,6 +432,7 @@ plane2.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
 plane3.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
 plane4.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
 plane5.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
+plane6.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
 
 // Apply the the translation along the z axis
 // boxMesh.position.z = zTranslation;
@@ -431,11 +441,13 @@ plane2.position.z = zTranslation;
 plane3.position.z = zTranslation;
 plane4.position.z = zTranslation;
 plane5.position.z = zTranslation;
+plane6.position.z = zTranslation;
 
 plane2.translateZ(xTranslation);
 plane3.translateZ(2*xTranslation);
 plane4.translateZ(3*xTranslation);
 plane5.translateZ(4*xTranslation);
+plane6.translateZ(5*xTranslation);
 xTranslation = 0;
 // Map the 3D scene down to the 2D screen (render the frame)
 renderScene();
