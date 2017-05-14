@@ -14,7 +14,8 @@ var camera;
 // The cube has to rotate around all three axes, so we need three rotation values.
 // x, y and z rotation
 var xRotation = 0.0;
-var yRotation = 0.0;
+var yRotation = -0.9;
+
 
 var initialRotation = -Math.PI / 2 ;
 // Rotation speed around x and y axis
@@ -22,7 +23,7 @@ var xSpeed = 0.0;
 var ySpeed = 0.0;
 
 // Translations
-var xTranslation = 0;
+var xTranslation = 2.5;
 var yTranslation = 0;
 var zTranslation = 0;
 
