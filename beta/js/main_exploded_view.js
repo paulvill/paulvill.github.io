@@ -265,7 +265,7 @@ plane5.material.map = textureArray[(channel+4) * imageCount + image];
 // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
 // console.log(yTranslation);
-// document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
+document.getElementById("overlaytext").innerHTML = image+1;
 document.getElementById("myRange").value = image;
 }
 
