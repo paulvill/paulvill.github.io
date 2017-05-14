@@ -1,73 +1,81 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 
-		<title>Embryo Digital Atlas</title>
+	<title>Embryo Digital Atlas</title>
 
-		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
-		<!-- The following meta line optimizes the site for mobile devices. It sets the viewport size
-		to the screen size, so it will be displayed maximized, but unscaled. -->
-		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+<!-- The following meta line optimizes the site for mobile devices. It sets the viewport size
+	to the screen size, so it will be displayed maximized, but unscaled. -->
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 
-		<style type="text/css">
-			body {
-			    text-align:center;
-			    font-family:verdana;
-			    background-color: rgb(0, 0, 0);
-			    /* Define the font and the color for the usage, which is an ordinary HTML overlay. */
-          		font-family: Monospace;
-          		color: white;
-			}
-			a {
-    			color: white;
-			}
-		</style>
-		<!-- Include Three.js libraries -->
-		<script src="js/three.js"></script>
-		<script src="js/Detector.js"></script>
-		<script src="js/CanvasRenderer.js"></script>
-		<script src="js/Projector.js"></script>
-		<script src="js/keyboardEnums.js"></script>
-	</head>
-	<body>
+	<style type="text/css">
+		body {
+			text-align:center;
+			/*font-family:arial;*/
+			background-color: rgb(0, 0, 0);
+			/* Define the font and the color for the usage, which is an ordinary HTML overlay. */
+			font-family: Monospace;
+			color: gray;
+		}
+		a {
+			color: gray;
+			text-decoration:none;
+		}
+	</style>
+	<!-- Include Three.js libraries -->
+	<script src="js/three.js"></script>
+	<script src="js/Detector.js"></script>
+	<script src="js/CanvasRenderer.js"></script>
+	<script src="js/Projector.js"></script>
+	<script src="js/keyboardEnums.js"></script>
+</head>
+<body>
 
 <!-- 	
-		Hiding commands for now, waiting for a filter on screen size 	
-		<div id="commands" style="position: absolute; top: 10px; left: 10px">
-	 		Cursor left / right: Change time step<br/>
-	 		Spacebar: Change channel<br/>
-	 		Cursor up/down: Zoom in/out<br/>
-	 		Key R: Reset view<br/>
-	 		Keys A/S/D/W: Control x and y rotation speed<br/>
-	 	</div> -->
+Hiding commands for now, waiting for a filter on screen size 	
+<div id="commands" style="position: absolute; top: 10px; left: 10px">
+Cursor left / right: Change time step<br/>
+Spacebar: Change channel<br/>
+Cursor up/down: Zoom in/out<br/>
+Key R: Reset view<br/>
+Keys A/S/D/W: Control x and y rotation speed<br/>
+</div> -->
 
-	 	<div id="overlaytext">
-	 	</div>
+<div align="left" style="font-family:arial;color:gray;">
+	<a href="index.html"> <h1> The Embryo Digital Atlas </h1></a>
+	<a href="embryogenesis.html">About embryogenesis</a>
+	<a href="datasets.html">More datasets</a> 
+	<a href="acknowledgments.html">Acknowledgments</a>
+</div>
 
-		<div id="WebGLCanvas">
-		</div>
-		
-		<script src="js/main.js"></script>
+<div id="WebGLCanvas">
+</div>
 
-			<!-- Slider for time step control -->
-		<div id="slider">
-		<input type="range" 
-			id="myRange" 
-			min="0"                    
-	    	max="41"                  
-	    	step="1"                  
-			value="1"
-		>
-		<br/>
-		</div>
+<script src="js/main.js"></script>
 
-		<div id = "Contacts">
-			<br/>
-			<br/>
-			<br/>
-				<a href="https://paulcinq.wordpress.com/">More Information</a> & <a href="https://github.com/paulvill/paulvill.github.io/tree/master"> GitHub </a>
-		</div>
+<div id="overlaytext">
+</div>
 
-	</body>
+<!-- Slider for time step control -->
+<div id="slider">
+	<input type="range" 
+	id="myRange" 
+	min="0"                    
+	max="41"                  
+	step="1"                  
+	value="1"
+	>
+	<br/>
+</div>
+
+<div id = "Contacts">
+	<br/>
+	<a href="https://paulcinq.wordpress.com/"> More Information </a> 
+	& 
+	<a href="https://github.com/paulvill/paulvill.github.io/tree/master"> GitHub </a>
+</div>
+
+</body>
 </html>
