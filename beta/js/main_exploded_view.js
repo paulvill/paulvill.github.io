@@ -134,7 +134,7 @@ scene = new THREE.Scene();
 // the scene.
 // After definition, the camera has to be added to the scene.
 camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 1, 100);
-camera.position.set(0, 0, 10);
+camera.position.set(0, 0, 20);
 camera.lookAt(scene.position);
 scene.add(camera);
 
