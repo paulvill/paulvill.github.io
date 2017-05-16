@@ -1,7 +1,10 @@
 // Global polygon mesh
 // var boxMesh;
-var planeVert;
-var planeHoriz;
+var plane;
+
+var path = "http://idr.openmicroscopy.org/webgateway/render_image/2858253/10/0/?c=1|0:111$00FF00,2|0:40$FF0000";
+
+THREE.ImageUtils.crossOrigin = "";
 
 // Global scene object
 var scene;
@@ -144,42 +147,23 @@ for (ch = 0; ch < channelCount; ++ch) {
 	}
 }
 
-var planeVertMaterial = new THREE.MeshBasicMaterial({ 
-// map:neheTexture,
+var planeMaterial = new THREE.MeshBasicMaterial({ 
 side:THREE.DoubleSide,
 transparent:true,
-depthWrite:false
+depthWrite:false,
+map:loadImage(path)
 });
-planeVertMaterial.blending = THREE.AdditiveBlending;
-// planeVertMaterial.blending = THREE.CustomBlending;
-// planeVertMaterial.blendEquation = THREE.AddEquation; //default
-// planeVertMaterial.blendSrc = THREE.SrcAlpha; //default
-// planeVertMaterial.blendDst = THREE.OneFactor; //default
+planeMaterial.blending = THREE.AdditiveBlending;
 
 // plane
-planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
-planeVert.material.map = textureArray[0];
+plane = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeMaterial);
+// plane.material.map = textureArray[0];
 
-planeVert.overdraw = true;
+plane.overdraw = true;
 
-scene.add(planeVert);
+scene.add(plane);
 
 
-
-var planeHorizMaterial = new THREE.MeshBasicMaterial({ 
-	side:THREE.DoubleSide,
-	transparent:true,
-	depthWrite:false
-});
-
-planeHorizMaterial.blending = THREE.AdditiveBlending;
-// plane
-planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeHorizMaterial);
-planeHoriz.material.map = textureArray[0];
-// planeHoriz.rotationX(Math.PI / 2 );
-planeHoriz.overdraw = true;
-
-scene.add(planeHoriz);
 
 
 // Add a listener for 'keydown' events. By this listener, all key events will be
@@ -200,17 +184,38 @@ document.addEventListener('dblclick', onDblClick, false);
 */
 function selectTexture(channel, image) {
 // boxMesh.material.map = textureArray[channel * imageCount + image];
-planeVert.material.map = textureArray[channel * imageCount + image];
-var index = channel * imageCount + image;// + parseInt(10*yTranslation,10);
-index = index + parseInt(10*planeHoriz.position.y,10); 
-console.log(index);
-planeHoriz.material.map = textureArray[index];
+// plane.material.map = textureArray[channel * imageCount + image];
 // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
 // console.log(yTranslation);
 document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
 document.getElementById("myRange").value = image;
 }
+
+function loadImage(path) {
+  var canvas = document.createElement('canvas');
+  canvas.style.position = 'absolute';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  //document.body.appendChild(canvas);
+
+  var texture = new THREE.Texture(canvas);
+
+  var image_remote = new Image();
+  image_remote.crossOrigin = '' 
+  image_remote.onload = function() {
+      canvas.width = image_remote.width;
+      canvas.height = image_remote.height;
+
+      var context = canvas.getContext('2d');
+      context.drawImage(image_remote, 0, 0);
+
+      texture.needsUpdate = true;
+  };
+  image_remote.src = path;
+  return texture;
+};
+
 
 /**
 * This function is called, when a key is pushed down.
@@ -282,12 +287,9 @@ else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
 	xTranslation = 0;
 	yTranslation = 0;
 	zTranslation = 0;
-	planeHoriz.position.x = 0;
-	planeHoriz.position.y = 0;
-	planeHoriz.position.z = 0;
-	planeVert.position.x = 0;
-	planeVert.position.y = 0;
-	planeVert.position.z = 0;
+	plane.position.x = 0;
+	plane.position.y = 0;
+	plane.position.z = 0;
 }
 selectTexture(this.currentChannel, this.currentImage);
 }
@@ -360,29 +362,24 @@ if (channelLoaded[0]) {
 // xRotation += xSpeed;
 // yRotation += ySpeed;
 // boxMesh.rotation.set(xRotation, yRotation, 0.0);
-planeVert.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
-// planeVert.rotateX(xRotation);
-// planeVert.rotateY(yRotation);
+plane.rotation.set(xRotation, yRotation, 0.0, 'XYZ' );
+// plane.rotateX(xRotation);
+// plane.rotateY(yRotation);
 
 // planeHoriz.rotateX(xRotation+initialRotation);
 // planeHoriz.rotateZ(yRotation);
 // initialRotation = 0;
 // xRotation = 0;
 // yRotation = 0;
-planeHoriz.rotation.set(xRotation+initialRotation, 0.0, yRotation, 'XYZ' );
 // Apply the the translation along the z axis
 // boxMesh.position.z = zTranslation;
-planeVert.position.z = zTranslation;
-// planeVert.translateY(yTranslation);
-// planeVert.translateOnAxis(a, yTranslation);
+plane.position.z = zTranslation;
+// plane.translateY(yTranslation);
+// plane.translateOnAxis(a, yTranslation);
 // yTranslation = 0;
-planeVert.translateZ(xTranslation);
 
 xTranslation = 0;
-planeHoriz.position.z = zTranslation;
-// planeHoriz.position.y = yTranslation;
-planeHoriz.translateZ(yTranslation);
-yTranslation = 0;
+
 // Map the 3D scene down to the 2D screen (render the frame)
 renderScene();
 }
