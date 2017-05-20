@@ -22,35 +22,28 @@ var xTranslation = 0;
 var yTranslation = 0;
 var zTranslation = 0;
 
-var group = new THREE.Group();
-
-const imageCount = 42;
-const channelCount = 7;
+const channelCount = 1;
+const xrange = 512;
+const yrange = 512;
+const zrange = 18;
+const trange = 25;
+const imageCountX = xrange*trange;
+const imageCountZ = zrange*trange;
 
 var channels = {
 	"path":[
-	"images/coloredmovie_4datasets/",
-	"images/coloredmovie_4datasets/grayscale/nuclei",
-	"images/coloredmovie_4datasets/grayscale/dpERK",
-	"images/coloredmovie_4datasets/grayscale/twist",
-	"images/coloredmovie_4datasets/grayscale/dorsal",
-	"images/coloredmovie_4datasets/grayscale/ind",
-	"images/coloredmovie_4datasets/grayscale/rhomboid",
-	],
+		"images/Mem_02/"
+		],
 	"name":[
-	"all_",
-	"nuclei_",
-	"dpERK_",
-	"twist_",
-	"dorsal_",
-	"ind_",
-	"rhomboid_",
+		"all"
 	]
-};
+}
 
 
 // Texture and flag for current texture filter
-var textureArray = {};
+var textureArrayX = {};
+var textureArrayZ = {};
+
 var channelLoaded = [];
 var manager = [];
 for (ch = 0; ch < channelCount; ++ch) {
@@ -137,12 +130,23 @@ scene.add(camera);
 
 
 // Load an image as texture
-for (ch = 0; ch < channelCount; ++ch) {
-	var textureLoader = new THREE.TextureLoader(manager[ch]);
-	for (img = 0; img < imageCount; ++img) {
-		textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat(img+1,".png"));
+	for (ch = 0; ch < channelCount; ++ch) {
+		var textureLoader = new THREE.TextureLoader(manager[ch]);
+		for (tstep = 0; tstep < trange; ++tstep) {
+			for (xval = 0; xval < xrange; ++xval) {
+				textureArrayX[ch * imageCountX + tstep*xrange + xval] = textureLoader.load(channels.path[ch].concat(["t_", tstep+1,"_x_",xval+1,".png"])); 
+			}
+		}
 	}
-}
+
+	for (ch = 0; ch < channelCount; ++ch) {
+		var textureLoader = new THREE.TextureLoader(manager[ch]);
+		for (tstep = 0; tstep < trange; ++tstep) {
+			for (zval = 0; zval < zrange; ++zval) {
+				textureArrayZ[ch * imageCountZ + tstep*zrange + zval] = textureLoader.load(channels.path[ch].concat(["t_", tstep+1,"_z_",xval+1,".png"])); 
+			}
+		}
+	}
 
 var planeVertMaterial = new THREE.MeshBasicMaterial({ 
 // map:neheTexture,
@@ -158,7 +162,7 @@ planeVertMaterial.blending = THREE.AdditiveBlending;
 
 // plane
 planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
-planeVert.material.map = textureArray[0];
+planeVert.material.map = textureArrayX[0];
 
 planeVert.overdraw = true;
 
@@ -175,7 +179,7 @@ var planeHorizMaterial = new THREE.MeshBasicMaterial({
 planeHorizMaterial.blending = THREE.AdditiveBlending;
 // plane
 planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeHorizMaterial);
-planeHoriz.material.map = textureArray[0];
+planeHoriz.material.map = textureArrayZ[0];
 // planeHoriz.rotationX(Math.PI / 2 );
 planeHoriz.overdraw = true;
 
@@ -200,12 +204,12 @@ document.addEventListener('dblclick', onDblClick, false);
 */
 function selectTexture(channel, image) {
 // boxMesh.material.map = textureArray[channel * imageCount + image];
-planeVert.material.map = textureArray[channel * imageCount + image];
-var index = channel * imageCount + image;// + parseInt(10*yTranslation,10);
-index = index + parseInt(10*planeHoriz.position.y,10); 
-console.log(index);
-planeHoriz.material.map = textureArray[index];
-// console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
+planeVert.material.map = textureArrayX[0];
+// var index = channel * imageCount + image;// + parseInt(10*yTranslation,10);
+// index = index + parseInt(10*planeHoriz.position.y,10); 
+// console.log(index);
+planeHoriz.material.map = textureArrayZ[0];
+// // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
 // console.log(yTranslation);
 document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
@@ -308,46 +312,6 @@ function onDblClick(event) {
 		this.currentChannel = 0;
 	}
 	selectTexture(this.currentChannel, this.currentImage);
-}
-
-/**
-* Import images using html input
-*/
-function showImages() {
-
-	var preview = document.querySelector('#preview');
-	var files   = document.querySelector('input[type=file]').files;
-	var count = 0;
-	function changeTexture(file) {
-
-// Make sure `file.name` matches our extensions criteria
-if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
-	var reader = new FileReader();
-
-	reader.onload = function(evt){
-		console.log(evt);
-		var image = document.createElement( 'img' );
-		image.src = evt.target.result;
-		textureArray[count] = THREE.ImageUtils.loadTexture(evt.target.result);
-		count += 1;
-	}
-
-
-	reader.readAsDataURL(file);
-
-// document.getElementById("preview").innerHTML = file.tmp_name;
-
-}
-
-}
-
-if (files) {
-	[].forEach.call(files, changeTexture);
-
-}
-
-selectTexture(this.currentChannel, this.currentImage);
-
 }
 
 /**
