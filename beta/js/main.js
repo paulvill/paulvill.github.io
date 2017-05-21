@@ -35,7 +35,7 @@ var channels = {
 		"images/Mem_02.tif/",
 		],
 	"name":[
-		"all",
+		"Membranes",
 	]
 }
 
@@ -212,7 +212,7 @@ planeHoriz.material.map = textureArrayZ[channel*imageCountZ + tstep*zrange + var
 // // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
 // console.log(yTranslation);
-document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(image+1,".png");
+document.getElementById("overlaytext").innerHTML = channels.name[channel].concat(" - t: ",tstep+1," - x: ",varX, " - z: ", varZ);
 document.getElementById("myRange").value = image;
 }
 
