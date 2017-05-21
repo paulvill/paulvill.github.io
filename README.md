@@ -1,5 +1,5 @@
-<p align="left">
-  <img src="Logos/logo.png" width="350"/>
+<p align="center">
+  <img src="Logos/logo.png" width="300"/>
 </p>
 
 # The Embryo Digital Atlas
@@ -38,7 +38,7 @@ And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-em
 
 Want to contribute? Here is the [roadmap](https://github.com/paulvill/paulvill.github.io/issues/3) and here are the [contributor guidelines](CONTRIBUTING.md).
 
-Join the [chat](https://gitter.im/embryo-digital-atlas/Lobby)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/embryo-digital-atlas/Lobby)
 
 ## Acknowledgments
 
