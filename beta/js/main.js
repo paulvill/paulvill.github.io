@@ -32,10 +32,10 @@ const imageCountZ = zrange*trange;
 
 var channels = {
 	"path":[
-		"images/Mem_02/"
+		"images/Mem_02.tif/",
 		],
 	"name":[
-		"all"
+		"all",
 	]
 }
 
@@ -45,18 +45,33 @@ var textureArrayX = {};
 var textureArrayZ = {};
 
 var channelLoaded = [];
-var manager = [];
+var managerX = [];
+var managerZ = [];
+
 for (ch = 0; ch < channelCount; ++ch) {
 	channelLoaded[ch] = false;
-	manager.push(new THREE.LoadingManager());
-	manager[ch].ch = ch;
-	manager[ch].onLoad = function() {
+	managerX.push(new THREE.LoadingManager());
+	managerX[ch].ch = ch;
+	managerX[ch].onLoad = function() {
 		channelLoaded[this.ch] = true;
 		if (this.ch == 0) {
-			selectTexture(0, 0);
+			selectTexture(0, 0, 0, 0);
 		}
 	};
 }
+
+for (ch = 0; ch < channelCount; ++ch) {
+	channelLoaded[ch] = false;
+	managerZ.push(new THREE.LoadingManager());
+	managerZ[ch].ch = ch;
+	managerZ[ch].onLoad = function() {
+		channelLoaded[this.ch] = true;
+		if (this.ch == 0) {
+			selectTexture(0, 0, 0, 0);
+		}
+	};
+}
+
 
 var slider;
 
@@ -104,25 +119,6 @@ document.getElementById("WebGLCanvas").appendChild(renderer.domElement);
 // Create the scene, in which all objects are stored 
 scene = new THREE.Scene();
 
-// Now that we have a scene, we want to look into it. Therefore we need a camera.
-// Three.js offers three camera types:
-//  - PerspectiveCamera (perspective projection)
-//  - OrthographicCamera (parallel projection)
-//  - CombinedCamera (allows to switch between perspective / parallel projection
-//    during runtime)
-// In this example we create a perspective camera. Parameters for the perspective
-// camera are ...
-// ... field of view (FOV),
-// ... aspect ratio (usually set to the quotient of canvas width to canvas height)
-// ... near and
-// ... far.
-// Near and far define the cliping planes of the view frustum. Three.js provides an
-// example (http://mrdoob.github.com/three.js/examples/
-// -> canvas_camera_orthographic2.html), which allows to play around with these
-// parameters.
-// The camera is moved 10 units towards the z axis to allow looking to the center of
-// the scene.
-// After definition, the camera has to be added to the scene.
 camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 1, 100);
 camera.position.set(0, 0, 10);
 camera.lookAt(scene.position);
@@ -131,21 +127,24 @@ scene.add(camera);
 
 // Load an image as texture
 	for (ch = 0; ch < channelCount; ++ch) {
-		var textureLoader = new THREE.TextureLoader(manager[ch]);
-		for (tstep = 0; tstep < trange; ++tstep) {
-			for (xval = 0; xval < xrange; ++xval) {
-				textureArrayX[ch * imageCountX + tstep*xrange + xval] = textureLoader.load(channels.path[ch].concat(["t_", tstep+1,"_x_",xval+1,".png"])); 
+		var textureLoader = new THREE.TextureLoader(managerX[ch]);
+		for (tstep = 0; tstep < trange-1; ++tstep) {
+			for (xval = 0; xval < xrange-1; ++xval) {
+				textureArrayX[ch * imageCountX + tstep*xrange + xval] = textureLoader.load(channels.path[ch].concat("t_", tstep+1,"_x_",xval+1,".png")); 
 			}
 		}
+		console.log(channels.path[ch].concat("t_", tstep+1,"_x_",xval+1,".png"));
+		console.log("X loaded");
 	}
 
 	for (ch = 0; ch < channelCount; ++ch) {
-		var textureLoader = new THREE.TextureLoader(manager[ch]);
-		for (tstep = 0; tstep < trange; ++tstep) {
-			for (zval = 0; zval < zrange; ++zval) {
-				textureArrayZ[ch * imageCountZ + tstep*zrange + zval] = textureLoader.load(channels.path[ch].concat(["t_", tstep+1,"_z_",xval+1,".png"])); 
+		var textureLoader = new THREE.TextureLoader(managerZ[ch]);
+		for (tstep = 0; tstep < trange-1; ++tstep) {
+			for (zval = 0; zval < zrange-1; ++zval) {
+				textureArrayZ[ch * imageCountZ + tstep*zrange + zval] = textureLoader.load(channels.path[ch].concat("t_", tstep+1,"_z_",zval+1,".png")); 
 			}
 		}
+		console.log("Z loaded");
 	}
 
 var planeVertMaterial = new THREE.MeshBasicMaterial({ 
@@ -202,13 +201,14 @@ document.addEventListener('dblclick', onDblClick, false);
 /**
 * Select current texture to display in loaded texture arrays
 */
-function selectTexture(channel, image) {
+function selectTexture( channel, varX, varZ, tstep) {
 // boxMesh.material.map = textureArray[channel * imageCount + image];
-planeVert.material.map = textureArrayX[0];
+planeVert.material.map = textureArrayX[channel*imageCountX + tstep*xrange + varX];
+console.log(channel*imageCountX + tstep*xrange + varX);
 // var index = channel * imageCount + image;// + parseInt(10*yTranslation,10);
 // index = index + parseInt(10*planeHoriz.position.y,10); 
 // console.log(index);
-planeHoriz.material.map = textureArrayZ[0];
+planeHoriz.material.map = textureArrayZ[channel*imageCountZ + tstep*zrange + varZ];
 // // console.log(channel * imageCount + image +parseInt(10*yTranslation,10));
 // console.log(parseInt(10*yTranslation,10));
 // console.log(yTranslation);
@@ -220,7 +220,9 @@ document.getElementById("myRange").value = image;
 * This function is called, when a key is pushed down.
 */
 function onDocumentKeyDown(event) {
-	this.currentImage = this.currentImage || 0;
+	this.currentVarX = this.currentVarX || 0;
+	this.currentVarZ = this.currentVarZ || 0;
+	this.currentTStep = this.currentTStep || 0;
 	this.currentChannel = this.currentChannel || 0;
 
 // Get the key code of the pressed key
@@ -244,31 +246,34 @@ yRotation -= 0.1;
 } else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
 // ySpeed += 0.01;
 yRotation += 0.1;
-
 } else if(keyCode == enums.keyboard.KEY_P) {	
 // ySpeed -= 0.01;
 yTranslation += 0.1;
+++this.currentVarZ;
 }  else if(keyCode == enums.keyboard.KEY_L) {	
 // ySpeed -= 0.01;
 yTranslation -= 0.1;
+--this.currentVarZ;
 } else if(keyCode == enums.keyboard.KEY_O) {	
 // ySpeed -= 0.01;
 xTranslation += 0.1;
+++this.currentVarX;
 }  else if(keyCode == enums.keyboard.KEY_K) {	
 // ySpeed -= 0.01;
 xTranslation -= 0.1;
+--this.currentVarX;
 } else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
-	if (this.currentImage > 0) {
-		--this.currentImage;
+	if (this.currentTStep > 0) {
+		--this.currentTStep;
 	} else {
-		this.currentImage = imageCount - 1;
+		this.currentTStep = trange - 1;
 	}
 
 } else if(keyCode == enums.keyboard.RIGHT_ARROW) {	// PREVIOUS IMAGE
-	if (this.currentImage < imageCount - 1) {
-		++this.currentImage;
+	if (this.currentTStep < trange - 1) {
+		++this.currentTStep;
 	} else {
-		this.currentImage = 0;
+		this.currentTStep = 0;
 	}
 
 // Page up
@@ -293,25 +298,29 @@ else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
 	planeVert.position.y = 0;
 	planeVert.position.z = 0;
 }
-selectTexture(this.currentChannel, this.currentImage);
+selectTexture(this.currentChannel, this.currentVarX, this.currentVarZ, this.currentTStep);
 }
 
 function onSlide(event){
-	this.currentImage = this.currentImage || 0;
+	this.currentVarX = this.currentVarX || 0;
+	this.currentVarZ = this.currentVarZ || 0;
+	this.currentTStep = this.currentTStep || 0;
 	this.currentChannel = this.currentChannel || 0;
-	this.currentImage = parseInt(document.getElementById("myRange").value);
-	selectTexture(this.currentChannel, this.currentImage);
+	this.currentTStep = parseInt(document.getElementById("myRange").value);
+	selectTexture(this.currentChannel, this.currentVarX, this.currentVarZ, this.currentTStep);
 }
 
 function onDblClick(event) {
-	this.currentImage = this.currentImage || 0;
+	this.currentVarX = this.currentVarX || 0;
+	this.currentVarZ = this.currentVarZ || 0;
+	this.currentTStep = this.currentTStep || 0;
 	this.currentChannel = this.currentChannel || 0;
 	if (this.currentChannel < channelCount - 1 && channelLoaded[this.currentChannel+1]) {
 		++this.currentChannel;
 	} else {
 		this.currentChannel = 0;
 	}
-	selectTexture(this.currentChannel, this.currentImage);
+	selectTexture(this.currentChannel, this.currentVarX, this.currentVarZ, this.currentTStep);
 }
 
 /**
