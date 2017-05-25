@@ -12,7 +12,7 @@ var yRotation = 0.0;
 var xSpeed = 0.0;
 var ySpeed = 0.0;
 // Translation along the z axis
-var zTranslation = 8.6;
+var zTranslation = 8;
 
 const imageCount = 237;
 const channelCount = 1;
@@ -144,7 +144,7 @@ function initializeScene() {
 	});
 	planeMaterial.blending = THREE.AdditiveBlending;
 
-	plane = new THREE.Mesh(new THREE.PlaneGeometry(478/268,1),planeMaterial);
+	plane = new THREE.Mesh(new THREE.PlaneGeometry(681/431,1),planeMaterial);
 	plane.material.map = textureArray[0];
 
 	plane.overdraw = true;
