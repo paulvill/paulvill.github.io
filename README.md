@@ -32,6 +32,8 @@ The beautiful [Wind Map](http://hint.fm/wind/) by Fernanda Viégas and Martin Wa
 
 The Allen Cell Institute's [Cell Explorer](http://www.allencell.org/)
 
+The Human Protein [Atlas](http://www.proteinatlas.org/)
+
 And [more](https://paulcinq.wordpress.com/about/data-driven-visualizations-of-embryogenesis/)
 
 ## Contribute
