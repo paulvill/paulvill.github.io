@@ -1,17 +1,20 @@
-var ellipsis, count = 0
+var ellipsis, count = 1, dir = 1
 
 window.addEventListener("DOMContentLoaded", function() {
   ellipsis = document.querySelector("#dots")
-  window.setInterval(dots, 300)
+  window.setInterval(dots, 100)
 })
 
 function dots() {
+  if (count == 5 || count == 0) dir *= -1
+  count += dir
+  console.log(count, dir)
+
   var s = []
-  _(count%5).times((i) => {
+  _(count).times((i) => {
     s.push(".")
   })
   var t = _(s).join("")
   ellipsis.innerHTML = t
-  if (count < 1000) count++
-  else count = 0
+
 }

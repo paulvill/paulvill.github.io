@@ -35,13 +35,21 @@ html, body {
 .loadwrapper .loading {
   position: relative;
   margin-top: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 400px;
+  background: url("../images/embryo-loading2.gif");
+  background-color: rgba(38,38,38,1);
+  background-size: cover;
+  background-blend-mode: lighten;
 }
 
 .loadwrapper .loading p {
   color: white;
   font: normal 200 21px "_dosis";
   position: absolute;
-  top: 35%;
+  margin-top: 45%;
   left: 0;
   width: 100%;
   height: 100%;
