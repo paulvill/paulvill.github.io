@@ -13,4 +13,37 @@ html, body {
   padding: 15px;
 }
 
-.control .panel p {font: normal 700 13px "_dosis";letter-spacing: .1em;color: white;margin: 0 0 15px 0;}
+.control .panel p {
+  font: normal 700 13px "_dosis";
+  letter-spacing: .1em;
+  color: white;
+  margin: 0 0 15px 0;
+}
+
+
+/* loading demo stuff: */
+
+.loadwrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+}
+.loadwrapper .loading {
+  position: relative;
+  margin-top: 30vh;
+}
+
+.loadwrapper .loading p {
+  color: white;
+  font: normal 200 21px "_dosis";
+  position: absolute;
+  top: 35%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
