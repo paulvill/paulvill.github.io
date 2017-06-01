@@ -1,1 +1,16 @@
-/* add local spec styles here */
+html, body {
+  background: rgba(38,38,38,1);
+}
+
+.control {
+  margin: 15px 30px;
+  width: 200px;
+}
+.control .title h1 {font: normal 600 13px "_dosis";letter-spacing: .1em;background: rgba(255,255,255,0.6);text-transform: uppercase;padding: 5px;margin: 0;}
+
+.control .panel {
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
+}
+
+.control .panel p {font: normal 700 13px "_dosis";letter-spacing: .1em;color: white;margin: 0 0 15px 0;}
