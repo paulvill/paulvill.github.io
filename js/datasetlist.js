@@ -28,7 +28,7 @@ var datasets = [
 
 {
 	"path":[
-		"images/Tcwt1",
+		"images/Tcwt1/",
 	],
 	"name":[
 		"Tribolium",
@@ -50,7 +50,7 @@ var datasets = [
 
 {
 	"path":[
-		"images/tribolium",
+		"images/tribolium/",
 	],
 	"name":[
 		"Tribolium - Comparison of 3 embryos",
