@@ -1,6 +1,7 @@
 /* CSS for Embryo Digital Atlas project */
 body {
 	font-family: 'Dosis', sans-serif;
+	font-weight: 300;
 	background: #262626;
 	color: #e6e6e6;
 	margin: 0;
@@ -33,7 +34,7 @@ body {
 	}
 	b,
 	strong {
-		font-weight: bold;
+		font-weight: 700;
 	}
 	hr {
 		clear: both;
@@ -74,7 +75,7 @@ body {
 		display: block;
 	}
 	.strong {
-		font-weight: bold;
+		font-weight: 700;
 	}
 
 /* Site Header */
@@ -100,6 +101,7 @@ body {
 		text-transform: lowercase;
 		color: black;
 		letter-spacing: 0.1em;
+		font-weight: 500;
 	}
 	header h1 a, header h1 a:link, header h1 a:visited, header h1 a:hover {
 		color: black;
@@ -120,6 +122,7 @@ body {
 	ul.main-nav {
 		margin: 0;
 		padding: 1em 0 1.5em 0;
+		font-weight: 500;
 	}
 	ul.main-nav li {
 		margin: 0;
@@ -129,7 +132,7 @@ body {
 	}
 	.nav-selector {
 		text-transform: uppercase;
-		font-weight: bold;
+		font-weight: 700;
 		width: 100%;
 		font-size: 1em;
 	}
@@ -169,14 +172,57 @@ body {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		height: auto;
+		height: 40px;
 		color: black;
-		padding: 0.5em 1em;
+		padding: 0;
 	}
 	.dataset-label {
+		display: inline-block;
 		text-transform: uppercase;
+		padding: 0.5em 1em;
 	}
 	.dataset-name {
 		text-transform: capitalize;
-		font-weight: bold;
+		font-weight: 700;
+	}
+	/* Upload Button */
+	.add-dataset {
+		float: right;
+		position: relative;
+		color: #39006f;
+	}
+	.btn-label {
+		text-align: right;
+		text-transform: uppercase;
+		font-size: 0.8em;
+		position: absolute;
+		right: 70px;
+		margin-top: 0.2em;
+		width: 100px;
+		font-weight: 500;
+	}
+	.btn-add {
+		display: block;
+		width: 60px;
+		height: 40px;
+		text-align: center;
+		background: #39006f;
+		right: 0;
+		padding: 0;
+		margin: 0;
+	}
+	.btn-add:before {
+		content: "+";
+		position: absolute;
+		font-size: 2.5em;
+		color: white;
+		top: -15px;
+		left: 20px;
+	}
+	.add-dataset:hover {
+		cursor: pointer;
+		color: #8521e4;
+	}
+	.add-dataset:hover .btn-add {
+		background: #8521e4;	
 	}
