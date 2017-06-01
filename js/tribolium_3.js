@@ -14,12 +14,12 @@ var ySpeed = 0.0;
 // Translation along the z axis
 var zTranslation = 8;
 
-const imageCount = 195;
+const imageCount = 237;
 const channelCount = 1;
 
 var channels = {
 	"path":[
-		"images/Tcwt1/",
+		"images/tribolium/",
 	],
 	"name":[
 		"nuclei ",
@@ -123,11 +123,11 @@ function initializeScene() {
 		var textureLoader = new THREE.TextureLoader(manager[ch]);
 		for (img = 0; img < imageCount; ++img) {
 			if (img<9){
-				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("Tcwt1_000",img+1,".png"));
+				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("combined_000",img+1,".png"));
 			} else if (img<99){
-				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("Tcwt1_00",img+1,".png"));
+				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("combined_00",img+1,".png"));
 			} else {
-				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("Tcwt1_0",img+1,".png"));
+				textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("combined_0",img+1,".png"));
 			}
 
 			// textureArray[ch * imageCount + img] = textureLoader.load(channels.path[ch].concat("Tcwt1_0",img+1,".png"));
@@ -144,7 +144,7 @@ function initializeScene() {
 	});
 	planeMaterial.blending = THREE.AdditiveBlending;
 
-	plane = new THREE.Mesh(new THREE.PlaneGeometry(478/268,1),planeMaterial);
+	plane = new THREE.Mesh(new THREE.PlaneGeometry(681/431,1),planeMaterial);
 	plane.material.map = textureArray[0];
 
 	plane.overdraw = true;
