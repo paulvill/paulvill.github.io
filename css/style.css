@@ -1,0 +1,182 @@
+/* CSS for Embryo Digital Atlas project */
+body {
+	font-family: 'Dosis', sans-serif;
+	background: #262626;
+	color: #e6e6e6;
+	margin: 0;
+	padding: 0 !important;
+	text-rendering: optimizeLegibility;
+}
+
+/* Links */
+	a,
+	a:link,
+	a:active,
+	a:visited {
+		text-decoration: none;
+		border: none;
+		color: #39006f;
+		-webkit-transition: all 0.1s ease-out;
+		   -moz-transition: all 0.1s ease-out;
+		    -ms-transition: all 0.1s ease-out;
+		     -o-transition: all 0.1s ease-out;
+		        transition: all 0.1s ease-out;
+	}
+	a:hover {
+		color: #8521e4;
+		border: none;
+	}
+
+/* Elements */
+	p {
+		margin: 1em 0;
+	}
+	b,
+	strong {
+		font-weight: bold;
+	}
+	hr {
+		clear: both;
+		visibility: hidden;
+		height: 15px;
+	}
+	abbr {
+		border-bottom: 1px dotted #333;
+	}
+	i,
+	em {
+		font-style: italic;
+	}
+	ul {
+		list-style: none;
+	}
+/* Headers */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: 'Dosis', sans-serif;
+		color: black;
+		margin: 1em 0;
+	}
+	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+/* Core classes */
+	.nowrap {
+		white-space: nowrap;
+	}
+	.block {
+		display: block;
+	}
+	.strong {
+		font-weight: bold;
+	}
+
+/* Site Header */
+	.sticky-nav {
+		position: fixed;
+		width: 100%;
+		height: auto;
+		z-index: 3;
+		background-color: white;
+	}
+	header {
+		color: black;
+	}
+	header .title-wrap {
+		float: right;
+		text-align: right;
+		padding: 0.3em 1em;
+	}
+	header h1 {
+		margin: 0;
+		padding: 0 0.5em 0 0;
+		font-size: 1.2em;
+		text-transform: lowercase;
+		color: black;
+		letter-spacing: 0.1em;
+	}
+	header h1 a, header h1 a:link, header h1 a:visited, header h1 a:hover {
+		color: black;
+	}
+
+/* Menu */
+	nav.main-menu {
+		padding: 0.8em 1em 0.5em 1em;
+	}
+	.nav-content  {
+		overflow: hidden;
+		max-height: 0;
+		width: 100%;
+		-webkit-transition: max-height 0.5s ease-out;
+		-moz-transition: max-height 0.5s ease-out;
+		transition: max-height 0.5s ease-out;
+	}
+	ul.main-nav {
+		margin: 0;
+		padding: 1em 0 1.5em 0;
+	}
+	ul.main-nav li {
+		margin: 0;
+		display: inline-block;
+		margin-right: 1em;
+		text-transform: lowercase;
+	}
+	.nav-selector {
+		text-transform: uppercase;
+		font-weight: bold;
+		width: 100%;
+		font-size: 1em;
+	}
+	/* Animating header */
+	header:hover .nav-content {
+		max-height: 40px;
+	}
+	header:hover .nav-selector span {
+		border-bottom: 5px solid black;
+		cursor: pointer;
+	}
+	/* Tagline */
+	ul.main-nav li.tagline {
+		float: right;
+		text-align: right;
+		margin-top: -1em;
+		font-size: 0.8em;
+		color: #777;
+	}
+
+/* Canvas */
+	.viewport {
+		text-align: center;
+		padding-top: 5em;
+	}
+
+/* Content (text pages) */
+	section, .content {
+		font-family: 'Open Sans', sans-serif;
+		background: #e6e6e6;
+		color: #e6e6e6;
+	}	
+
+/* Footer */
+	footer {
+		background: white;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: auto;
+		color: black;
+		padding: 0.5em 1em;
+	}
+	.dataset-label {
+		text-transform: uppercase;
+	}
+	.dataset-name {
+		text-transform: capitalize;
+		font-weight: bold;
+	}
