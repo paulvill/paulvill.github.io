@@ -1,17 +1,18 @@
 .sidebar {
-  background: rgba(44,44,44,1)
+  background: rgba(44,44,44,1);
+  width: 200px;
 }
 
 .sidebar .control { margin: 0; }
 
 .sidebar .control .title {
   background: rgba(168,168,168,1);
+  border: 1px outset black;
   display: block;
   position: relative;
   font-size: 1rem;
   color: black;
   height: 20px;
-  width: 200px;
   line-height: 20px;
   padding: 0.2rem;
   margin: 0;
@@ -22,6 +23,10 @@
   color: white;
   display: block;
   width: 100%;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  height: 20px;
 }
 
 .sidebar label { color: white; }
@@ -35,16 +40,22 @@
   z-index: 1;
 }
 
-.sidebar input.trigger ~ .panel {
+.sidebar .panel .input-container:first-child {
+  margin-top: 0;
+  color: blue;
+}
+
+.sidebar input.trigger + .panel {
   -webkit-transition: height 0.1s, padding 0.1s ease-in-out;
   transition: height 0.1s, padding 0.1s ease-in-out;
   height: 100%;
-  overflow: hidden;
+
 }
 
-.sidebar input.trigger:checked ~ .panel {
+.sidebar input.trigger:checked + .panel {
   height: 0;
   padding: 0 15px 0 15px;
+  overflow: hidden;
 }
 
 .sidebar .inline-container { height: 100%; }
@@ -53,6 +64,10 @@
   display: block;
   float: left;
 }
+
+.sidebar .ortho-container { height: 20px; }
+.sidebar .ortho-container .sub-title { width: calc(100% - 20px); }
+
 
 .sidebar .input[type=range], .input-square{
   height: 20px;
@@ -212,6 +227,7 @@ input[type=range]{
   height: 20px;
   width: 20px;
   background: white;
+  position: relative;
 }
 
 .sidebar input[type=checkbox]:checked.input-square ~ .checkbox-label::after {
@@ -225,9 +241,15 @@ input[type=range]{
 
 .sidebar .view-footer {
   height: 60px;
+  position: relative;
 }
 
 .sidebar .view-footer button {
-  height: 20px;
-  width: 40px;
+  height: 28px;
+  width: 60px;
+  font-size: 0.5rem;
+  padding: 0.1rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
