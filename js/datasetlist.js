@@ -1,7 +1,7 @@
 var datasets = [
 {
 	"path":[
-		"images/coloredmovie_4datasets/",
+		"/images/coloredmovie_4datasets/",
 	],
 	"name":[
 		"Drosophila Dorso-Ventral patterning",
@@ -22,7 +22,7 @@ var datasets = [
 		"cross section",
 	],
 	"preview":[
-		"images/coloredmovie_4datasets/1.png",
+		"/images/coloredmovie_4datasets/1.png",
 	],
 	"species":[
 		"Drophila melanogaster",
@@ -51,7 +51,7 @@ var datasets = [
 
 {
 	"path":[
-		"images/Tcwt1/",
+		"/images/Tcwt1/",
 	],
 	"name":[
 		"Tribolium",
@@ -67,7 +67,7 @@ var datasets = [
 		"Entire embryo",
 	],
 	"preview":[
-		"images/Tcwt1/Tcwt1_0106.png",
+		"/images/Tcwt1/Tcwt1_0106.png",
 	],
 	"species":[
 		"Tribolium castaneum",
@@ -77,7 +77,7 @@ var datasets = [
 		"2 hours Time ‐ lapse fluorescence recording of a Tribolium embryo expressing nuclear ‐ localized GFP under a ubiquitous promoter (transgenic line EFA ‐ nGFP). Stacks were recorded every 12 minutes at 10x magnification and 20°C. After synchronous cell divisions, the embryonic anlagen condense and give rise to germ ‐ rudiment that progressively becomes covered by the extending serosa. The germ ‐ band extends posteriorly, bending around the posterior pole. Anterior to the left.",
 	],
 	"reference":[
-		"http://dev.biologists.org/content/early/2017/02/21/dev.136853",	
+		"http://dev.biologists.org/content/early/2017/02/21/dev.136853",
 	],
 	"DOI":[
 		"10.1242/dev.136853",
@@ -96,7 +96,7 @@ var datasets = [
 
 {
 	"path":[
-		"images/tribolium/",
+		"/images/tribolium/",
 	],
 	"name":[
 		"Tribolium - Comparison of 3 embryos",
@@ -112,17 +112,18 @@ var datasets = [
 		"Entire embryo",
 	],
 	"preview":[
-		"images/tribolium/combined_0153.png",
+		"/images/tribolium/combined_0153.png",
 	],
 	"species":[
 		"Tribolium castaneum",
 		"Wild-Type",
+    "---test---"
 	],
 	"description":[
 		"2 hours Time ‐ lapse fluorescence recording of a Tribolium embryo expressing nuclear ‐ localized GFP under a ubiquitous promoter (transgenic line EFA ‐ nGFP). Stacks were recorded every 12 minutes at 10x magnification and 20°C. After synchronous cell divisions, the embryonic anlagen condense and give rise to germ ‐ rudiment that progressively becomes covered by the extending serosa. The germ ‐ band extends posteriorly, bending around the posterior pole. Anterior to the left.",
 	],
 	"reference":[
-		"http://dev.biologists.org/content/early/2017/02/21/dev.136853",	
+		"http://dev.biologists.org/content/early/2017/02/21/dev.136853",
 	],
 	"DOI":[
 		"10.1242/dev.136853",
