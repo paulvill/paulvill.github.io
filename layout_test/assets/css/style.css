@@ -55,3 +55,53 @@ html, body {
   height: 100%;
   text-align: center;
 }
+
+
+/* viewport hide/show demo stuff: */
+
+.hidden {
+  visibility: hidden;
+}
+
+.vp-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 50px;
+}
+.viewport {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  text-align: center;
+}
+
+#v1 {
+  background: red;
+  margin-left: 0px;
+}
+
+#v2 {
+  background: green;
+  margin-left: 10px;
+}
+
+#v3 {
+  background: blue;
+  margin-left: 20px;
+}
+
+
+.viewport h1 {
+  font: 300 32px "_dosis";
+  color: white;
+}
+
+.viewport p {
+  font: 600 18px "_dosis";
+  color: white;
+}
+
+.switcher {
+  margin: 50px;
+}
