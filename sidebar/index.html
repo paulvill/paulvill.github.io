@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>embryo digital atlas</title>
+
+    <link href="assets/css/fonts.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sidebar.css" rel="stylesheet" type="text/css">
+
+    <!-- associated google fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,300i,400,400i,700,700i|Dosis:200,300,400,500,600,700,800|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
+
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="control">
+        <label for="visible-channels-box"class="title">
+          Visible Channels
+        </label>
+        <input class="trigger hidden" id="visible-channels-box" type="checkbox">
+          <div class="panel">
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch1" class="input-square">
+              <label for="ch1" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="nuclei-bar" class="inner-bar"></div>
+                </div>
+                <label>nuclei</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch2" class="input-square">
+              <label for="ch2" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="dperk-bar" class="inner-bar"></div>
+                </div>
+                <label>dpERK</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch3" class="input-square">
+              <label for="ch3" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="twist-bar" class="inner-bar"></div>
+                </div>
+                <label>twist</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch4" class="input-square">
+              <label for="ch4" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="dorsal-bar" class="inner-bar"></div>
+                </div>
+                <label>dorsal</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch5" class="input-square">
+              <label for="ch5" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="ind-bar" class="inner-bar"></div>
+                </div>
+                <label>ind</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch6" class="input-square">
+              <label for="ch6" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="rhomboid-bar" class="inner-bar"></div>
+                </div>
+                <label>rhomboid</label>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="control">
+        <label for="motion-box"class="title">
+          Motion
+        </label>
+        <input class="trigger hidden" id="motion-box" type="checkbox">
+        <div class="panel">
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <div class="input-square restart-playback">
+                    <img src="./assets/images/restart-26.png">
+                  </div>
+                  <div class="input-square toggle-playback">
+                    <img src="./assets/images/icon-play-64.png">
+                  </div>
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>playback</label>
+              </div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch7" class="input-square">
+              <label for="ch7" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="speed-bar" class="inner-bar"></div>
+                </div>
+                <label>speed</label>
+              </div>
+            </div>
+            <div class="input-container">
+              <div class="inline-container">
+                <input type="checkbox" id="ch8" class="input-square">
+                <label for="ch8" class="checkbox-label"></label>
+              </div>
+              <label>auto-orbit</label>
+            </div>
+        </div>
+      </div>
+      <div class="control"> <!-- Orthoslices Panel -->
+        <label for="view-box"class="title">
+          View
+        </label>
+        <input class="trigger hidden" id="view-box" type="checkbox">
+        <div class="panel">
+          <label for="orthoslices-box"class="sub-title">
+            Orthoslices
+          </label>
+          <input class="trigger hidden" id="orthoslices-box" type="checkbox">
+          <div class="panel">
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>xy plane</label>
+              </div>
+            </div>
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>yz plane</label>
+              </div>
+            </div>
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>xz plane</label>
+              </div>
+            </div>
+          </div><!-- end orthoslices panel-->
+          <label for="rotation-box"class="sub-title">
+            Rotation
+          </label>
+          <input class="trigger hidden" id="rotation-box" type="checkbox">
+          <div class="panel"><!--Rotation Panel-->
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>x axis</label>
+              </div>
+            </div>
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>y axis</label>
+              </div>
+            </div>
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+                <label>z axis</label>
+              </div>
+            </div>
+          </div><!--end Rotation panel-->
+          <div class="view-footer">
+            <button>Reset View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="assets/js/external/lodash.min.js"></script>
+  <script src="assets/js/external/jquery.min.js"></script>
+  <script src="assets/js/site/main.js"></script>
+
+</html>

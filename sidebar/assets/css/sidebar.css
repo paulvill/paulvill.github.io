@@ -1,0 +1,233 @@
+.sidebar {
+  background: rgba(44,44,44,1)
+}
+
+.sidebar .control { margin: 0; }
+
+.sidebar .control .title {
+  background: rgba(168,168,168,1);
+  display: block;
+  position: relative;
+  font-size: 1rem;
+  color: black;
+  height: 20px;
+  width: 200px;
+  line-height: 20px;
+  padding: 0.2rem;
+  margin: 0;
+}
+
+.sidebar .control .sub-title {
+  background: black;
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+.sidebar label { color: white; }
+
+.sidebar input.trigger {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: -9999px;
+  left: -9999px'
+  z-index: 1;
+}
+
+.sidebar input.trigger ~ .panel {
+  -webkit-transition: height 0.1s, padding 0.1s ease-in-out;
+  transition: height 0.1s, padding 0.1s ease-in-out;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar input.trigger:checked ~ .panel {
+  height: 0;
+  padding: 0 15px 0 15px;
+}
+
+.sidebar .inline-container { height: 100%; }
+
+.sidebar .inline-container > * {
+  display: block;
+  float: left;
+}
+
+.sidebar .input[type=range], .input-square{
+  height: 20px;
+  width: 20px;
+  background: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 0.7rem;
+  padding: 4px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.sidebar .slider.bar {
+  position: relative;
+  height: 20px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+}
+
+.sidebar .outer-bar {
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar .slider.bar label {
+  margin-left: -20px;
+}
+
+.sidebar .inner-bar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.sidebar .input-container {
+  height: 20px;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.sidebar .playback-container { height: 20px }
+
+#nuclei-bar {
+  background: rgba(104,109, 118, 1);
+}
+
+#dperk-bar {
+  background: rgba(157,136, 91, 1)
+}
+
+#twist-bar {
+  background: rgba(156,180, 180, 1)
+}
+
+#dorsal-bar {
+  background: rgba(104,109, 118, 1)
+}
+
+#ind-bar {
+  background: rgba(91,122, 117, 1)
+}
+
+#rhomboid-bar {
+  background: rgba(99,81, 53, 1)
+}
+
+#speed-bar {
+  background: rgba(104,109, 118, 1)
+}
+
+
+
+/*Custom Slider Overrides*/
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /* Hides the slider so custom styles can be added */
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 24px;
+  width: 4px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */*/
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 24px;
+  width: 4px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 24px;
+  width: 4px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]{
+  width: calc(100% - 40px);
+  height: 2px;
+  border: none;
+  margin: 0;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.sidebar img {
+  width: 100%;
+  height: auto;
+}
+
+/*custom checkboxes*/
+
+.sidebar input[type=checkbox].input-square {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+
+}
+.sidebar input[type=checkbox].input-square ~ .checkbox-label {
+  height: 20px;
+  width: 20px;
+  background: white;
+}
+
+.sidebar input[type=checkbox]:checked.input-square ~ .checkbox-label::after {
+  content: "X";
+  color: black;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  text-align: center;
+}
+
+.sidebar .view-footer {
+  height: 60px;
+}
+
+.sidebar .view-footer button {
+  height: 20px;
+  width: 40px;
+}
