@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <title>embryo digital atlas</title>
  <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
     <link href="assets/css/fonts.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../sidebar/assets/css/sidebar.css" rel="stylesheet" type="text/css">
 
     <!-- associated google fonts -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,300i,400,400i,700,700i|Dosis:200,300,400,500,600,700,800|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
@@ -16,50 +16,250 @@
   </head>
 
   <body>
-
-      <div class="control">
-          <div class="title">
-              <h1>visible channels</h1>
-          </div>
+    <div class="sidebar">
+      <div class="control"><!--visible channels control -->
+        <input class="trigger hidden" id="visible-channels-box" type="checkbox">
+        <label for="visible-channels-box"class="title">
+          Visible Channels
+          <div class="collapse-indicator"></div>
+        </label>
           <div class="panel">
-              <p>nuclei</p>
-              <p>dpERK</p>
-              <p>twist</p>
-              <p>dorsal</p>
-          </div>
-    <!--Legend Side Modal Trigger -->
-            <div class="legend">
-                <h1 data-target="legend"> <a href="#" style="color:#b1dcfb;" data-activates="slide-out" class="button-collapse">?</a></h1>
-                <div id="slide-out" class="side-nav">
-                    <div class="container userView">
-                        <div class="row">
-                            <div class="col s12">
-                                <h5>For All Views</h5> 
-                                    <ul>
-                                        <li>right/left arrow: forward/backward in time</li>
-                                        <li>up/down arrow: zoom in/out</li>
-                                    </ul>
-                            </div>
-                            <div class="col s12">
-                                    <h5>For Used Views</h5>      
-                                        <p><strong>space bar/double click: </strong>change between the channels</p>
-                            </div>
-                            <div class="col s12">
-                                <h5>For Exploded Views</h5>
-                                    <p>'O','K': distance between the planes</p>
-                            </div>
-                                <div class="col s12">
-                                <h5>For 3D view - orthoslices</h5>
-                                    <p>'O','K','L','P': move the planes vertically and horizontally</p>
-                            </div>
-                        </div>
-                        </div>
-                </div>       
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch1" class="input-square">
+              <label for="ch1" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="nuclei-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">nuclei</label>
             </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch2" class="input-square">
+              <label for="ch2" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="dperk-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">dpERK</label>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch3" class="input-square">
+              <label for="ch3" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="twist-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">twist</label>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch4" class="input-square">
+              <label for="ch4" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="dorsal-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">dorsal</label>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch5" class="input-square">
+              <label for="ch5" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="ind-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">ind</label>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch6" class="input-square">
+              <label for="ch6" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="rhomboid-bar" class="inner-bar"><div class="bar-reading">Strength: 100%</div></div>
+                </div>
+              </div>
+              <label class="slider-label">rhomboid</label>
+            </div>
+          </div>
+      </div> <!-- end visible channels control -->
+      <div class="control"> <!--motion control -->
+        <input class="trigger hidden" id="motion-box" type="checkbox">
+        <label for="motion-box"class="title">
+          Motion
+          <div class="collapse-indicator"></div>
+        </label>
+        <div class="panel">
+            <div class="slider playback thin">
+              <div class="input-container">
+                <div class="inline-container">
+                  <div class="input-square restart-playback">
+                    <img src="../sidebar/assets/images/restart-26.png">
+                  </div>
+                  <div class="input-square toggle-playback">
+                    <img src="../sidebar/assets/images/icon-play-64.png">
+                  </div>
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">playback</label>
+              <div id="playback-tracking"class="slider-reading">0.00 / 0.00</div>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch7" class="input-square">
+              <label for="ch7" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="speed-bar" class="inner-bar"><div class="bar-reading">2x</div></div>
+                </div>
+              </div>
+              <label class="slider-label">speed</label>
+            </div>
+            <div class="input-container inline-container">
+              <input type="checkbox" id="ch8" class="input-square">
+              <label for="ch8" class="checkbox-label"></label>
+              <div class="slider bar">
+                <div class="outer-bar">
+                  <div id="orbit-bar" class="inner-bar"><div class="bar-reading">Speed: 2</div></div>
+                </div>
+              </div>
+              <label class="slider-label">auto-orbit</label>
+            </div>
+        </div>
+      </div> <!--end motion control -->
+      <div class="control" id="view-control"> <!-- view  control -->
+        <input class="trigger hidden" id="view-box" type="checkbox">
+        <label for="view-box"class="title">
+          View
+          <div class="collapse-indicator"></div>
+        </label>
+        <div class="panel">
+          <input class="trigger hidden" id="orthoslices-box" type="checkbox">
+          <div class="ortho-container inline-container">
+            <input type="checkbox" id="ch9" class="input-square">
+            <label for="ch9" class="checkbox-label"></label>
+            <label for="orthoslices-box"class="sub-title">
+              Orthoslices
+              <div class="collapse-indicator"></div>
+            </label>
+          </div>
+          <div class="panel"> <!-- Orthoslices Panel -->
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="checkbox" id="ch10" class="input-square">
+                  <label for="ch10" class="checkbox-label"></label>
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">xy plane</label>
+              <div id="xy-plane-reading" class="slider-reading">0.0000mm</div>
+            </div>
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="checkbox" id="ch11" class="input-square">
+                  <label for="ch11" class="checkbox-label"></label>
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">yz plane</label>
+              <div id="yz-plane-reading" class="slider-reading">0.0000mm</div>
+            </div>
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="checkbox" id="ch12" class="input-square">
+                  <label for="ch12" class="checkbox-label"></label>
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">xz plane</label>
+              <div id="xz-plane-reading" class="slider-reading">0.0000mm</div>
+            </div>
+          </div><!-- end orthoslices panel-->
+          <div class="input-container inline-container">
+            <div class="slider bar" id="zoom-slider">
+              <div class="outer-bar">
+                <div id="zoom-bar" class="inner-bar"><div class="bar-reading">1</div></div>
+              </div>
+            </div>
+            <label class="slider-label">zoom</label>
+          </div>
+          <input class="trigger hidden" id="rotation-box" type="checkbox">
+          <label for="rotation-box" class="sub-title">
+            Rotation
+            <div class="collapse-indicator"></div>
+          </label>
+          <div class="panel"><!--Rotation Panel-->
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">x axis</label>
+              <div id="x-axis-reading" class="slider-reading">0°</div>
+            </div>
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">y axis</label>
+              <div id="y-axis-reading" class="slider-reading">0°</div>
+            </div>
+            <div class="slider thin">
+              <div class="input-container">
+                <div class="range-container inline-container">
+                  <input type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+              <label class="slider-label">z axis</label>
+              <div id="z-axis-reading" class="slider-reading">0°</div>
+            </div>
+          </div><!--end Rotation panel-->
+          <div class="view-footer"> <!-- sidebar footer -->
+            <button>Reset View</button>
+          </div>
+        </div>
+      </div> <!-- end view  control -->
+    </div>
 
-   </div>
-
-
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
+    <!--Legend Side Modal Trigger -->
+    <div class="legend">
+        <h1 data-target="legend"> <a href="#" style="color:#b1dcfb;" data-activates="slide-out" class="button-collapse">?</a></h1>
+        <div id="slide-out" class="side-nav">
+            <div class="container userView">
+                <div class="row">
+                    <div class="col s12">
+                        <h5>For All Views</h5>
+                            <ul>
+                                <li>right/left arrow: forward/backward in time</li>
+                                <li>up/down arrow: zoom in/out</li>
+                            </ul>
+                    </div>
+                    <div class="col s12">
+                            <h5>For Used Views</h5>
+                                <p><strong>space bar/double click: </strong>change between the channels</p>
+                    </div>
+                    <div class="col s12">
+                        <h5>For Exploded Views</h5>
+                            <p>'O','K': distance between the planes</p>
+                    </div>
+                        <div class="col s12">
+                        <h5>For 3D view - orthoslices</h5>
+                            <p>'O','K','L','P': move the planes vertically and horizontally</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
   </body>
 
   <script src="assets/js/external/lodash.min.js"></script>
