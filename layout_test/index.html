@@ -5,7 +5,8 @@
 
     <meta charset="utf-8">
     <title>embryo digital atlas</title>
-
+ <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
     <link href="assets/css/fonts.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 
@@ -26,11 +27,45 @@
               <p>twist</p>
               <p>dorsal</p>
           </div>
-      </div>
+    <!--Legend Side Modal Trigger -->
+            <div class="legend">
+                <h1 data-target="legend"> <a href="#" style="color:#b1dcfb;" data-activates="slide-out" class="button-collapse">?</a></h1>
+                <div id="slide-out" class="side-nav">
+                    <div class="container userView">
+                        <div class="row">
+                            <div class="col s12">
+                                <h5>For All Views</h5> 
+                                    <ul>
+                                        <li>right/left arrow: forward/backward in time</li>
+                                        <li>up/down arrow: zoom in/out</li>
+                                    </ul>
+                            </div>
+                            <div class="col s12">
+                                    <h5>For Used Views</h5>      
+                                        <p><strong>space bar/double click: </strong>change between the channels</p>
+                            </div>
+                            <div class="col s12">
+                                <h5>For Exploded Views</h5>
+                                    <p>'O','K': distance between the planes</p>
+                            </div>
+                                <div class="col s12">
+                                <h5>For 3D view - orthoslices</h5>
+                                    <p>'O','K','L','P': move the planes vertically and horizontally</p>
+                            </div>
+                        </div>
+                        </div>
+                </div>       
+            </div>
+
+   </div>
+
+
   </body>
 
   <script src="assets/js/external/lodash.min.js"></script>
   <script src="assets/js/external/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/external/materialize.min.js"></script>
+  <script src="assets/js/site/legend.js"></script>
   <script src="assets/js/site/main.js"></script>
 
 </html>

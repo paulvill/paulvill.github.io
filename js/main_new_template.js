@@ -249,10 +249,10 @@ function onDocumentKeyDown(event) {
 
 		// Page up
 	} else if(keyCode == enums.keyboard.UP_ARROW) {	// ZOOM IN
-		zTranslation += 0.2;
+		zTranslation += 0.02;
 		// Page down
 	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
-		zTranslation -= 0.2;
+		zTranslation -= 0.02;
 	}
 	else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
 		xRotation = 0.0;

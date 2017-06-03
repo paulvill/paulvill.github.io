@@ -1,5 +1,7 @@
 html, body {
   background: rgba(38,38,38,1);
+  margin: 0;
+  padding: 0;
 }
 
 .control {
@@ -60,7 +62,7 @@ html, body {
 /* viewport hide/show demo stuff: */
 
 .hidden {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .vp-wrapper {
@@ -74,6 +76,7 @@ html, body {
   height: 300px;
   position: absolute;
   text-align: center;
+  transition: opacity 1s;
 }
 
 #v1 {
@@ -104,4 +107,42 @@ html, body {
 
 .switcher {
   margin: 50px;
+}
+
+/* json tile filler stuff (dataset footer) */
+
+.data-gallery-wrapper {
+  background: white;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+}
+
+.dataset-tile {
+  width: 200px;
+  margin: 30px;
+}
+
+.dataset-tile .preview {
+  width: 200px;
+  height: 150px;
+  background-size: contain;
+  background-blend-mode: lighten;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(38,38,38,1);
+}
+
+.dataset-tile h1 {
+  font: 600 21px "_dosis";
+}
+
+.dataset-tile dt {
+  font: 600 14px "_dosis";
+  letter-spacing: 0.025em;
+}
+
+.dataset-tile dd {
+  font: 300 14px "_dosis";
+  letter-spacing: 0.075em;
 }
