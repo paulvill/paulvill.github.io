@@ -92,8 +92,8 @@ function initializeScene() {
 	renderer.setClearColor(0xc262626);
 
 	// Get the size of the inner window (content area) to create a full size renderer
-	canvasWidth = window.innerWidth/1.5;
-	canvasHeight = window.innerHeight/1.5;
+	canvasWidth = window.innerWidth/1.25;
+	canvasHeight = window.innerHeight/1.25;
 
 	// Set the renderers size to the content areas size
 	renderer.setSize(canvasWidth, canvasHeight);
@@ -224,23 +224,42 @@ function onDocumentKeyDown(event) {
 			this.currentChannel = 0;
 		}
 
-	} else if(keyCode == enums.keyboard.KEY_W) {	// ROTATE UP
-		xSpeed -= 0.01;
-	} else if(keyCode == enums.keyboard.KEY_S) {	// ROTATE DOWN
-		xSpeed += 0.01;
-	} else if(keyCode == enums.keyboard.KEY_A) {	// ROTATE LEFT
-		ySpeed -= 0.01;
-	} else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
-		ySpeed += 0.01;
-
-	} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
+		} else if(keyCode == enums.keyboard.KEY_W) {	// ROTATE UP
+		// xSpeed -= 0.01;
+		xRotation -= 0.1;
+		} else if(keyCode == enums.keyboard.KEY_S) {	// ROTATE DOWN
+		// xSpeed += 0.01;
+		xRotation += 0.1;
+		} else if(keyCode == enums.keyboard.KEY_A) {	// ROTATE LEFT
+		// ySpeed -= 0.01;
+		yRotation -= 0.1;
+		} else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
+		// ySpeed += 0.01;
+		yRotation += 0.1;
+		} else if(keyCode == enums.keyboard.KEY_P) {	
+		// ySpeed -= 0.01;
+		yTranslation += 0.1;
+		++this.currentVarZ;
+		}  else if(keyCode == enums.keyboard.KEY_L) {	
+		// ySpeed -= 0.01;
+		yTranslation -= 0.1;
+		--this.currentVarZ;
+		} else if(keyCode == enums.keyboard.KEY_O) {	
+		// ySpeed -= 0.01;
+		xTranslation += 0.1;
+		++this.currentVarX;
+		}  else if(keyCode == enums.keyboard.KEY_K) {	
+		// ySpeed -= 0.01;
+		xTranslation -= 0.1;
+		--this.currentVarX;
+		} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// PREVIOUS IMAGE
 		if (this.currentImage > 0) {
 			--this.currentImage;
 		} else {
 			this.currentImage = imageCount - 1;
 		}
 
-	} else if(keyCode == enums.keyboard.RIGHT_ARROW) {	// PREVIOUS IMAGE
+	} else if(keyCode == enums.keyboard.RIGHT_ARROW) {	// NEXT IMAGE
 		if (this.currentImage < imageCount - 1) {
 			++this.currentImage;
 		} else {
@@ -249,17 +268,17 @@ function onDocumentKeyDown(event) {
 
 		// Page up
 	} else if(keyCode == enums.keyboard.UP_ARROW) {	// ZOOM IN
-		zTranslation += 0.02;
+		zTranslation += 0.2;
 		// Page down
 	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
-		zTranslation -= 0.02;
+		zTranslation -= 0.2;
 	}
 	else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
 		xRotation = 0.0;
 		yRotation = 0.0;
 		xSpeed = 0.0;
 		ySpeed = 0.0;
-		zTranslation = 1;
+		zTranslation = 8;
  }
 	selectTexture(this.currentChannel, this.currentImage);
 }
@@ -288,12 +307,7 @@ function onDblClick(event) {
 function animateScene() {
 	//directionalLight.position = camera.position;
 	if (channelLoaded[0]) {
-		// Increase the x, y and z rotation of the cube
-	  // xRotation += xSpeed;
-	  // yRotation += ySpeed;
-	  // boxMesh.rotation.set(xRotation, yRotation, 0.0);
-
-	  // // Apply the the translation along the z axis
+		plane.rotation.set(xRotation, 0.0, yRotation, 'XYZ' );
 	  	plane.position.z = zTranslation;
 		// Map the 3D scene down to the 2D screen (render the frame)
 		renderScene();

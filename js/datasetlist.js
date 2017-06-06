@@ -1,7 +1,13 @@
 var datasets = [
 {
 	"path":[
-		"/images/coloredmovie_4datasets/",
+		"images/coloredmovie_4datasets/",
+		"images/coloredmovie_4datasets/grayscale/nuclei",
+		"images/coloredmovie_4datasets/grayscale/dpERK",
+		"images/coloredmovie_4datasets/grayscale/twist",
+		"images/coloredmovie_4datasets/grayscale/dorsal",
+		"images/coloredmovie_4datasets/grayscale/ind",
+		"images/coloredmovie_4datasets/grayscale/rhomboid",
 	],
 	"name":[
 		"Drosophila Dorso-Ventral patterning",
@@ -10,6 +16,7 @@ var datasets = [
 		"gastrulation",
 	],
 	"staining":[
+		"fused",
 		"nuclei",
 		"dpERK",
 		"Twist",
@@ -41,13 +48,13 @@ var datasets = [
 		"2",
 	],
 	"channels":[
-		"6",
+		"7",
 	],
 	"resolution":[
 		"512",
 		"512",
 	],
-	"time steps":[
+	"timesteps":[
 		"42",
 	],
 	"viewportname":[
@@ -57,7 +64,7 @@ var datasets = [
 
 {
 	"path":[
-		"/images/Tcwt1/",
+		"images/Tcwt1/",
 	],
 	"name":[
 		"Tribolium",
@@ -98,8 +105,8 @@ var datasets = [
 		"478",
 		"268",
 	],
-	"time steps":[
-		"237",
+	"timesteps":[
+		"195",
 	],
 	"viewportname":[
 		"js/tribolium_new_template.js",
@@ -108,7 +115,7 @@ var datasets = [
 
 {
 	"path":[
-		"/images/tribolium/",
+		"images/tribolium/",
 	],
 	"name":[
 		"Tribolium - Comparison of 3 embryos",
@@ -149,7 +156,7 @@ var datasets = [
 		"681",
 		"431",
 	],
-	"time steps":[
+	"timesteps":[
 		"195",
 	],
 	"viewportname":[
@@ -159,7 +166,8 @@ var datasets = [
 
 {
 	"path":[
-		"/images/droso_WT/",
+		"images/droso_WT/Mem_02.tif/",
+		"images/droso_WT/Nuc_02.tif/",
 	],
 	"name":[
 		"Drosophila",
@@ -168,7 +176,7 @@ var datasets = [
 		"gastrulation",
 	],
 	"staining":[
-		"membrane",
+		"membranes",
 		"nuclei",
 	],
 	"microscope":[
@@ -202,7 +210,7 @@ var datasets = [
 		"512",
 		"18",
 	],
-	"time steps":[
+	"timesteps":[
 		"25",
 	],
 	"viewportname":[
