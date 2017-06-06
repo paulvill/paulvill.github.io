@@ -133,6 +133,10 @@ ul.main-nav li {
 	text-transform: lowercase;
 }
 
+ul.main-nav li a {
+  /* padding-bottom: 2px; */
+}
+
 .tagline .strong {
   font-weight: 600;
 }
@@ -155,6 +159,12 @@ header:hover .nav-selector span {
 	border-bottom: 5px solid black;
 	cursor: pointer;
 }
+
+ul.main-nav li a:hover {
+  border-bottom: 3px solid #8521e4;
+}
+
+
 /* Tagline */
 ul.main-nav li.tagline {
 	float: right;

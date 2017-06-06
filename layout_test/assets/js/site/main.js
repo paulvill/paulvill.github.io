@@ -19,7 +19,7 @@ app.load = {
 }
 
 window.addEventListener("DOMContentLoaded", function() {
-  app.load.ellipsis = document.querySelector("#dots")
+  // app.load.ellipsis = document.querySelector("#dots")
   // console.log(ellipsis)
-  if (app.load.ellipsis) window.setInterval(app.load.dots, 100)
+  // if (app.load.ellipsis) window.setInterval(app.load.dots, 100)
 })

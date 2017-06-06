@@ -1,7 +1,13 @@
 [
   {
 	  "path":[
-		  "/images/coloredmovie_4datasets/"
+		  "/images/coloredmovie_4datasets/",
+		  "/images/coloredmovie_4datasets/grayscale/nuclei",
+		  "/images/coloredmovie_4datasets/grayscale/dpERK",
+		  "/images/coloredmovie_4datasets/grayscale/twist",
+		  "/images/coloredmovie_4datasets/grayscale/dorsal",
+		  "/images/coloredmovie_4datasets/grayscale/ind",
+		  "/images/coloredmovie_4datasets/grayscale/rhomboid"
 	  ],
 	  "name":[
 		  "Drosophila Dorso-Ventral patterning"
@@ -10,6 +16,7 @@
 		  "gastrulation"
 	  ],
 	  "staining":[
+      "fused",
 		  "nuclei",
 		  "dpERK",
 		  "Twist",
@@ -41,11 +48,14 @@
 		  "2"
 	  ],
 	  "channels":[
-		  "6"
+		  "7"
 	  ],
 	  "resolution":[
 		  "512",
 		  "512"
+	  ],
+    "timesteps":[
+		  "42"
 	  ]
   },
 
@@ -91,6 +101,9 @@
 	  "resolution":[
 		  "478",
 		  "268"
+	  ],
+	  "timesteps":[
+		  "195"
 	  ]
   },
 
@@ -136,6 +149,61 @@
 	  "resolution":[
 		  "681",
 		  "431"
+	  ],
+	  "timesteps":[
+		  "195"
+	  ]
+
+  },
+
+  {
+	  "path":[
+		  "images/droso_WT/Mem_02.tif/",
+		  "images/droso_WT/Nuc_02.tif/"
+	  ],
+	  "name":[
+		  "Drosophila"
+	  ],
+	  "developmental period":[
+		  "gastrulation"
+	  ],
+	  "staining":[
+		  "membranes",
+		  "nuclei"
+	  ],
+	  "microscope":[
+		  "Two Photo",
+		  "Half of the embryo"
+	  ],
+	  "preview":[
+		  "/images/droso_WT/Nuc_02.tif/t_25_z_11.png"
+	  ],
+	  "species":[
+		  "Drosophila melanogaster",
+		  "Wild-Type"
+	  ],
+	  "description":[
+		  "9 hours 48 min Time ‐ lapse fluorescence recording of a Drosophila embryo with nuclear and membrane staining"
+	  ],
+	  "reference":[
+		  ""
+	  ],
+	  "DOI":[
+		  ""
+	  ],
+	  "dimensions":[
+		  "3"
+	  ],
+	  "channels":[
+		  "2"
+	  ],
+	  "resolution":[
+		  "512",
+		  "512",
+		  "18"
+	  ],
+	  "timesteps":[
+		  "25"
 	  ]
   }
 ]

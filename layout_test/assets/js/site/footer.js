@@ -12,26 +12,24 @@ app.footer = {
       success: (returned_data) => {
         app.dataset_list = returned_data
 
+        // start off by rendering the default scene
+        app.initializeScene();
+        app.animateScene();
+
         makedivs(returned_data, (wrapper) => {
           // callback for when the tiles are all appended
+
 
           _.each($(wrapper).children(), (tile) => {
             tile.addEventListener("click", () => {
 
               var corresponding_dataset = app.dataset_list[tile.dataset.id]
+              app.i = tile.dataset.id;
+              // Initialize the scene
+              app.initializeScene();
 
-              ft.$el.find(".dataset-name").text(corresponding_dataset.name)
-
-
-              /* ---------------------------------- */
-
-              /*
-                 this is where the footer would hook
-                 into the viewport js code, using the
-                 corresponding_dataset var above
-              */
-
-              /* ---------------------------------- */
+              // Animate the scene
+              app.animateScene();
 
               ft.$el.toggleClass("expanded")
             })
