@@ -46,6 +46,12 @@ var datasets = [
 	"resolution":[
 		"512",
 		"512",
+	],
+	"time steps":[
+		"42",
+	],
+	"viewportname":[
+		"js/main_new_template.js",
 	]
 },
 
@@ -91,6 +97,12 @@ var datasets = [
 	"resolution":[
 		"478",
 		"268",
+	],
+	"time steps":[
+		"237",
+	],
+	"viewportname":[
+		"js/tribolium_new_template.js",
 	]
 },
 
@@ -137,7 +149,67 @@ var datasets = [
 	"resolution":[
 		"681",
 		"431",
+	],
+	"time steps":[
+		"195",
+	],
+	"viewportname":[
+		"js/tribolium_3_new_template.js",
 	]
 },
+,
 
+{
+	"path":[
+		"/images/droso_WT/",
+	],
+	"name":[
+		"Drosophila",
+	],
+	"developmental period":[
+		"gastrulation",
+	],
+	"staining":[
+		"membrane",
+		"nuclei",
+	],
+	"microscope":[
+		"Two Photo",
+		"Half of the embryo",
+	],
+	"preview":[
+		"/images/droso_WT/Nuc_02.tif/t_25_z_11.png",
+	],
+	"species":[
+		"Drosophila melanogaster",
+		"Wild-Type",
+    "---test---"
+	],
+	"description":[
+		"9 hours 48 min Time ‐ lapse fluorescence recording of a Drosophila embryo with nuclear and membrane staining",
+	],
+	"reference":[
+		"",
+	],
+	"DOI":[
+		"",
+	],
+	"dimensions":[
+		"3",
+	],
+	"channels":[
+		"2",
+	],
+	"resolution":[
+		"512",
+		"512",
+		"18"
+	],
+	"time steps":[
+		"25",
+	],
+	"viewportname":[
+		"js/volume_rendering.js",
+	]
+},
 ];
