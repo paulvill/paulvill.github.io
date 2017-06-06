@@ -9,6 +9,7 @@ app.footer = {
     $.ajax({
       url: "assets/js/site/dataset_list.json",
       dataType: "json",
+      timeout: 0,
       success: (returned_data) => {
         app.dataset_list = returned_data
 
