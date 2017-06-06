@@ -2,114 +2,291 @@ html, body {
   background: rgba(38,38,38,1);
   margin: 0;
   padding: 0;
+  font: normal 300 1em "_dosis";
+  margin: 0 !important;
+	padding: 0 !important;
+	text-rendering: optimizeLegibility;
 }
 
-.control {
-  margin: 15px 30px;
-  width: 200px;
+/* Links */
+a,
+a:link,
+a:active,
+a:visited {
+	text-decoration: none;
+	border: none;
+	color: #39006f;
+	-webkit-transition: all 0.1s ease-out;
+	-moz-transition: all 0.1s ease-out;
+	-ms-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
 }
-.control .title h1 {font: normal 600 13px "_dosis";letter-spacing: .1em;background: rgba(255,255,255,0.6);text-transform: uppercase;padding: 5px;margin: 0;}
-
-.control .panel {
-  background: rgba(0,0,0,0.2);
-  padding: 15px;
-}
-
-.control .panel p {
-  font: normal 700 13px "_dosis";
-  letter-spacing: .1em;
-  color: white;
-  margin: 0 0 15px 0;
-}
-
-
-/* loading demo stuff: */
-
-.loadwrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-
-}
-.loadwrapper .loading {
-  position: relative;
-  margin-top: 30vh;
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
-  height: 400px;
-  background: url("../images/embryo-loading2.gif");
-  background-color: rgba(38,38,38,1);
-  background-size: cover;
-  background-blend-mode: lighten;
+a:hover {
+	color: #8521e4;
+	border: none;
 }
 
-.loadwrapper .loading p {
-  color: white;
-  font: normal 200 21px "_dosis";
-  position: absolute;
-  margin-top: 45%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
+/* Elements */
+p {
+	margin: 1em 0;
+}
+b,
+strong {
+	font-weight: 700;
+}
+hr {
+	clear: both;
+	visibility: hidden;
+	height: 15px;
+}
+abbr {
+	border-bottom: 1px dotted #333;
+}
+i,
+em {
+	font-style: italic;
+}
+ul {
+	list-style: none;
+}
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Dosis', sans-serif;
+	color: black;
+	margin: 1em 0;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Core classes */
+.nowrap {
+	white-space: nowrap;
+}
+.block {
+	display: block;
+}
+.strong {
+	font-weight: 700;
+}
+
+/* Site Header */
+.sticky-nav {
+	position: fixed;
+	width: 100%;
+	height: auto;
+	z-index: 3;
+	background-color: white;
+}
+header {
+	color: black;
+}
+header .title-wrap {
+	float: right;
+	text-align: right;
+	padding: 0.3em 0;
+}
+header h1 {
+	position: absolute;
+	top: 0.3em;
+	right: 13px;
+	margin: 0;
+  font: normal 200 1.2em "_averia";
+	text-transform: lowercase;
+	color: black;
+	/* letter-spacing: 0.1em; */
+
+}
+header h1 a, header h1 a:link, header h1 a:visited, header h1 a:hover {
+	color: black;
+}
+
+/* Menu */
+nav.main-menu {
+	padding: .7em 15px 0.5em 15px;
+}
+.nav-content  {
+	overflow: hidden;
+	max-height: 0;
+	width: 100%;
+	-webkit-transition: max-height 0.5s ease-out;
+	-moz-transition: max-height 0.5s ease-out;
+	transition: max-height 0.5s ease-out;
+}
+ul.main-nav {
+	margin: 0;
+	padding: 1em 0 1.5em 0;
+	font-weight: 400;
+	letter-spacing: 0.025em;
+}
+ul.main-nav li {
+	margin: 0;
+	display: inline-block;
+	margin-right: 2em;
+	text-transform: lowercase;
+}
+
+.tagline .strong {
+  font-weight: 600;
+}
+
+ul.main-nav li:last-child {
+  margin-right: 0;
+}
+
+.nav-selector {
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 100%;
+	font-size: 1em;
+}
+/* Animating header */
+header:hover .nav-content {
+	max-height: 40px;
+}
+header:hover .nav-selector span {
+	border-bottom: 5px solid black;
+	cursor: pointer;
+}
+/* Tagline */
+ul.main-nav li.tagline {
+	float: right;
+	text-align: right;
+	margin-top: -1em;
+	font-size: 0.8em;
+}
+
+/* Content (text pages) */
+section, .content {
+	font-family: 'Open Sans', sans-serif;
+	background: #e6e6e6;
+	color: #e6e6e6;
+}
+
+/* Footer */
+
+footer {
+	/* background: white; */
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	color: black;
+	padding: 0;
+  height: 40px;
+  /* cursor: pointer; */
+}
+
+.drawer {
+  background: rgb(240,240,240);
+}
+
+.drawer:not(.expanded):hover {
+  height: 50px;
+}
+.expanded .titlebar:hover {
+  background-color: rgb(240,240,240);
+}
+
+.fast-ease {
+  -webkit-transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition:         all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.drawer:hover {
+  background: white;
+}
+
+.expanded {
+  background: white;
+  height: 75vh;
+}
+
+footer .titlebar {
+	height: 40px;
+  cursor: pointer;
+  /* display: inline-block; */
+  /* background: red; */
+  padding: 0 30px;
+}
+.dataset-label {
+	display: inline-block;
+	text-transform: uppercase;
+	padding: 0.7em 0;
+	margin-right: 15px;
+	float:left;
+}
+.dataset-name {
+	text-transform: capitalize;
+	font-weight: 700;
+}
+
+g.arrow {
+  transform: scale(1,-1) translate(0,-33px);
+  transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+footer.expanded g.arrow {
+  transform: scale(1,1) translate(0,9px);
+}
+
+g.arrow polygon {
+  fill: #39006f;
+}
+
+#arrow-line {
+  stroke: #39006f;
 }
 
 
-/* viewport hide/show demo stuff: */
-
-.hidden {
-  opacity: 0;
+/* Upload Button */
+.add-dataset {
+	float: right;
+	position: relative;
+	color: #39006f;
+}
+.btn-label {
+	text-align: right;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	position: absolute;
+	right: 70px;
+	margin-top: 0.2em;
+	width: 100px;
+	font-weight: 500;
+}
+.btn-add {
+	display: block;
+	width: 60px;
+	height: 40px;
+	text-align: center;
+	background: #39006f;
+	right: 0;
+	padding: 0;
+	margin: 0;
+}
+.btn-add:before {
+	content: "+";
+	position: absolute;
+	font-size: 2.5em;
+	color: white;
+	top: -15px;
+	left: 20px;
+}
+.add-dataset:hover {
+	cursor: pointer;
+	color: #8521e4;
+}
+.add-dataset:hover .btn-add {
+	background: #8521e4;
 }
 
-.vp-wrapper {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 50px;
-}
-.viewport {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  text-align: center;
-  transition: opacity 1s;
-}
-
-#v1 {
-  background: red;
-  margin-left: 0px;
-}
-
-#v2 {
-  background: green;
-  margin-left: 10px;
-}
-
-#v3 {
-  background: blue;
-  margin-left: 20px;
-}
-
-
-.viewport h1 {
-  font: 300 32px "_dosis";
-  color: white;
-}
-
-.viewport p {
-  font: 600 18px "_dosis";
-  color: white;
-}
-
-.switcher {
-  margin: 50px;
-}
-
-/* json tile filler stuff (dataset footer) */
 
 .data-gallery-wrapper {
   background: white;
@@ -120,7 +297,29 @@ html, body {
 
 .dataset-tile {
   width: 200px;
-  margin: 30px;
+  margin: 0 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.dataset-tile:hover {
+  /* border: 1px solid black; */
+  left: 2px;
+  bottom: 2px;
+  -webkit-box-shadow: -2px 2px 18px 4px rgba(0,0,0,0.09);
+  -moz-box-shadow:    -2px 2px 18px 4px rgba(0,0,0,0.09);
+  box-shadow:         -2px 2px 18px 4px rgba(0,0,0,0.09);
+}
+.dataset-tile:active {
+  left:1px;
+  bottom: 1px;
+  -webkit-box-shadow: -2px 2px 9px 2px rgba(0,0,0,0.09);
+  -moz-box-shadow:    -2px 2px 9px 2px rgba(0,0,0,0.09);
+  box-shadow:         -2px 2px 9px 2px rgba(0,0,0,0.09);
+}
+
+.dataset-tile:first-child {
+  margin-left: 0;
 }
 
 .dataset-tile .preview {
@@ -131,6 +330,9 @@ html, body {
   background-position: center center;
   background-repeat: no-repeat;
   background-color: rgba(38,38,38,1);
+}
+.dataset-tile .description {
+  padding: 5px;
 }
 
 .dataset-tile h1 {
