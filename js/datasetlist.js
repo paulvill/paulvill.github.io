@@ -129,7 +129,6 @@ var datasets = [
 	"species":[
 		"Tribolium castaneum",
 		"Wild-Type",
-    "---test---"
 	],
 	"description":[
 		"2 hours Time ‐ lapse fluorescence recording of a Tribolium embryo expressing nuclear ‐ localized GFP under a ubiquitous promoter (transgenic line EFA ‐ nGFP). Stacks were recorded every 12 minutes at 10x magnification and 20°C. After synchronous cell divisions, the embryonic anlagen condense and give rise to germ ‐ rudiment that progressively becomes covered by the extending serosa. The germ ‐ band extends posteriorly, bending around the posterior pole. Anterior to the left.",
@@ -157,7 +156,6 @@ var datasets = [
 		"js/tribolium_3_new_template.js",
 	]
 },
-,
 
 {
 	"path":[
@@ -183,7 +181,6 @@ var datasets = [
 	"species":[
 		"Drosophila melanogaster",
 		"Wild-Type",
-    "---test---"
 	],
 	"description":[
 		"9 hours 48 min Time ‐ lapse fluorescence recording of a Drosophila embryo with nuclear and membrane staining",
@@ -203,7 +200,7 @@ var datasets = [
 	"resolution":[
 		"512",
 		"512",
-		"18"
+		"18",
 	],
 	"time steps":[
 		"25",
