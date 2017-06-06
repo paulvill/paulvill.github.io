@@ -158,8 +158,8 @@
 
   {
 	  "path":[
-		  "images/droso_WT/Mem_02.tif/",
-		  "images/droso_WT/Nuc_02.tif/"
+		  "/images/droso_WT/Mem_02.tif/",
+		  "/images/droso_WT/Nuc_02.tif/"
 	  ],
 	  "name":[
 		  "Drosophila"
