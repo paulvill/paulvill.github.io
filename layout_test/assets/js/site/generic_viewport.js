@@ -6,19 +6,16 @@ app = {
 	zTranslation:0.0,
 }
 
-// Global polygon mesh
-// var group, tcurrent,chcurrent;
-
-
-
-
-
 
 /**
 * Initialize the scene
 */
 app.initializeScene = function() {
-  console.log("hellllooooooo! ")
+  console.log("hellllooooooo! ")	
+  	// reset view
+  	app.xRotation=0.0;
+  	app.yRotation=0.0;
+  	app.zRotation=0.0;
 
 	app.channelCount = app.dataset_list[app.i].channels;
 	// const xrange = 512;
@@ -73,6 +70,7 @@ app.initializeScene = function() {
 
 	// Get the DIV element from the HTML document by its ID and append the renderers DOM
 	// object to it
+	document.getElementById("WebGLCanvas").removeChild();
 	document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
   // ^^ it's this line that appends new ones below
 
