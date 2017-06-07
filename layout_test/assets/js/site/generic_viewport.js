@@ -11,7 +11,7 @@ app = {
 * Initialize the scene
 */
 app.initializeScene = function() {
-  console.log("hellllooooooo! ")	
+  	console.log("hellllooooooo! ")	
   	// reset view
   	app.xRotation=0.0;
   	app.yRotation=0.0;
@@ -70,7 +70,7 @@ app.initializeScene = function() {
 
 	// Get the DIV element from the HTML document by its ID and append the renderers DOM
 	// object to it
-	document.getElementById("WebGLCanvas").removeChild();
+	// document.getElementById("WebGLCanvas").removeChild();
 	document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
   // ^^ it's this line that appends new ones below
 
