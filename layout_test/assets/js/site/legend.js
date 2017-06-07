@@ -1,8 +1,14 @@
 $(document).ready(function(){
-     $('#legend').modal();
- $('#legend').modal('open');
-$(".button-collapse").sideNav({
-    menuWidth: 500,
-    edge: 'right', 
+
+// Show popup
+var legend = $('.legend');
+var modal = $('#modal');
+var close = $('.close');
+
+legend.click(function(){
+  modal.show('slow');
+  close.click(function(){
+    modal.fadeOut('slow');
+  });
 });
  });

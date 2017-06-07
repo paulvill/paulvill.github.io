@@ -146,3 +146,97 @@ html, body {
   font: 300 14px "_dosis";
   letter-spacing: 0.075em;
 }
+
+/*Legend Styles */
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width:70%;
+  text-align: center;
+}
+
+a{
+  color:#b1dcfb;
+  text-decoration:none;
+}
+h4.legend-title {
+  color: darkcyan;
+}
+li{
+  list-style-type:none;
+  }
+.legend {
+  color: #fff;
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+  display: table; 
+}
+
+.legend:hover {
+  color: #000;
+  transition: all ease .5s;
+}
+
+#modal {
+  background-color: #ededed;
+  color: #474c4a;
+  padding: 20px;
+  border-radius: 4px;
+  /* Width of modal */
+  width: 40%;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  right:10%;
+  display: none;
+  box-sizing: border-box;
+}
+
+#modal p {
+  
+  overflow: auto;
+}
+
+#modal .close {
+  background-color: #b1dcfb;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 50%;
+}
+.highlight {
+  font-weight: bold;
+  color:darkslategray;
+}
+
+.userView {
+  margin:0 auto;
+  text-align:center;
+}
+
+@media (max-width: 680px){
+  #modal {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 380px){
+  #modal {
+    width: 90%;
+    top: 5%;
+    left: 5%;
+  }
+}
+
+/*End Legend Styles */
