@@ -72,9 +72,7 @@ app.initializeScene = function() {
 	// object to it
 	// document.getElementById("WebGLCanvas").removeChild();
 
-	if (document.getElementById("WebGLCanvas").length == 0){
-		document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
-	}
+	document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
   // ^^ it's this line that appends new ones below
 
 	// Create the scene, in which all objects are stored
