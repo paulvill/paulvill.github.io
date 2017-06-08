@@ -74,6 +74,8 @@ app.initializeScene = function() {
 	var children =  document.getElementById("WebGLCanvas").childElementCount;
 	if (children == 0){
 		document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
+	} else {
+		document.getElementById("WebGLCanvas").firstChild = app.renderer.domElement;
 	}
   // ^^ it's this line that appends new ones below
 
