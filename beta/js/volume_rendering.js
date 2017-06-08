@@ -9,6 +9,8 @@ var geometry, mesh, group, tcurrent,chcurrent;
 var scene;
 // Global camera object
 var camera;
+
+var controls; 
 // The cube has to rotate around all three axes, so we need three rotation values.
 // x, y and z rotation
 var xRotation = 0.0;
@@ -28,7 +30,7 @@ var zTranslation = 0;
 var isDragging = false;
 var previousMousePosition = {
     x: 0,
-    y: 0
+    y: 0,
 };
 
 const channelCount = 2;
@@ -89,6 +91,8 @@ var slider;
 // Initialize the scene
 initializeScene();
 
+orbitControls(); 
+
 // Instead of calling 'renderScene()', we call a new function: 'animateScene()'. It will
 // update the rotation values and call 'renderScene()' in a loop.
 // Animate the scene
@@ -132,6 +136,7 @@ scene = new THREE.Scene();
 
 camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 1, 100);
 camera.position.set(0, 0, 10);
+
 camera.lookAt(scene.position);
 scene.add(camera);
 
@@ -185,44 +190,6 @@ tcurrent = 0;
 chcurrent = 0;
 scene.add(group[chcurrent * imageCountZ +tcurrent]);
 
-// var planeVertMaterial = new THREE.MeshBasicMaterial({ 
-// // map:neheTexture,
-// side:THREE.DoubleSide,
-// transparent:true,
-// depthWrite:false,
-// blending:THREE.AdditiveBlending
-// });
-// // planeVertMaterial.blending = THREE.AdditiveBlending;
-// // planeVertMaterial.blending = THREE.CustomBlending;
-// // planeVertMaterial.blendEquation = THREE.AddEquation; //default
-// // planeVertMaterial.blendSrc = THREE.SrcAlpha; //default
-// // planeVertMaterial.blendDst = THREE.OneFactor; //default
-
-// // plane
-// planeVert = new THREE.Mesh(new THREE.PlaneGeometry(8, 8),planeVertMaterial);
-// planeVert.material.map = textureArrayX[0];
-
-// planeVert.overdraw = true;
-
-// scene.add(planeVert);
-
-
-
-// var planeHorizMaterial = new THREE.MeshBasicMaterial({ 
-// 	side:THREE.DoubleSide,
-// 	transparent:true,
-// 	depthWrite:false
-// });
-
-// planeHorizMaterial.blending = THREE.AdditiveBlending;
-// // plane
-// planeHoriz = new THREE.Mesh(new THREE.PlaneGeometry(1, 1),planeHorizMaterial);
-// planeHoriz.material.map = textureArrayZ[0];
-// // planeHoriz.rotationX(Math.PI / 2 );
-// planeHoriz.overdraw = true;
-
-// scene.add(planeHoriz);
-
 
 // Add a listener for 'keydown' events. By this listener, all key events will be
 // passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -235,11 +202,6 @@ document.addEventListener("input", onSlide, false);
 
 document.addEventListener('dblclick', onDblClick, false); 
 
-document.addEventListener('mousedown', mouseDown, false); 
-
-document.addEventListener('mousemove', mouseMove, false); 
-
-document.addEventListener('mouseup', mouseUp, false); 
 
 }
 
@@ -331,12 +293,7 @@ else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
 	xTranslation = 0;
 	yTranslation = 0;
 	zTranslation = 0;
-	// planeHoriz.position.x = 0;
-	// planeHoriz.position.y = 0;
-	// planeHoriz.position.z = 0;
-	// planeVert.position.x = 0;
-	// planeVert.position.y = 0;
-	// planeVert.position.z = 0;
+
 }
 selectTexture(this.currentChannel, this.currentTStep);
 }
@@ -360,64 +317,11 @@ function onDblClick(event) {
 }
 
 
-function mouseDown(event) {
-	isDragging = true;
-	console.log("mouse down");
-}
 
-function mouseMove(event) {
-	if (isDragging){
-		xRotation += 0.1;
-		yRotation += 0.1;
-		console.log("mouse drag");
-	}
-
-}
-
-function mouseUp(event) {
-	isDragging = false;
-	console.log("mouse up");
-}
-
-// 'mousedown', mouseDown, false); 
-
-// document.addEventListener('mousemove', mouseMove, false); 
-
-// document.addEventListener('mouseup', mouseUp,
-
-// $(renderer.domElement).on('mousedown', function(e) {
-//     isDragging = true;
-// })
-// .on('mousemove', function(e) {
-//     //console.log(e);
-//     var deltaMove = {
-//         x: e.offsetX-previousMousePosition.x,
-//         y: e.offsetY-previousMousePosition.y
-//     };
-
-//     if(isDragging) {
-            
-//         var deltaRotationQuaternion = new three.Quaternion()
-//             .setFromEuler(new three.Euler(
-//                 toRadians(deltaMove.y * 1),
-//                 toRadians(deltaMove.x * 1),
-//                 0,
-//                 'XYZ'
-//             ));
-        
-//         group[chcurrent * imageCountZ +tcurrent].quaternion.multiplyQuaternions(deltaRotationQuaternion, cube.quaternion);
-//     }
-    
-//     previousMousePosition = {
-//         x: e.offsetX,
-//         y: e.offsetY
-//     };
-// });
-
-
-// $(document).on('mouseup', function(e) {
-//     isDragging = false;
-// });
+function orbitControls() { 
+     // add the controls 
+     controls = new THREE.OrbitControls( camera, renderer.domElement ); 
+} 
 
 
 /**
@@ -436,6 +340,10 @@ renderScene();
 // browser tab is not visible, the animation is paused. So 'animateScene()' is called
 // in a browser controlled loop.
 requestAnimationFrame(animateScene);
+if (controls != null && typeof controls != 'undefined') {
+	controls.update(); 
+}
+
 }
 
 /**
