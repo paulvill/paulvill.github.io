@@ -15,6 +15,8 @@ app = {
 // Initialize the scene
 initializeScene();
 
+
+
 // Animate the scene
 animateScene();
 
@@ -93,6 +95,8 @@ function initializeScene() {
 					app.textureArray[ch * app.imageCount + tstep*app.zrange + zval] = textureLoader.load(datasets[app.i].path[ch].concat("t_", tstep+1,"_z_",zval+1,".png")); 
 				}
 			}
+		// Set the controls for camera
+		orbitControls();
 		}
 	}else{
 		for (ch = 0; ch < app.channelCount; ++ch) {
@@ -240,6 +244,11 @@ function onDblClick(event) {
 	selectTexture(this.currentChannel, this.currentTStep);
 }
 
+function orbitControls() { 
+     // add the controls 
+     app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement ); 
+} 
+
 /**
 * Animate the scene and call rendering.
 */
@@ -256,6 +265,9 @@ if (app.channelLoaded[0]) {
 // browser tab is not visible, the animation is paused. So 'animateScene()' is called
 // in a browser controlled loop.
 requestAnimationFrame(animateScene);
+if (app.controls != null && typeof app.controls != 'undefined') {
+	app.controls.update(); 
+}
 }
 
 /**
