@@ -24,6 +24,13 @@ var xTranslation = 0;
 var yTranslation = 0;
 var zTranslation = 0;
 
+// Mouse interaction
+var isDragging = false;
+var previousMousePosition = {
+    x: 0,
+    y: 0
+};
+
 const channelCount = 2;
 const xrange = 512;
 const yrange = 512;
@@ -228,6 +235,12 @@ document.addEventListener("input", onSlide, false);
 
 document.addEventListener('dblclick', onDblClick, false); 
 
+document.addEventListener('mousedown', mouseDown, false); 
+
+document.addEventListener('mousemove', mouseMove, false); 
+
+document.addEventListener('mouseup', mouseUp, false); 
+
 }
 
 /**
@@ -346,6 +359,67 @@ function onDblClick(event) {
 	selectTexture(this.currentChannel, this.currentTStep);
 }
 
+
+function mouseDown(event) {
+	isDragging = true;
+	console.log("mouse down");
+}
+
+function mouseMove(event) {
+	if (isDragging){
+		xRotation += 0.1;
+		yRotation += 0.1;
+		console.log("mouse drag");
+	}
+
+}
+
+function mouseUp(event) {
+	isDragging = false;
+	console.log("mouse up");
+}
+
+// 'mousedown', mouseDown, false); 
+
+// document.addEventListener('mousemove', mouseMove, false); 
+
+// document.addEventListener('mouseup', mouseUp,
+
+// $(renderer.domElement).on('mousedown', function(e) {
+//     isDragging = true;
+// })
+// .on('mousemove', function(e) {
+//     //console.log(e);
+//     var deltaMove = {
+//         x: e.offsetX-previousMousePosition.x,
+//         y: e.offsetY-previousMousePosition.y
+//     };
+
+//     if(isDragging) {
+            
+//         var deltaRotationQuaternion = new three.Quaternion()
+//             .setFromEuler(new three.Euler(
+//                 toRadians(deltaMove.y * 1),
+//                 toRadians(deltaMove.x * 1),
+//                 0,
+//                 'XYZ'
+//             ));
+        
+//         group[chcurrent * imageCountZ +tcurrent].quaternion.multiplyQuaternions(deltaRotationQuaternion, cube.quaternion);
+//     }
+    
+//     previousMousePosition = {
+//         x: e.offsetX,
+//         y: e.offsetY
+//     };
+// });
+
+
+// $(document).on('mouseup', function(e) {
+//     isDragging = false;
+// });
+
+
 /**
 * Animate the scene and call rendering.
 */
@@ -353,7 +427,7 @@ function animateScene() {
 //directionalLight.position = camera.position;
 if (channelLoaded[0]) {
 // Map the 3D scene down to the 2D screen (render the frame)
-group[chcurrent * imageCountZ +tcurrent].rotation.set(xRotation+initialRotation, 0.0, yRotation, 'XYZ' );
+group[chcurrent * imageCountZ +tcurrent].rotation.set(xRotation, 0.0, yRotation, 'XYZ' );
 group[chcurrent * imageCountZ +tcurrent].position.z = zTranslation;
 renderScene();
 }
