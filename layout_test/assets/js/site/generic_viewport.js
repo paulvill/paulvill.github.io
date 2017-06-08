@@ -71,8 +71,10 @@ app.initializeScene = function() {
 	// Get the DIV element from the HTML document by its ID and append the renderers DOM
 	// object to it
 	// document.getElementById("WebGLCanvas").removeChild();
-
-	document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
+	var children =  document.getElementById("WebGLCanvas").childElementCount;
+	if (children == 0){
+		document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
+	}
   // ^^ it's this line that appends new ones below
 
 	// Create the scene, in which all objects are stored
@@ -243,6 +245,7 @@ app.onDblClick = function(event) {
 app.orbitControls = function(event) { 
      // add the controls 
      app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement ); 
+     log.console("setting orbit controls")
 } 
 
 
