@@ -318,14 +318,15 @@ g.arrow polygon {
   background: white;
   width: 100%;
   padding: 30px;
-  display: flex;
+  /* display: flex; */
 }
 
 .dataset-tile {
   width: 200px;
-  margin: 0 15px;
+  margin: 0 15px 15px 0;
   position: relative;
   cursor: pointer;
+  float:left;
 }
 
 .dataset-tile:hover {
