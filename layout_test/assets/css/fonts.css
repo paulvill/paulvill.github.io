@@ -3,9 +3,46 @@ html {
 }
 
 /* add @font-face rules here */
+
+
+/* AVERIA */
+
+@font-face {
+  font-family: "_averia";
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-Regular.ttf");
+}
+@font-face {
+  font-family: "_averia";
+  font-style: italic;
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-Italic.ttf");
+}
+@font-face {
+  font-family: "_averia";
+  font-weight: 200;
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-Light.ttf");
+}
+@font-face {
+  font-family: "_averia";
+  font-weight: 200;
+  font-style: italic;
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-LightItalic.ttf");
+}
+@font-face {
+  font-family: "_averia";
+  font-weight: 600;
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf");
+}
+@font-face {
+  font-family: "_averia";
+  font-weight: 600;
+  font-style: italic;
+  src: url("../fonts/Averia_Serif_Libre/AveriaSerifLibre-BoldItalic.ttf");
+}
+/* DOSIS */
+
 @font-face {
   font-family: "_dosis";
-  src: url("../fonts/Dosis/Dosis-Regular.ttf")
+  src: url("../fonts/Dosis/Dosis-Regular.ttf");
 }
 
 @font-face {
