@@ -187,7 +187,6 @@ section, .content {
 
 footer {
 	/* background: white; */
-	overflow: scroll;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -195,6 +194,11 @@ footer {
 	padding: 0;
 	height: 40px;
 	/* cursor: pointer; */
+}
+
+footer.expanded {
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .footwrap {
