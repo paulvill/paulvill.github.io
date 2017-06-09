@@ -4,7 +4,8 @@ app.footer = {
   $el: $("footer"),
   init: function() {
     var ft = app.footer
-   ft.$el.children(".titlebar").click(footer_hs)
+    ft.$el.find(".titlebar").click(footer_hs)
+    console.log( ft.$el.find(".titlebar"))
 
     $.ajax({
       url: "assets/js/site/dataset_list.json",
@@ -25,6 +26,10 @@ app.footer = {
             tile.addEventListener("click", () => {
 
               var corresponding_dataset = app.dataset_list[tile.dataset.id]
+
+              ft.$el.find(".dataset-name").text(corresponding_dataset.name)
+
+
               app.i = tile.dataset.id;
               // Initialize the scene
               app.initializeScene();
@@ -59,7 +64,8 @@ document.addEventListener("DOMContentLoaded", app.footer.init)
 
 
 function footer_hs() {
-  $(this).parent("footer").toggleClass("expanded")
+  console.log(this)
+  $(this).parents("footer").toggleClass("expanded")
 }
 
 

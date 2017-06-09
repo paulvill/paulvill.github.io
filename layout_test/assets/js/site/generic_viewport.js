@@ -11,7 +11,7 @@ app = {
 * Initialize the scene
 */
 app.initializeScene = function() {
-  	console.log("hellllooooooo! ")	
+  	console.log("hellllooooooo! ")
   	// reset view
   	app.xRotation=0.0;
   	app.yRotation=0.0;
@@ -62,8 +62,8 @@ app.initializeScene = function() {
 	app.renderer.setClearColor(0xc262626);//(0xc8c8c8);
 
 	// Get the size of the inner window (content area) to create a full size renderer
-	canvasWidth = window.innerWidth/1.25;
-	canvasHeight = window.innerHeight/1.25;
+	canvasWidth = window.innerWidth;
+	canvasHeight = window.innerHeight;
 
 	// Set the renderers size to the content areas size
 	app.renderer.setSize(canvasWidth, canvasHeight);
@@ -77,7 +77,7 @@ app.initializeScene = function() {
 	} else {
 		console.log(11);
 		while (document.getElementById("WebGLCanvas").firstChild) {
-		document.getElementById("WebGLCanvas").removeChild(document.getElementById("WebGLCanvas").firstChild) 
+		document.getElementById("WebGLCanvas").removeChild(document.getElementById("WebGLCanvas").firstChild)
 		}
 		console.log(22);
 		document.getElementById("WebGLCanvas").appendChild(app.renderer.domElement);
@@ -250,11 +250,11 @@ app.onDblClick = function(event) {
 	app.selectTexture(this.currentChannel, this.currentTStep);
 }
 
-app.orbitControls = function(event) { 
-     // add the controls 
-     app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement ); 
+app.orbitControls = function(event) {
+     // add the controls
+     app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement );
      console.log("setting orbit controls")
-} 
+}
 
 
 /**
@@ -274,7 +274,7 @@ if (app.channelLoaded[0]) {
 // in a browser controlled loop.
 requestAnimationFrame(app.animateScene);
 if (app.controls != null && typeof app.controls != 'undefined') {
-	app.controls.update(); 
+	app.controls.update();
 }
 }
 
