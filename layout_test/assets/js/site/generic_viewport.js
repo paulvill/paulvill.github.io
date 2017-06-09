@@ -253,7 +253,7 @@ app.onDblClick = function(event) {
 app.orbitControls = function(event) { 
      // add the controls 
      app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement ); 
-     log.console("setting orbit controls")
+     console.log("setting orbit controls")
 } 
 
 
