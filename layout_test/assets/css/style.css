@@ -359,13 +359,161 @@ g.arrow polygon {
   letter-spacing: 0.075em;
 }
 
+/*Control Navigation Section */
+
+.control {
+  margin: 15px 30px;
+  width: 200px;
+  float:left;
+}
+.control .title h1 {font: normal 600 13px "_dosis";letter-spacing: .1em;background: rgba(255,255,255,0.6);text-transform: uppercase;padding: 5px;margin: 0;}
+
+.control .panel {
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
+}
+
+.control .panel p {
+  font: normal 700 13px "_dosis";
+  letter-spacing: .1em;
+  color: white;
+  margin: 0 0 15px 0;
+}
+
+
+/* loading demo stuff: */
+
+.loadwrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+}
+.loadwrapper .loading {
+  position: relative;
+  margin-top: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 400px;
+  background: url("../images/embryo-loading2.gif");
+  background-color: rgba(38,38,38,1);
+  background-size: cover;
+  background-blend-mode: lighten;
+}
+
+.loadwrapper .loading p {
+  color: white;
+  font: normal 200 21px "_dosis";
+  position: absolute;
+  margin-top: 45%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+
+/* viewport hide/show demo stuff: */
+
+.hidden {
+  opacity: 0;
+}
+
+.vp-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 50px;
+}
+.viewport {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  text-align: center;
+  transition: opacity 1s;
+}
+
+#v1 {
+  background: red;
+  margin-left: 0px;
+}
+
+#v2 {
+  background: green;
+  margin-left: 10px;
+}
+
+#v3 {
+  background: blue;
+  margin-left: 20px;
+}
+
+
+.viewport h1 {
+  font: 300 32px "_dosis";
+  color: white;
+}
+
+.viewport p {
+  font: 600 18px "_dosis";
+  color: white;
+}
+
+.switcher {
+  margin: 50px;
+}
+
+/* json tile filler stuff (dataset footer) */
+
+.data-gallery-wrapper {
+  background: white;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+}
+
+.dataset-tile {
+  width: 200px;
+  margin: 30px;
+}
+
+.dataset-tile .preview {
+  width: 200px;
+  height: 150px;
+  background-size: contain;
+  background-blend-mode: lighten;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(38,38,38,1);
+}
+
+.dataset-tile h1 {
+  font: 600 21px "_dosis";
+}
+
+.dataset-tile dt {
+  font: 600 14px "_dosis";
+  letter-spacing: 0.025em;
+}
+
+.dataset-tile dd {
+  font: 300 14px "_dosis";
+  letter-spacing: 0.075em;
+}
+
+
 /*Legend Styles */
 
 .container {
-  display: flex;
+  display: block;
   align-items: center;
+  width:300px;
+  float:right;
   height: 100%;
-  width:70%;
   text-align: center;
 }
 
@@ -379,6 +527,11 @@ h4.legend-title {
 li{
   list-style-type:none;
   }
+.topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+   }
 .legend {
   color: #fff;
   padding: 10px;
