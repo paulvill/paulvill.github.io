@@ -10,5 +10,7 @@ legend.click(function(){
   close.click(function(){
     modal.fadeOut('slow');
   });
+
 });
- });
+});
+
