@@ -1,7 +1,13 @@
 var datasets = [
 {
 	"path":[
-		"/images/coloredmovie_4datasets/",
+		"images/coloredmovie_4datasets/",
+		"images/coloredmovie_4datasets/grayscale/nuclei",
+		"images/coloredmovie_4datasets/grayscale/dpERK",
+		"images/coloredmovie_4datasets/grayscale/twist",
+		"images/coloredmovie_4datasets/grayscale/dorsal",
+		"images/coloredmovie_4datasets/grayscale/ind",
+		"images/coloredmovie_4datasets/grayscale/rhomboid",
 	],
 	"name":[
 		"Drosophila Dorso-Ventral patterning",
@@ -10,6 +16,7 @@ var datasets = [
 		"gastrulation",
 	],
 	"staining":[
+		"fused",
 		"nuclei",
 		"dpERK",
 		"Twist",
@@ -41,17 +48,23 @@ var datasets = [
 		"2",
 	],
 	"channels":[
-		"6",
+		"7",
 	],
 	"resolution":[
 		"512",
 		"512",
+	],
+	"timesteps":[
+		"42",
+	],
+	"viewportname":[
+		"js/main_new_template.js",
 	]
 },
 
 {
 	"path":[
-		"/images/Tcwt1/",
+		"images/Tcwt1/",
 	],
 	"name":[
 		"Tribolium",
@@ -91,12 +104,18 @@ var datasets = [
 	"resolution":[
 		"478",
 		"268",
+	],
+	"timesteps":[
+		"195",
+	],
+	"viewportname":[
+		"js/tribolium_new_template.js",
 	]
 },
 
 {
 	"path":[
-		"/images/tribolium/",
+		"images/tribolium/",
 	],
 	"name":[
 		"Tribolium - Comparison of 3 embryos",
@@ -117,7 +136,6 @@ var datasets = [
 	"species":[
 		"Tribolium castaneum",
 		"Wild-Type",
-    "---test---"
 	],
 	"description":[
 		"2 hours Time ‐ lapse fluorescence recording of a Tribolium embryo expressing nuclear ‐ localized GFP under a ubiquitous promoter (transgenic line EFA ‐ nGFP). Stacks were recorded every 12 minutes at 10x magnification and 20°C. After synchronous cell divisions, the embryonic anlagen condense and give rise to germ ‐ rudiment that progressively becomes covered by the extending serosa. The germ ‐ band extends posteriorly, bending around the posterior pole. Anterior to the left.",
@@ -137,7 +155,66 @@ var datasets = [
 	"resolution":[
 		"681",
 		"431",
+	],
+	"timesteps":[
+		"195",
+	],
+	"viewportname":[
+		"js/tribolium_3_new_template.js",
 	]
 },
 
+{
+	"path":[
+		"images/droso_WT/Mem_02.tif/",
+		"images/droso_WT/Nuc_02.tif/",
+	],
+	"name":[
+		"Drosophila",
+	],
+	"developmental period":[
+		"gastrulation",
+	],
+	"staining":[
+		"membranes",
+		"nuclei",
+	],
+	"microscope":[
+		"Two Photo",
+		"Half of the embryo",
+	],
+	"preview":[
+		"/images/droso_WT/Nuc_02.tif/t_25_z_11.png",
+	],
+	"species":[
+		"Drosophila melanogaster",
+		"Wild-Type",
+	],
+	"description":[
+		"9 hours 48 min Time ‐ lapse fluorescence recording of a Drosophila embryo with nuclear and membrane staining",
+	],
+	"reference":[
+		"",
+	],
+	"DOI":[
+		"",
+	],
+	"dimensions":[
+		"3",
+	],
+	"channels":[
+		"2",
+	],
+	"resolution":[
+		"512",
+		"512",
+		"18",
+	],
+	"timesteps":[
+		"25",
+	],
+	"viewportname":[
+		"js/volume_rendering.js",
+	]
+},
 ];

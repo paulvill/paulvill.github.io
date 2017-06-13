@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Embryo Digital Atlas</title>
+
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Dosis:300,500,700|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css" />
+	
+	<!-- Include Three.js libraries -->
+	<script src="js/three.js"></script>
+	<script src="js/Detector.js"></script>
+	<script src="js/CanvasRenderer.js"></script>
+	<script src="js/Projector.js"></script>
+	<script src="js/keyboardEnums.js"></script>
+	<script src="js/OrbitControls.js"></script>
+
+	  <script src="layout_test/assets/js/external/lodash.min.js"></script>
+  <script src="layout_test/assets/js/external/jquery.min.js"></script>
+  <script src="js/datasetlist.js"></script>
+<!--   <script src="js/datasetlist.js"></script>
+  <script src="layout_test/assets/js/site/json-filler.js"></script>
+ -->
+ </head>
+	
+<body>
+	
+	<!-- Header -->
+	<header id="header">
+		<div class="sticky-nav" id="sticky-nav">
+			<div class="title-wrap">
+				<h1><a href="#">The Embryo Digital Atlas</a></h1>
+			</div>
+			
+			<nav id="menu" class="main-menu">
+				<div class="nav-selector"><span>About</span></div>
+				<div class="nav-content">
+					<ul class="main-nav">
+						<li><a href="">About Project</a></li>
+						<li><a href="">Acknowledgments</a></li>
+						<li><a href="">contact</a></li>
+						<li class="tagline">
+							<span class="strong">an open source project</span>
+							<span class="block"><a href="https://github.com/paulvill/paulvill.github.io">https://github.com/paulvill/paulvill.github.io</a></span>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- end Header -->
+
+<!-- 	<div>
+	<button type="button" id="myBtn" onclick="myFunction()">Try it</button>
+	</div> -->
+
+
+	<!-- Viewport -->
+	<div id="WebGLCanvas" class="viewport">
+	</div>
+
+		<!-- <input type="number" id="myNumber" value="2">
+		<br/> -->
+		<!-- <button onclick="myFunction()">Select</button> -->
+		<!-- <script src="js/volume_rendering.js"> -->
+		<script src="js/generic_viewport.js">
+		</script>
+
+<!-- 	<script> //src="js/viewport.js">
+		function myFunction() {
+			var datasetnumber = document.getElementById("myNumber").value;
+
+			// viewports[datasetnumber].init();
+			// viewports[datasetnumber].render();
+
+			$.getScript(datasets[datasetnumber].viewportname, function(){});
+		}
+		function reload_js() {
+        	$('script[src=' + datasets[datasetnumber].viewportname + ']').remove();
+        	$('<script>').attr('src', src).appendTo('head');
+    	}
+    	
+    	reload_js(datasets[datasetnumber].viewportname);
+	</script> -->
+	<!-- <script src="js/volume_rendering.js"></script> -->
+	<!-- end Viewport -->
+
+
+	
+	
+<!-- 	<script>
+		var datasetnumber;
+		function myFunction() {
+			datasetnumber = 2;
+			$.getScript(datasets[datasetnumber].viewportname, function(){});
+		}
+	</script> -->
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="dataset-picker">
+			<span class="dataset-label">Dataset: 
+				<span class="dataset-name">Drosophilia</span>
+			</span>
+			
+
+			<div class="add-dataset">
+				<span class="btn-label">Upload New Dataset</span>
+				<span class="btn-add"></span>
+			</div>
+		</div>
+
+	</footer>
+	<!-- end Feader -->
+
+	</body>
+</html>
