@@ -163,7 +163,7 @@ body {
 	section, .content {
 		font-family: 'Open Sans', sans-serif;
 		background: #e6e6e6;
-		color: #e6e6e6;
+		color: #999;
 	}	
 
 /* Footer */
@@ -175,6 +175,9 @@ body {
 		height: 40px;
 		color: black;
 		padding: 0;
+		-webkit-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
+		-moz-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
+		box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
 	}
 	.dataset-label {
 		display: inline-block;
@@ -225,4 +228,78 @@ body {
 	}
 	.add-dataset:hover .btn-add {
 		background: #8521e4;	
+	}
+
+/* Popup pages */
+	.overlay {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(255, 255, 255, 0.7);
+		transition: opacity 500ms;
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.overlay:target {
+	  	visibility: visible;
+		overflow: auto;
+	  	opacity: 1;
+	}
+
+	.popup {
+		margin: 70px auto;
+		padding: 2.5em;
+		background: #fff;
+		border-radius: 5px;
+		width: 80%;
+		position: relative;
+		transition: all 5s ease-in-out;
+		-webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.24);
+		-moz-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.24);
+		box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.24);
+	}
+	.popup h2 {
+		margin: 0;
+		color: #333;
+		font-weight: 300;
+		font-size: 2em;
+	}
+	.popup h3 {
+		margin-top: 0;
+		color: #333;
+		font-weight: 700;
+		font-size: 1em;
+		text-transform: uppercase;
+	}
+	.popup .close {
+		position: absolute;
+		top: 0;
+		right: 30px;
+		transition: all 200ms;
+		font-size: 60px;
+		text-decoration: none;
+		color: black;
+	}
+	.popup .close:hover {
+		color: #8521e4;
+	}
+	.popup .content {
+		max-height: 30%;
+		overflow: auto;
+		background: white;
+	}
+	.popup .content p {
+		text-align: justify;
+	}
+
+	@media screen and (max-width: 700px){
+	  .box {
+		  width: 70%;
+	  }
+	  .popup {
+		  width: 70%;
+	  }
 	}
