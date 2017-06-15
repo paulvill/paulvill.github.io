@@ -157,6 +157,7 @@ body {
 	.viewport {
 		text-align: center;
 		padding-top: 5em;
+		z-index: 1;
 	}
 
 /* Content (text pages) */
@@ -178,6 +179,7 @@ body {
 		-webkit-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
 		-moz-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
 		box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
+		z-index: 3;
 	}
 	.dataset-label {
 		display: inline-block;
@@ -241,6 +243,7 @@ body {
 		transition: opacity 500ms;
 		visibility: hidden;
 		opacity: 0;
+		z-index: 2;
 	}
 
 	.overlay:target {
