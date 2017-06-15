@@ -196,6 +196,7 @@ footer {
   -webkit-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
   -moz-box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
    box-shadow: -1px -5px 5px -3px rgba(0,0,0,0.24);
+   z-index: 3;
 	/* cursor: pointer; */
 }
 
@@ -282,6 +283,7 @@ g.arrow polygon {
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
+    z-index: 2;
   }
 
   .overlay:target {
@@ -527,6 +529,7 @@ g.arrow polygon {
   position: absolute;
   text-align: center;
   transition: opacity 1s;
+  z-index: 1;
 }
 
 #v1 {
