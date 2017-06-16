@@ -174,6 +174,10 @@ app.selectTexture = function( channel, tstep) {
 	}
 }
 
+window.onkeydown = function(e) {
+  return !(e.keyCode == 32);
+}
+
 /**
 * This function is called, when a key is pushed down.
 */
@@ -181,23 +185,25 @@ app.onDocumentKeyDown = function(event) {
 	this.currentTStep = this.currentTStep || 0;
 	this.currentChannel = this.currentChannel || 0;
 
-// Get the key code of the pressed key
-var keyCode = event.which;
-if (keyCode == enums.keyboard.SPACE) {	// SWITCH CHANNEL
-	if (this.currentChannel < app.channelCount - 1 && app.channelLoaded[this.currentChannel+1]) {
-		++this.currentChannel;
-	} else {
-		this.currentChannel = 0;
-	}
+
+
+  // Get the key code of the pressed key
+  var keyCode = event.which;
+  if (keyCode == enums.keyboard.KEY_C) {	// SWITCH CHANNEL
+	  if (this.currentChannel < app.channelCount - 1 && app.channelLoaded[this.currentChannel+1]) {
+		  ++this.currentChannel;
+	  } else {
+		  this.currentChannel = 0;
+	  }
 
 	} else if(keyCode == enums.keyboard.KEY_W) {	// ROTATE UP
-	app.xRotation -= 0.1;
+	  app.xRotation -= 0.1;
 	} else if(keyCode == enums.keyboard.KEY_S) {	// ROTATE DOWN
-	app.xRotation += 0.1;
+	  app.xRotation += 0.1;
 	} else if(keyCode == enums.keyboard.KEY_A) {	// ROTATE LEFT
-	app.yRotation -= 0.1;
+	  app.yRotation -= 0.1;
 	} else if(keyCode == enums.keyboard.KEY_D) {	// ROTATE RIGHT
-	app.yRotation += 0.1;
+	  app.yRotation += 0.1;
 	} else if(keyCode == enums.keyboard.LEFT_ARROW) {	// NEXT IMAGE
 		if (this.currentTStep > 0) {
 			--this.currentTStep;
@@ -211,25 +217,25 @@ if (keyCode == enums.keyboard.SPACE) {	// SWITCH CHANNEL
 		} else {
 			this.currentTStep = 0;
 		}
-	// Page up
+	  // Page up
 	} else if(keyCode == enums.keyboard.UP_ARROW) {	// ZOOM IN
 		app.zTranslation += 0.2;
-	// Page down
+	  // Page down
 	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
 		app.zTranslation -= 0.2;
 	}
 	else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
-	app.xRotation = 0.0;
-	app.yRotation = 0.0;
-	app.zTranslation = 0;
-	// planeHoriz.position.x = 0;
-	// planeHoriz.position.y = 0;
-	// planeHoriz.position.z = 0;
-	// planeVert.position.x = 0;
-	// planeVert.position.y = 0;
-	// planeVert.position.z = 0;
-}
-app.selectTexture(this.currentChannel, this.currentTStep);
+	  app.xRotation = 0.0;
+	  app.yRotation = 0.0;
+	  app.zTranslation = 0;
+	  // planeHoriz.position.x = 0;
+	  // planeHoriz.position.y = 0;
+	  // planeHoriz.position.z = 0;
+	  // planeVert.position.x = 0;
+	  // planeVert.position.y = 0;
+	  // planeVert.position.z = 0;
+  }
+  app.selectTexture(this.currentChannel, this.currentTStep);
 }
 
 app.onSlide = function(event){
@@ -251,9 +257,9 @@ app.onDblClick = function(event) {
 }
 
 app.orbitControls = function(event) {
-     // add the controls
-     app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement );
-     console.log("setting orbit controls")
+  // add the controls
+  app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement );
+  console.log("setting orbit controls")
 }
 
 

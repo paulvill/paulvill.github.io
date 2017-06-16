@@ -361,8 +361,8 @@ g.arrow polygon {
 
 .ds-info-panel .close {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 60px;
+  right: 60px;
 }
 
 .ds-info-panel .close:hover {
@@ -505,15 +505,22 @@ g.arrow polygon {
   width: 100%;
   padding: 30px;
   display: flex;
+  box-sizing: border-box;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.dataset-tile {
-  background: white;
-  width: 20%;
+.dataset-tile-wrap {
+  padding: 5px;
+  box-sizing: border-box;
+  width: 25%;
   min-width: 200px;
-  margin: 0 15px 15px 0;
+}
+
+.dataset-tile {
+  width: 100%;
+  /* margin: 0 0px 15px 0; */
+  box-sizing:border-box;
   position: relative;
   cursor: pointer;
   float: left;
@@ -549,6 +556,7 @@ g.arrow polygon {
   background-color: rgba(38,38,38,1);
 }
 .dataset-tile .description {
+  background: white;
   padding: 5px;
 }
 
