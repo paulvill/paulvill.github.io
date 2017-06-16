@@ -348,7 +348,6 @@ g.arrow polygon {
     transition: none;
   }
   .popup .content {
-    max-height: 30%;
     overflow: auto;
     background: white;
   }
