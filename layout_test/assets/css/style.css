@@ -359,6 +359,16 @@ g.arrow polygon {
   text-align: justify;
 }
 
+.ds-info-panel .close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.ds-info-panel .close:hover {
+  opacity: 0.6;
+}
+
 
 
 

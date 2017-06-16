@@ -6,6 +6,7 @@ app.footer = {
     var ft = app.footer
     ft.$el.find(".titlebar").click(footer_hs)
     ft.$el.find(".dataset-info-button").click(dsinfo_hs)
+    $(".ds-info-panel .close").click(dsinfo_hs)
     ft.$el.find(".titlebar:not(.expanded)").mouseover(footer_swell)
     ft.$el.find(".titlebar:not(.expanded)").mouseleave(footer_shrink)
 
