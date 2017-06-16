@@ -92,7 +92,6 @@ function footer_hs(e) {
 }
 
 function dsinfo_hs(e) {
-  console.log("dsinfo")
   $(".ds-info-panel").toggleClass("visible");
 }
 
@@ -101,11 +100,12 @@ function makedivs(data_objects, callback) {
   var saranwrap = document.querySelector(".data-gallery-wrapper")
 
   _(data_objects).each((d, i) => {
-    var ziploc = make("div", "dataset-tile", "dataset_" + i)
+    var doublebag = make("div", "dataset-tile-wrap", "dataset_" + i)
+    var ziploc = make("div", "dataset-tile")
     var preview = make("div", "preview")
     var tinfoil = make("div", "description")
 
-    ziploc.dataset.id = i
+    doublebag.dataset.id = i
     preview.style.backgroundImage = "url(" + d.preview + ")"
 
     var title = make("h1")
@@ -134,7 +134,9 @@ function makedivs(data_objects, callback) {
     ziploc.append(preview)
     ziploc.append(tinfoil)
 
-    saranwrap.append(ziploc)
+    doublebag.append(ziploc)
+
+    saranwrap.append(doublebag)
   })
   callback(saranwrap)
 
