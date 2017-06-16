@@ -267,7 +267,13 @@ if (app.channelLoaded[0]) {
 	app.group[app.chcurrent * app.imageCount + app.tcurrent].rotation.set(app.xRotation, 0.0, app.yRotation, 'XYZ' );
 	app.group[app.chcurrent * app.imageCount + app.tcurrent].position.z = app.zTranslation;
 	app.renderScene();
-}
+}else{document.getElementById("WebGLCanvas").innerHTML = '<div class="loadwrapper">\
+          <div class="loading">\
+              <p>loading<span id="dots">...</span></p>\
+          </div>\
+      </div>'
+
+  }
 
 // Define the function, which is called by the browser supported timer loop. If the
 // browser tab is not visible, the animation is paused. So 'animateScene()' is called
