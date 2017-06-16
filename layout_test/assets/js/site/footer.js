@@ -5,7 +5,10 @@ app.footer = {
   init: function() {
     var ft = app.footer
     ft.$el.find(".titlebar").click(footer_hs)
-    console.log( ft.$el.find(".titlebar"))
+    ft.$el.find(".dataset-info-button").click(dsinfo_hs)
+    ft.$el.find(".titlebar:not(.expanded)").mouseover(footer_swell)
+    ft.$el.find(".titlebar:not(.expanded)").mouseleave(footer_shrink)
+
 
     $.ajax({
       url: "assets/js/site/dataset_list.json",
@@ -18,6 +21,9 @@ app.footer = {
         app.initializeScene();
         app.animateScene();
 
+        var base_dataset = app.dataset_list[0]
+        ft.update_labels(base_dataset);
+
         makedivs(returned_data, (wrapper) => {
           // callback for when the tiles are all appended
 
@@ -27,8 +33,7 @@ app.footer = {
 
               var corresponding_dataset = app.dataset_list[tile.dataset.id]
 
-              ft.$el.find(".dataset-name").text(corresponding_dataset.name)
-
+              ft.update_labels(corresponding_dataset);
 
               app.i = tile.dataset.id;
               // Initialize the scene
@@ -38,6 +43,7 @@ app.footer = {
               app.animateScene();
 
               ft.$el.toggleClass("expanded")
+              $(".ds-info-panel").removeClass("visible high");
             })
           })
         })
@@ -46,6 +52,11 @@ app.footer = {
         console.log(err)
       }
     })
+  },
+  update_labels: function (data) {
+    $("footer .titlebar .dataset-name").text(data.name)
+    $(".ds-info-panel h1").text(data.name)
+    $(".ds-info-panel .desc").text(data.description)
   }
 
 }
@@ -62,12 +73,27 @@ document.addEventListener("DOMContentLoaded", app.footer.init)
 
 // })
 
-
-function footer_hs() {
-  console.log(this)
-  $(this).parents("footer").toggleClass("expanded")
+function footer_swell(e) {
+  if (!e.target.classList.contains("no-expand")) $(this).parents("footer").addClass("swollen")
+  else $(this).parents("footer").removeClass("swollen")
+}
+function footer_shrink(e) {
+  if (!e.target.classList.contains("no-expand")) $(this).parents("footer").removeClass("swollen")
 }
 
+
+function footer_hs(e) {
+  // console.log(e.target.classList)
+  if (!e.target.classList.contains("no-expand")) {
+    $(this).parents("footer").toggleClass("expanded")
+    $(".ds-info-panel").toggleClass("high");
+  }
+}
+
+function dsinfo_hs(e) {
+  console.log("dsinfo")
+  $(".ds-info-panel").toggleClass("visible");
+}
 
 function makedivs(data_objects, callback) {
 
