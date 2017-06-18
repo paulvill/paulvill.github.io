@@ -223,7 +223,6 @@ app.onDocumentKeyDown = function(event) {
 	  // Page down
 	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
 		app.zTranslation -= 0.2;
-	}
 		  // Page up
 	} else if(keyCode == enums.keyboard.KEY_R) {	// ZOOM IN
 		app.zTranslation += 0.2;
