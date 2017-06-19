@@ -224,10 +224,10 @@ app.onDocumentKeyDown = function(event) {
 	} else if(keyCode == enums.keyboard.DOWN_ARROW) {	// ZOOM OUT
 		app.zTranslation -= 0.2;
 		  // Page up
-	} else if(keyCode == enums.keyboard.KEY_R) {	// ZOOM IN
+	} else if(keyCode == enums.keyboard.KEY_Z) {	// ZOOM IN
 		app.zTranslation += 0.2;
 	  // Page down
-	} else if(keyCode == enums.keyboard.KEY_F) {	// ZOOM OUT
+	} else if(keyCode == enums.keyboard.KEY_X) {	// ZOOM OUT
 		app.zTranslation -= 0.2;
 	}
 	else if(keyCode == enums.keyboard.KEY_R) {	// RESET VIEW
