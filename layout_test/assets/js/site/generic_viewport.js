@@ -99,6 +99,7 @@ app.initializeScene = function() {
 			for (tstep = 0; tstep < app.trange; ++tstep) {
 				for (zval = 0; zval < app.zrange; ++zval) {
 					app.textureArray[ch * app.imageCount + tstep*app.zrange + zval] = textureLoader.load(app.dataset_list[app.i].path[ch].concat("t_", tstep+1,"_z_",zval+1,".png"));
+					app.textureArray[ch * app.imageCount + tstep*app.zrange + zval].minFilter = THREE.LinearFilter;
 				}
 			}
 		}
@@ -109,6 +110,7 @@ app.initializeScene = function() {
 			var textureLoader = new THREE.TextureLoader(app.manager[ch]);
 			for (tstep = 0; tstep < app.trange; ++tstep) {
 					app.textureArray[ch * app.imageCount + tstep] = textureLoader.load(app.dataset_list[app.i].path[ch].concat(tstep+1,".png"));
+					app.textureArray[ch * app.imageCount + tstep].minFilter = THREE.LinearFilter;
 					console.log(app.dataset_list[app.i].path[ch].concat(tstep+1,".png"))
 			}
 		}
