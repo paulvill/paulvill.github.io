@@ -125,7 +125,7 @@ app.initializeScene = function() {
 				app.group[ch * app.imageCount +tstep] = new THREE.Object3D();
 				 for (var zval = 0; zval<app.zrange; zval++) {
 				 	mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, app.dataset_list[app.i].resolution[1]/app.dataset_list[app.i].resolution[0]), new THREE.MeshBasicMaterial({map:app.textureArray[ch * app.imageCount + tstep*app.zrange + zval],
-				 		side:THREE.DoubleSide, opacity:0.25, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
+				 		side:THREE.DoubleSide, opacity:0.25*app.dataset_list[app.i].opacity[0], transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
 				 	mesh.position.z = 0.05*(1-2*zval/app.zrange);
 				 	app.group[ch * app.imageCount +tstep].add(mesh);
 				 	app.group[ch * app.imageCount +tstep].name = tstep;
