@@ -112,6 +112,55 @@
 
   {
 	  "path":[
+		  "droso_WT_2"
+	  ],
+	  "name":[
+		  "Drosophila melanogaster"
+	  ],
+	  "developmental period":[
+		  "segmentation"
+	  ],
+	  "staining":[
+		  "nuclei"
+	  ],
+	  "microscope":[
+		  "Light Sheet",
+		  "Entire embryo"
+	  ],
+	  "preview":[
+		  "/images/droso_WT/Nuc_02.tif/t_1_z_159.png"
+	  ],
+	  "species":[
+		  "Drosophila melanogaster",
+		  "Wild-Type"
+	  ],
+	  "description":[
+		  "Entire embryo obtained with Light Sheet microscope and nuclei staining - Courtesy Nareg Djabrayan"
+	  ],
+	  "reference":[
+		  ""
+	  ],
+	  "DOI":[
+		  ""
+	  ],
+	  "dimensions":[
+		  "3"
+	  ],
+	  "channels":[
+		  "1"
+	  ],
+	  "resolution":[
+		  "153",
+		  "349",
+		  "239"
+	  ],
+	  "timesteps":[
+		  "1"
+	  ]
+  },
+
+  {
+	  "path":[
 		  "/images/Tcwt1/"
 	  ],
 	  "name":[
