@@ -16,7 +16,7 @@
 		  "gastrulation"
 	  ],
 	  "staining":[
-      "fused",
+      		"fused",
 		  "nuclei",
 		  "dpERK",
 		  "Twist",
@@ -165,6 +165,61 @@
 	  ],
 	  "timesteps":[
 		  "1"
+	  ]
+  },
+
+  {
+	  "path":[
+		  "/images/HisJupitereNC11-14/fused/",
+		  "/images/HisJupitereNC11-14/channel1/",
+		  "/images/HisJupitereNC11-14/channel2/"
+	  ],
+	  "name":[
+		  "Drosophila melanogaster"
+	  ],
+	  "developmental period":[
+		  "cleavage"
+	  ],
+	  "staining":[
+	  		"Fused",
+		  "Microtubules - Jupiter-GFP",
+		  "Histone - H2A-RFP"
+	  ],
+	  "microscope":[
+		  "Confocal",
+		  "surface of the embryo"
+	  ],
+	  "preview":[
+		  "/images/HisJupitereNC11-14/fused/212.png"
+	  ],
+	  "species":[
+		  "Drosophila melanogaster",
+		  "Wild-Type"
+	  ],
+	  "description":[
+		  "Movie of a WT embryo entering mitosis 10 and ends with interphase of cycle 14. In red are the histones stained with H2A-RFP and in cyan are the microtubules stained with  Jupiter-GFP. The images are taken using 63x objective of Laica SP5 and is 82x41 microns. - Courtesy Hanieh Falahati"
+	  ],
+	  "reference":[
+		  "https://figshare.com/articles/Nuclear_divisions_in_early_fly_embryos/5188294"
+	  ],
+	  "DOI":[
+		  "https://doi.org/10.6084/m9.figshare.5188294.v1"
+	  ],
+	  "dimensions":[
+		  "2"
+	  ],
+	  "channels":[
+		  "3"
+	  ],
+	  "resolution":[
+		  "1024",
+		  "512"
+	  ],
+	  "opacity":[
+		  "1"
+	  ],
+	  "timesteps":[
+		  "254"
 	  ]
   },
 
