@@ -225,6 +225,59 @@
 
   {
 	  "path":[
+		  "/images/FibNC10-14-raw/"
+	  ],
+	  "name":[
+		  "Drosophila melanogaster"
+	  ],
+	  "developmental period":[
+		  "cleavage"
+	  ],
+	  "staining":[
+	  		"Nucleolus - tagRFP-Fibrillarin"
+	  ],
+	  "microscope":[
+		  "Confocal",
+		  "surface of the embryo"
+	  ],
+	  "preview":[
+		  "/images/FibNC10-14-raw/239.png"
+	  ],
+	  "species":[
+		  "Drosophila melanogaster",
+		  "Wild-Type"
+	  ],
+	  "description":[
+		  "The first time nucleolus formation is depicted in wild type early fly embryos. Nucleolus is absent in early embryos, and forms for the first time at nuclear cycle 13 (bright foci in the nuclei). tagRFP-Fibrillarin is used as the marker of the nucleolus. Nuclei at nuclear cycles 10 to 14 are shown. Images are obtained using Leica SP5, every 10s, and are maximum projected, 82 x 41 microns in size. - Courtesy Hanieh Falahati"
+	  ],
+	  "reference":[
+		  "https://figshare.com/articles/De_novo_nucleolus_formation_in_fly_embryos/5188300",
+		  "http://www.pnas.org/content/114/6/1335",
+		  "http://www.cell.com/current-biology/abstract/S0960-9822(15)01513-4"
+	  ],
+	  "DOI":[
+		  "https://doi.org/10.6084/m9.figshare.5188300.v1"
+	  ],
+	  "dimensions":[
+		  "2"
+	  ],
+	  "channels":[
+		  "1"
+	  ],
+	  "resolution":[
+		  "1024",
+		  "512"
+	  ],
+	  "opacity":[
+		  "1"
+	  ],
+	  "timesteps":[
+		  "347"
+	  ]
+  },
+
+  {
+	  "path":[
 		  "/images/Tcwt1/"
 	  ],
 	  "name":[
