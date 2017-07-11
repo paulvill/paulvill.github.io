@@ -13,7 +13,7 @@
 		  "Drosophila melanogaster"
 	  ],
 	  "developmental period":[
-		  "gastrulation"
+		  "Gastrulation"
 	  ],
 	  "staining":[
       		"fused",
@@ -71,7 +71,7 @@
 		  "Drosophila melanogaster"
 	  ],
 	  "developmental period":[
-		  "gastrulation"
+		  "Gastrulation"
 	  ],
 	  "staining":[
 		  "membranes",
@@ -124,7 +124,7 @@
 		  "Drosophila melanogaster"
 	  ],
 	  "developmental period":[
-		  "segmentation"
+		  "Segmentation"
 	  ],
 	  "staining":[
 		  "nuclei"
@@ -178,7 +178,7 @@
 		  "Drosophila melanogaster"
 	  ],
 	  "developmental period":[
-		  "cleavage"
+		  "Cleavage"
 	  ],
 	  "staining":[
 	  		"Fused",
@@ -231,14 +231,14 @@
 		  "Drosophila melanogaster"
 	  ],
 	  "developmental period":[
-		  "cleavage"
+		  "Cleavage"
 	  ],
 	  "staining":[
 	  		"Nucleolus - tagRFP-Fibrillarin"
 	  ],
 	  "microscope":[
 		  "Confocal",
-		  "surface of the embryo"
+		  "Surface of the embryo"
 	  ],
 	  "preview":[
 		  "/images/FibNC10-14-raw/239.png"
@@ -284,7 +284,7 @@
 		  "Tribolium castaneum"
 	  ],
 	  "developmental period":[
-		  "gastrulation"
+		  "Gastrulation"
 	  ],
 	  "staining":[
 		  "nuclei"
@@ -335,7 +335,7 @@
 		  "Tribolium castaneum"
 	  ],
 	  "developmental period":[
-		  "gastrulation"
+		  "Gastrulation"
 	  ],
 	  "staining":[
 		  "nuclei"
@@ -375,6 +375,59 @@
 	  ],
 	  "timesteps":[
 		  "195"
+	  ]
+
+  },
+
+  {
+	  "path":[
+		  "/images/DEV116970-Video5/"
+	  ],
+	  "name":[
+		  "Danio rerio"
+	  ],
+	  "developmental period":[
+		  "Pharyngula"
+	  ],
+	  "staining":[
+		  "Brightfield contrast",
+		  "Nervous system - Tg(kdrl:GFP)"
+	  ],
+	  "microscope":[
+		  "Light Sheet",
+		  "Entire embryo"
+	  ],
+	  "preview":[
+		  "/images/DEV116970-Video5/155.png"
+	  ],
+	  "species":[
+		  "Danio rerio",
+		  "Tg(kdrl:GFP)"
+	  ],
+	  "description":[
+		  "Long term time lapse of development. Development of a Tg(kdrl:GFP) zebrafish from 16 h.p.f. to 2 dpf, observed every 10 minutes from 2 opposite views. Fluorescence is shown in yellow, brightfield contrast in gray. Scale bar is 100 μm."
+	  ],
+	  "reference":[
+		  "http://dev.biologists.org/content/142/5/1016"
+	  ],
+	  "DOI":[
+		  "10.1242/dev.116970 "
+	  ],
+	  "dimensions":[
+		  "2"
+	  ],
+	  "channels":[
+		  "1"
+	  ],
+	  "resolution":[
+		  "832",
+		  "403"
+	  ],
+	  "opacity":[
+		  "1"
+	  ],
+	  "timesteps":[
+		  "233"
 	  ]
 
   }
