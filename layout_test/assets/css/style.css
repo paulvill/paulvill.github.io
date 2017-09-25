@@ -385,12 +385,11 @@ g.arrow polygon {
     /* transition: opacity 500ms; */
     visibility: hidden;
     opacity: 0;
-    z-index: 2;
   }
 
   .overlay:target {
       visibility: visible;
-    overflow: auto;
+      overflow: auto;
       opacity: 1;
   }
 
@@ -605,7 +604,7 @@ g.arrow polygon {
   width: 100%;
   height: 100%;
   text-align: center;
-
+  background: #262626;
 }
 .loadwrapper .loading {
   position: relative;
@@ -650,7 +649,7 @@ g.arrow polygon {
   position: absolute;
   text-align: center;
   transition: opacity 1s;
-  z-index: 1;
+  z-index: -2;
 }
 
 #v1 {

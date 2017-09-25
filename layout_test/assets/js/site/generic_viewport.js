@@ -11,7 +11,13 @@ app = {
 * Initialize the scene
 */
 app.initializeScene = function() {
-  	console.log("hellllooooooo! ")
+  console.log("hellllooooooo! ")
+
+
+  var loading = document.getElementById("loading_cover")
+  loading.classList.remove("hidden")
+  loading.style.opacity = 1
+
   	// reset view
   	app.xRotation=0.0;
   	app.yRotation=0.0;
@@ -275,21 +281,30 @@ app.orbitControls = function(event) {
 * Animate the scene and call rendering.
 */
 app.animateScene = function() {
-//directionalLight.position = camera.position;
-if (app.channelLoaded[0]) {
-	// Map the 3D scene down to the 2D screen (render the frame)
-	app.group[app.chcurrent * app.imageCount + app.tcurrent].rotation.set(app.xRotation, 0.0, app.yRotation, 'XYZ' );
-	app.group[app.chcurrent * app.imageCount + app.tcurrent].position.z = app.zTranslation;
-	app.renderScene();
-}
-// else{
+  //directionalLight.position = camera.position;
+  if (app.channelLoaded[0]) {
+	  // Map the 3D scene down to the 2D screen (render the frame)
 
-// 	document.getElementById("WebGLCanvas").innerHTML = '<div class="loadwrapper" style="position:center">\
-//           <div class="loading">\
-//               <p>loading<span id="dots">...</span></p>\
-//           </div>\
-//       </div>'
-//   }
+    // hide loading animation here
+    var loading = document.getElementById("loading_cover")
+    loading.style.opacity = 0
+    loading.classList.add("hidden")
+
+
+	  app.group[app.chcurrent * app.imageCount + app.tcurrent].rotation.set(app.xRotation, 0.0, app.yRotation, 'XYZ' );
+	  app.group[app.chcurrent * app.imageCount + app.tcurrent].position.z = app.zTranslation;
+	  app.renderScene();
+  }
+  else{
+
+    // show loading animation here
+
+    // 	document.getElementById("WebGLCanvas").innerHTML = '<div class="loadwrapper" style="position:center">\
+    //           <div class="loading">\
+    //               <p>loading<span id="dots">...</span></p>\
+    //           </div>\
+    //       </div>'
+  }
 
 // Define the function, which is called by the browser supported timer loop. If the
 // browser tab is not visible, the animation is paused. So 'animateScene()' is called
