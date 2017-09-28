@@ -11,7 +11,13 @@ app = {
 * Initialize the scene
 */
 app.initializeScene = function() {
-  	console.log("hellllooooooo! ")
+  console.log("hellllooooooo! ")
+
+
+  var loading = document.getElementById("loading_cover")
+  loading.classList.remove("hidden")
+  loading.style.opacity = 1
+
   	// reset view
   	app.xRotation=0.0;
   	app.yRotation=0.0;
@@ -280,6 +286,10 @@ app.animateScene = function() {
 	  // Map the 3D scene down to the 2D screen (render the frame)
 
     // hide loading animation here
+    var loading = document.getElementById("loading_cover")
+    loading.style.opacity = 0
+    loading.classList.add("hidden")
+
 
 	  app.group[app.chcurrent * app.imageCount + app.tcurrent].rotation.set(app.xRotation, 0.0, app.yRotation, 'XYZ' );
 	  app.group[app.chcurrent * app.imageCount + app.tcurrent].position.z = app.zTranslation;
