@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.js"></script>
+    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.6/dist/aframe-orbit-controls-component.min.js"></script>
+    <style>
+          .intro-overlay {
+            z-index: 1;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 400px;
+            box-sizing: border-box;
+            padding: 1.5em;
+            color: #FFF;
+            background: rgba(0, 0, 0, 0.75);
+            font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+          }
+        </style>
+  </head>
+  <body>
+    <a-scene>
+      <!-- <a-entity id="cameraRig"> -->
+        <!-- camera -->
+        <a-entity id="acamera" camera look-controls orbit-controls></a-entity>
+        <!-- <a-entity id="left-hand"
+                  brush
+                  if-no-vr-headset="visible: false"
+                  paint-controls="hand: left"
+                  teleport-controls="cameraRig: #cameraRig; button: trackpad; ground: #ground; hitCylinderColor: #ff3468; curveHitColor: #ff3468; curveMissColor: #333333; curveLineWidth: 0.01; hitEntity: #hitEntityLeft"
+                  ui>
+                    <a-entity class="vive-tooltips" visible="false">
+                      <a-entity tooltip="text: Brush size\n(slide up/down); width: 0.1; height: 0.04; targetPosition: 0 0.016 0.0073; src: assets/images/tooltip.png"
+                                position="0.1 0.025 0.048"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Main menu; width: 0.07; height: 0.03; targetPosition: 0 -0.07 -0.062; lineHorizontalAlign: center; lineVerticalAlign: bottom; src: assets/images/tooltip.png"
+                                position="0 0.015 -0.05"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Press to paint\n(pressure sensitive); width: 0.11; height: 0.04; targetPosition: 0 -0.06 0.067; lineHorizontalAlign: right; src: assets/images/tooltip.png"
+                                position="-0.11 -0.055 0.04"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Undo; width: 0.06; height: 0.03; targetPosition: -0.003 0.046 0.106; src: assets/images/tooltip.png"
+                                position="0.1 -0.005 0.12"
+                                rotation="-90 0 0">
+                      </a-entity>
+                    </a-entity>
+                  </a-entity>
+        <a-entity id="right-hand"
+                  brush
+                  if-no-vr-headset="visible: false"
+                  paint-controls="hand: right"
+                  teleport-controls="cameraRig: #cameraRig; button: trackpad; ground: #ground; hitCylinderColor: #ff3468; curveHitColor: #ff3468; curveMissColor: #333333; curveLineWidth: 0.01; hitEntity: #hitEntityRight"
+                  ui>
+                    <a-entity class="vive-tooltips" visible="false">
+                      <a-entity tooltip="text: Brush size\n(slide up/down); width: 0.1; height: 0.04; targetPosition: 0 0.016 0.0073; src: assets/images/tooltip.png"
+                                position="0.1 0.025 0.048"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Main menu; width: 0.07; height: 0.03; targetPosition: 0 -0.07 -0.062; lineHorizontalAlign: center; lineVerticalAlign: bottom; src: assets/images/tooltip.png"
+                                position="0 0.015 -0.05"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Press to paint\n(pressure sensitive); width: 0.11; height: 0.04; targetPosition: 0 -0.06 0.067; lineHorizontalAlign: right; src: assets/images/tooltip.png"
+                                position="-0.11 -0.055 0.04"
+                                rotation="-90 0 0">
+                      </a-entity>
+                      <a-entity tooltip="text: Undo; width: 0.06; height: 0.03; targetPosition: -0.003 0.046 0.106; src: assets/images/tooltip.png"
+                                position="0.1 -0.005 0.12"
+                                rotation="-90 0 0">
+                      </a-entity>
+                    </a-entity>
+        </a-entity> -->
+      <!-- </a-entity> -->
+
+
+
+<!--       <a-entity
+      id="camera"
+      camera="fov: 80; zoom: 6;"
+      position="0 2 5"
+      orbit-controls="
+        invertZoom: true;
+        autoRotate: true;
+        target: #knee;
+        enableDamping: true;
+        dampingFactor: 0.125;
+        rotateSpeed:0.25;
+        autoRotateSpeed:0.5;
+        minDistance:3;
+        maxDistance:100;
+      "
+      mouse-cursor=""
+    > -->
+  <!-- </a-entity> -->
+
+      <a-entity id="embryo1" position="-1 1 0">
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_1.png" position="1 0.75 -0.6" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending">mesh = el.getObject3D('mesh')</a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_2.png" position="1 0.75 -0.59" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_3.png" position="1 0.75 -0.58" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_4.png" position="1 0.75 -0.57" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_5.png" position="1 0.75 -0.56" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_6.png" position="1 0.75 -0.55" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_7.png" position="1 0.75 -0.54" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_8.png" position="1 0.75 -0.53" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_9.png" position="1 0.75 -0.52" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_10.png" position="1 0.75 -0.51" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_11.png" position="1 0.75 -0.50" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_12.png" position="1 0.75 -0.49" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_13.png" position="1 0.75 -0.48" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_14.png" position="1 0.75 -0.47" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_15.png" position="1 0.75 -0.46" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_16.png" position="1 0.75 -0.45" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_17.png" position="1 0.75 -0.44" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+        <a-image src="/images/droso_WT/Mem_02/t_1_z_18.png" position="1 0.75 -0.43" material="side: double; opacity: 0.15;blending:THREE.AdditiveBlending"></a-image>
+      </a-entity>
+      <a-entity id="embryo2" position="-1 1 0">
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_1.png" position="1 0.75 0.26" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_2.png" position="1 0.75 0.28" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_3.png" position="1 0.75 0.3" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_4.png" position="1 0.75 0.32" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_5.png" position="1 0.75 0.34" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_6.png" position="1 0.75 0.36" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_7.png" position="1 0.75 0.38" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_8.png" position="1 0.75 0.4" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_9.png" position="1 0.75 0.42" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_10.png" position="1 0.75 0.44" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_11.png" position="1 0.75 0.46" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_12.png" position="1 0.75 0.48" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_13.png" position="1 0.75 0.5" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_14.png" position="1 0.75 0.52" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_15.png" position="1 0.75 0.54" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_16.png" position="1 0.75 0.56" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_17.png" position="1 0.75 0.58" material="side: double; opacity: 0.15"></a-image>
+        <a-image src="/images/droso_WT/Nuc_02/t_1_z_18.png" position="1 0.75 0.6" material="side: double; opacity: 0.15"></a-image>
+      </a-entity>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+<!--       <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+      <a-sphere position="0 1.25 5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+    <div id="dialog" class="img-rounded intro-overlay">
+        <h2>A-Frame Microscopy Images Viewer POC</h2>
+        <p>This app shows how we can embed microscopy images in 3D space</p>
+        <p>Use your mouse to <code>click and drag</code> to rotate the image. Use the <code>scrollwheel</code> to zoom in / out.</p>
+        <p><a href="https://github.com/kfarr/aframe-mri-poc">See the code and more info on the git repo.</a></p>
+    </div>
+    <script type="text/javascript">
+    if (screen.width <= 699) {
+      document.getElementById('dialog').classList.remove('intro-overlay');
+    }
+    </script>
+  </body>
+</html>
