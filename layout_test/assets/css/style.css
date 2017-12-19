@@ -605,6 +605,7 @@ g.arrow polygon {
   height: 100%;
   text-align: center;
   background: #262626;
+  z-index: -1;
 }
 .loadwrapper .loading {
   position: relative;

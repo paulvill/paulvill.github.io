@@ -15,8 +15,9 @@ app.initializeScene = function() {
 
 
   var loading = document.getElementById("loading_cover")
-  loading.classList.remove("hidden")
+  loading.style.visibility = "visible"
   loading.style.opacity = 1
+
 
   	// reset view
   	app.xRotation=0.0;
@@ -288,7 +289,7 @@ app.animateScene = function() {
     // hide loading animation here
     var loading = document.getElementById("loading_cover")
     loading.style.opacity = 0
-    loading.classList.add("hidden")
+    loading.style.visibility = "hidden"
 
 
 	  app.group[app.chcurrent * app.imageCount + app.tcurrent].rotation.set(app.xRotation, 0.0, app.yRotation, 'XYZ' );
